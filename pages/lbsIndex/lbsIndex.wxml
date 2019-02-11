@@ -1,0 +1,72 @@
+<!--pages/lbsIndex/lbsIndex.wxml-->
+<view class="lbs">
+  <view class="top-lbs">
+    <view class="top-lbs__items">
+      <scroll-view scroll-x="true">
+        <block wx:for="{{ categoryData }}" wx:key="true">
+          <view class="top-list-item" data-cate="{{item}}" bindtap="categoryChange" data-category="{{item}}">
+            <view class="top-list-item__title {{ activeCategory == item ? 'active-top-border' : ''}}">{{ item }}</view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+
+  <map
+    class="{{ isSpread ? 'map--has-merchant-list' : ''}}"
+    longitude="{{ coreLongitude }}"
+    latitude="{{ coreLatitude }}"
+    scale="{{ scale }}"
+    show-location
+    markers="{{ markers }}"
+    include-points='{{markers}}'
+    bindmarkertap='markerTap'
+    polyline="{{polyline}}"
+    >
+  </map>
+  
+  <view class="lbs-merchants">
+    <view
+      class="lbs-merchants__record"
+      bindtap="switchMerchantsItems"
+    >
+      共有{{ merchantsData.length }}个{{ activeCategory }}
+      <view class="lbs-merchants__toggle iconfont {{ isSpread ? 'icon-spread-down':'icon-spread-up' }}"></view>
+      
+    </view>
+    <view class="lbs-merchants__items" hidden="{{ !isSpread }}">
+       <scroll-view
+        scroll-y="true"
+        style='height:350rpx;'
+        scroll-with-animation="{{ true }}"
+        scroll-into-view="{{scrollIntoView}}"
+        >
+        <view
+          class="lbs-merchants__item"
+          wx:for="{{ merchantsData }}" wx:key="true"
+        >
+          <view class="list-item">
+            <navigator style='float:left;' id="id{{ item.id }}" url="../lbsDetail/lbsDetail?id={{ item.id }}">
+              <view
+                class="list-item__img {{ index == activeMerchantIndex ? 'active-merchant-border' : ''}}"
+                style="background-image: url({{ item.logo }})"
+              ></view>
+              <view class="list-item__block">
+                <view class="list-item__title">{{ item.title }}</view>
+                <view class="list-item__detail">{{ item.description }}</view>
+              </view>
+            </navigator>
+            <image src='../../resource/images/gotomap.png' class="list-item__goto" bindtap='gotoMap' data-item='{{ item }}'></image>
+          </view>
+          <view class="line"></view>
+        </view>
+      </scroll-view>
+    </view>
+      <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetbindchange">
+        <block wx:for-items="{{actionSheetItems}}">
+            <action-sheet-item bindtap="{{item.bindtap}}">{{item.txt}}</action-sheet-item>
+        </block>
+        <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+      </action-sheet>
+  </view>
+</view>

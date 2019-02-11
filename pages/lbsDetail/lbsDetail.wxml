@@ -1,0 +1,20 @@
+<!--pages/lbsDetail/lbsDetail.wxml-->
+<view class="intro">
+    <swiper class="slide" indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}">
+        <swiper-item wx:for="{{imgUrls}}" wx:key="true">
+          <image src="{{item}}" class="slide-image" />
+        </swiper-item>
+    </swiper>
+    <view class="intro-info padding-leftRight">
+        <view class="intro-title">
+          <view class="intro-title-text">{{title}}</view>
+          <image src="../../resource/images/gotomap.png" class="intro-title-logo" bindtap="OpenOuterNavigator"></image>
+        </view>
+        <view class="intro-main">
+            {{description}}
+        </view>
+    </view>
+
+</view>
+

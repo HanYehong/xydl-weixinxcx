@@ -1,0 +1,205 @@
+/* pages/lbsIndex/lbsIndex.wxss */
+
+/* 顶部地图分类导航 */
+
+.top-lbs {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  min-width: 100%;
+  background:#C8141F;
+  color: #ffffff;
+}
+
+.top-lbs__items{
+  position: relative;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  padding: 0rpx 20rpx;
+  width: 100vw;
+  line-height: 100rpx;
+}
+
+.top-list-item{
+  display: inline-block;
+}
+
+.top-list-item__title {
+  display: inline-block;
+  margin-right: 40rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  font-family: 'iconfont';
+  line-height: 70rpx;
+  height: 70rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  white-space: nowrap;
+  font-weight: 200;
+}
+
+.active-top-border {
+  border-bottom: 4rpx solid #ffffff;
+}
+
+map {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 80rpx;
+  left: 0;
+  right: 0;
+  bottom: 100rpx;
+}
+
+.map--has-merchant-list {
+  bottom: 485rpx;
+}
+
+.cover-view{
+  position: absolute;
+  height: 100rpx;
+  width: 100%;
+  bottom: 5rpx;
+}
+
+.cover-button{
+  position: absolute;
+  height: 90rpx;
+  background: rgba(200, 20, 31, 0.5);
+  color: #fff;
+  font-size: 30rpx;
+}
+
+.out{
+  position: absolute;
+  width: 250rpx;
+  left: 0;
+}
+
+.inner{
+  position: absolute;
+  width: 250rpx;
+  left: 250rpx;
+}
+
+.undo{
+  position: absolute;
+  width: 120rpx;
+  left: 500rpx;
+}
+
+.lbs-merchants {
+  position: absolute;
+  display: inline-block;
+  /* left: 0;
+  bottom: 0; */
+  width: 100%;
+  background: #fff;
+  height: auto;
+  bottom: 0rpx;
+}
+
+.lbs-merchants.merchants-items-hidden {
+  bottom: 0;
+}
+
+.lbs-merchants__record {
+  letter-spacing: 10rpx;
+  border-bottom: 1rpx solid #eee;
+  width: 100vw;
+  padding: 20rpx 0;
+  text-align: center;
+  font-size: 24rpx;
+  color: #C8141F;
+}
+
+.lbs-merchants__toggle {
+  font-size: 20rpx;
+}
+
+.lbs-merchants__items {
+  position: relative;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  padding: 20rpx 20rpx;
+  width: 100%;
+}
+
+.list-item {
+  display: inline-block;
+  width: 100%;
+  /* margin-bottom: 10rpx; */
+}
+
+.list-item__block{
+  width: 400rpx;
+  float: left;
+  box-sizing: border-box;
+  margin-left: 20rpx;
+}
+
+.list-item__title {
+  width: 400rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color:#7f7f7f;
+  margin-top: 7rpx;
+  line-height: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  white-space: nowrap;
+  font-weight: 200;
+}
+
+.list-item__img {
+  box-sizing: content-box;
+  width: 150rpx;
+  height: 100rpx;
+  line-height: 0;
+  float: left;
+  background-color: #FFF;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.list-item__detail{
+  width: 400rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #cccccc;
+  line-height: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  white-space: nowrap;
+  font-weight: 100;
+}
+
+.list-item__goto{
+  width: 60rpx;
+  height: 60rpx;
+  margin-left: 40rpx;
+  margin-top: 25rpx;
+  float: left;
+}
+
+.active-merchant-border {
+  border-top: 8rpx solid #C8141F;
+}
+
+.line{
+  height:1rpx;
+  width:100%;
+  background:#eee;
+  margin-top:10rpx;
+  margin-bottom:17rpx;
+}
+

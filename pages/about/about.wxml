@@ -1,0 +1,19 @@
+<!--pages/about/about.wxml-->
+<import src='../../utils/wxParse/wxParse.wxml'/>
+<view class="intro">
+    <swiper class="slide" indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}">
+        <swiper-item wx:for="{{imgUrls}}" wx:key="true">
+          <image src="{{item}}" class="slide-image" />
+        </swiper-item>
+    </swiper>
+    <view class="intro-info padding-leftRight">
+        <view class="intro-title">
+          <view class="intro-title-text">{{schoolName}}</view>
+          <view class="intro-english-text">{{englishName}}</view>
+        </view>
+        <view class="intro-main">
+            <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+        </view>
+    </view>
+</view>

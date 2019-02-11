@@ -1,0 +1,5 @@
+/* pages/car/car.wxss */
+.map{
+  height: 100%;
+  width:100%;
+}

@@ -1,0 +1,51 @@
+<!--pages/mine/mine.wxml-->
+<view class="container">
+  <view class="login-info">
+    <!-- <view wx:if='{{true}}' class="nologin center">
+      <text class="loginbut">登录/注册</text>
+    </view> -->
+    <view class="has-login center">
+      <text class="view-resume" bindtap="viewResume">个人>></text>
+      <image class="head-pic" src='{{user.avatarUrl}}'></image>
+      <view class="name">{{user.nickName}}</view>
+    </view>
+  </view>
+  <view class='buttons'>
+    <view class="button" bindtap="viewDeliver">
+      <image class='button-logo' src='../../resource/images/chifan.png'></image>
+      <text class="deliver">午饭晚饭</text>
+    </view>
+    <view class="button" bindtap="viewInterview">
+      <image class='button-logo' src='../../resource/images/kuaidi.png'></image>
+      <text class="interview">代拿快递</text>
+    </view>
+    <view class="button">
+      <image class='button-logo' src='../../resource/images/shiwu.png'></image>
+      <text class="invitation">失物招领</text>
+    </view>
+    <view class="button" bindtap="viewCollect">
+      <image class='button-logo' src='../../resource/images/ziyuan.png'></image>
+      <text class="collect">福利资源</text>
+    </view>
+  </view>
+  <button  wx:if='{{isLogin}}' class="logout">已登录</button>
+  <button open-type="getUserInfo" bindgetuserinfo="toLogin" wx:else class="login">登录</button>
+  
+</view>
+<view class='gongju'>
+  <text>小工具</text>
+</view>
+<view class='gongju-display'>
+  <view class='gongju-display-item-1' bindtap='viewRobot'>
+    <image class='gongju-logo' src='../../resource/images/robot.png'></image>
+    <view class='gongju-text-block'>
+      <text class='gongju-text'>小智7号</text>
+    </view>
+  </view>
+  <view class='gongju-display-item-2'>
+    <image class='gongju-logo' src='../../resource/images/shibie.png'></image>
+    <view class='gongju-text-block'>
+      <text class='gongju-text'>文字识别</text>
+    </view>
+  </view>
+</view>

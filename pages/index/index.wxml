@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="flex-row">
+    <!-- <view class="flex-item">
+      <image class="logo" src="/resource/images/logo.png"></image>
+    </view> -->
+  </view>
+</view>

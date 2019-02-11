@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/about/about",
+    "pages/lbsIndex/lbsIndex",
+    "pages/lbsDetail/lbsDetail",
+    "pages/index/index",
+    "pages/life/life",
+    "pages/car/car",
+    "pages/robot/robot"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#C8141F",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "南京工程学院校园导览",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/about/about",
+        "text": "首页",
+        "iconPath": "resource/images/home.png",
+        "selectedIconPath": "resource/images/home-choosed.png"
+      },
+      {
+        "pagePath": "pages/lbsIndex/lbsIndex",
+        "text": "导览",
+        "iconPath": "resource/images/navigator.png",
+        "selectedIconPath": "resource/images/navigator-choosed.png"
+      },
+      {
+        "pagePath": "pages/car/car",
+        "text": "小公交",
+        "iconPath": "resource/images/car.png",
+        "selectedIconPath": "resource/images/car-choosed.png"
+      },
+      {
+        "pagePath": "pages/life/life",
+        "text": "生活",
+        "iconPath": "resource/images/life.png",
+        "selectedIconPath": "resource/images/life-choosed.png"
+      }
+    ],
+    "selectedColor": "#c8141f",
+    "color": "#bdbdbe"
+  }
+}

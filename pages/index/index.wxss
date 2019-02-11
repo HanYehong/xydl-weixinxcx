@@ -1,0 +1,37 @@
+.container{
+  background-image: url(https://cloud-minapp-22871.cloud.ifanrusercontent.com/1ga0lHw2vq0bs1Rt.png);
+  background-repeat: no-repeat;
+  background-size: 750rpx 1300rpx; 
+  width: 750rpx;
+  height:1300rpx;  
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.flex-item{
+  width: 100%;
+  text-align: center;
+}
+
+.about,.guangguang{
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.about{
+  margin-top: 130rpx;
+}
+
+.guangguang{
+  margin-top: 50rpx;
+}
+
+.logo{
+  margin-top:90rpx;
+  width: 400rpx;
+  height: 116rpx;
+}

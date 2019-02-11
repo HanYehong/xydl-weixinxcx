@@ -1,0 +1,9 @@
+<map
+    class='map'
+    longitude="{{ coreLongitude }}"
+    latitude="{{ coreLatitude }}"
+    scale="{{ scale }}"
+    show-location
+    markers="{{ markers }}"
+    >
+  </map>
