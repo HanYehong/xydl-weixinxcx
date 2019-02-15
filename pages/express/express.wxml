@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<view class="container webfont">
+  <view class="publish-button" bindtap="navigateToPublish">
+    <image class="publish-button-icon" src="/resource/images/publish-icon.svg" />
+  </view>
+  <gl-card wx:if="{{requestDone}}" class="card-wrapper" wx:for="{{goodsData}}" wx:key="index" card-title="{{item.title}}" card-desc="{{item.desc}}" card-price="{{item.price}}" card-views="{{item.views}}" data-price="{{item.price}}" data-views="{{item.views}}" data-desc="{{item.desc}}" data-title="{{item.title}}" data-goods-id="{{item.id}}" bindtap="bindViewTap"></gl-card>
+</view>

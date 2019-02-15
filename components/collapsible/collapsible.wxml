@@ -1,0 +1,25 @@
+<view class="collapsible">
+
+  <view class="collapsible-header {{activeCollapsible ? 'collapsible-header-active' : ''}}">
+    <text class="collapsible-title">{{title}}  ({{itemList.length}})</text>
+    <view bindtap="activeOption" class="collapsible-option">
+      <image style="width: 45rpx; height: 45rpx; {{activeCollapsible ? 'transition: transform .3s; transform: rotate(90deg);' : 'transition: transform .3s; transform: rotate(0deg);'}}" src="/resource/images/more.svg" />
+    </view>
+    <view bindtap="setCollapsiableStatus" class="collapsible-click-area"></view>
+  </view>
+
+  <view class="collapsible-body .animate .collapsible-transition " style="{{activeCollapsible ? 'display: block;' : 'display: none;'}}">
+    <view class="collapsible-body-inner">
+      <view wx:if="{{activeCollapsible}}" class="collapsible-item" wx:for="{{itemList}}" wx:key="index">
+        <!-- <view class="collapsible-item-image" style="background-color: {{itemsDefaultColor}}">
+          <image class="" wx:if="{{item.img}}" />
+        </view> -->
+        <view class="collapsible-item-info">
+          <block class="collapsible-item-title">{{item.title}}</block>
+          <block class="collapsible-item-views">12</block>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+</view>

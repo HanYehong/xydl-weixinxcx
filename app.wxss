@@ -1,1 +1,3 @@
 @import './ui/style.wxss';
+@import 'components/wux.wxss';
+@import 'assets/styles/weui.wxss';

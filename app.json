@@ -6,7 +6,14 @@
     "pages/index/index",
     "pages/life/life",
     "pages/car/car",
-    "pages/robot/robot"
+    "pages/robot/robot",
+    "components/card/card",
+    "components/collapsible/collapsible",
+    "components/xnumber/xnumber",
+    "pages/express/express",
+    "pages/publish/publish",
+    "pages/me/me",
+    "pages/feedback/feedback"
   ],
   "window": {
     "navigationBarBackgroundColor": "#C8141F",

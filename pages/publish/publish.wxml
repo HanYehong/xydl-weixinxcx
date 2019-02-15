@@ -1,0 +1,153 @@
+<import src="../../components/xnumber/xnumber.wxml"  />
+<!-- create.wxml -->
+<view class="page">
+  <!-- 管理已发布的带物信息 -->
+  <view class="weui-cells weui-cells_after-title">
+    <navigator url="../user2cOrder/user2cOrder" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd">
+        <image src="/resource/images/edit_in.png"
+               style="text-align:center;margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd">管理已发布的带物信息</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+  <!-- 快递大小 -->
+  <view class="weui-cells__title">物品信息</view>
+  <view class="weui-cells weui-cells_after-title">
+    <radio-group>
+      <label class="weui-cell weui-check__label">
+        <view wx:for="{{sizeList}}" wx:key="value">
+          <view wx:if="{{item.value == 0}}">
+            <radio style='float:left;margin-left:5px;' value="{{item.value}}" name="sizeList" checked='true'></radio> 
+            <view style='float:left;' class="weui-cell__bd">{{item.name}}</view>
+          </view>
+          <view wx:else>
+            <radio style='float:left;margin-left:20px;' value="{{item.value}}" name="sizeList"></radio> 
+            <view style='float:left;' class="weui-cell__bd">{{item.name}}</view>
+          </view>
+        </view>
+      </label>
+    </radio-group>
+  </view>
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <!--<view class="weui-uploader__title">
+            图片上传</view>
+            <view class="weui-uploader__info">{{files.length}}/2</view>
+            -->
+            <view class="section">
+              <textarea bindblur="getInfoText" auto-height placeholder="介绍一下您的物品（请勿包含私密信息：手机号、取货码等）" style="min-height: 150rpx;"  />
+            </view>
+          </view>
+          <!-- <view class="weui-uploader__bd">
+            <view class="weui-uploader__files" id="uploaderFiles">
+              <block wx:for="{{files}}" wx:key="*this">
+                <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                  <image class="weui-uploader__img" src="{{item}}" mode="aspectFill"  />
+                </view>
+              </block>
+            </view>
+            <view class="weui-uploader__input-box">
+              <view class="weui-uploader__input" bindtap="chooseImage"></view>
+            </view>
+          </view> -->
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 私密信息 -->
+  <view class="weui-cells__title">私密信息</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input simi-info">
+      <view class="weui-cell__bd cell-title simi-info-text">你的姓名</view>
+      <view class="weui-cell__ft">
+        <input class='simi-info-input' placeholder='姓名'></input>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input simi-info">
+      <view class="weui-cell__bd cell-title simi-info-text">你的手机号</view>
+      <view class="weui-cell__ft">
+        <input class='simi-info-input' placeholder='手机号'></input>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input simi-info">
+      <view class="weui-cell__bd cell-title simi-info-text">取货码</view>
+      <view class="weui-cell__ft">
+        <input class='simi-info-input' placeholder='取货码'></input>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input simi-info">
+      <view class="weui-cell__bd cell-title simi-info-text">送达地点</view>
+      <view class="weui-cell__ft">
+        <input class='simi-info-input' placeholder='送达地点'></input>
+      </view>
+    </view>
+  </view>
+  <!-- 特别属性 -->
+  <view class="weui-cells__title">特别注意</view>
+  <view class="weui-cells weui-cells_after-title">
+    <checkbox-group bindchange="checkboxChange" id="extra">
+      <label class="weui-cell weui-check__label" wx:for="{{extraList}}" wx:key="value">
+        <checkbox class="weui-check" value="{{item.value}}" checked="{{item.checked}}"  />
+        <view class="weui-cell__hd weui-check__hd_in-checkbox">
+          <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+          <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+        </view>
+        <view class="weui-cell__bd">{{item.name}}</view>
+      </label>
+    </checkbox-group>
+  </view>
+  <!-- 订单时效 -->
+  <view class="weui-cells__title">订单时效</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__bd cell-title">有效截至日期</view>
+      <view class="weui-cell__ft">
+        <picker mode="date" value="{{date}}" start="{{startDate}}" bindchange="bindDateChange">
+          <view class="weui-input">{{date||'到哪天自动删除'}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__bd cell-title">有效截至时间</view>
+      <view class="weui-cell__ft">
+        <picker mode="time" value="{{time}}" start="{{startTime}}" bindchange="bindTimeChange">
+          <view class="weui-input">{{time||'到什么时候自动删除'}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells__tips">逾期自动删除此发布</view>
+  <!-- 结算 -->
+  <view class="weui-cells__title">结算</view>
+  <view class="weui-cells weui-cells_after-title">
+    <!-- 定价 -->
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">订单价格</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="digit" placeholder="您愿支付多少钱"  />
+      </view>
+      <view class="weui-cell__ft">¥</view>
+    </view>
+  </view>
+  <checkbox-group bindchange="bindAgreeChange">
+    <label class="weui-agree" for="weuiAgree">
+      <view class="weui-agree__text">
+        <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}"  />
+        <view class="weui-agree__checkbox-icon">
+          <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+        </view>
+        我已阅读并同意平台服务条款
+      </view>
+      </label>
+    </checkbox-group>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" bindtap="cReleaseOrder">确认发布</button>
+    </view>
+  </view>

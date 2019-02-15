@@ -1,3 +1,5 @@
+import api from './api/api'
+
 App({
   onLaunch() {
     require('./utils/sdk-v1.12.0.js')
@@ -62,6 +64,20 @@ App({
 
   rad(d) {
     return d * Math.PI / 180.0;
-  }
+  },
+
+  navTo(url){
+    wx.navigateTo({
+      url: '../'+url+'/'+url,
+    })
+  },
+
+  getPageData: function () {
+    api('get', 'https://easy-mock.com/mock/5bffe30cab841f18c58ca0ec/data/pageData').then(res => {
+      this.globalData.linearColors = res.pageData.linearGradient
+    }).catch(err => console.log(err))
+  },
+
+  fetch: api
 
 })

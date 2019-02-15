@@ -1,0 +1,23 @@
+.container {
+  padding-top: 40rpx;
+}
+
+.publish-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 50rpx;
+  bottom: 50rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0rpx 0rpx 101rpx 0rpx rgba(0, 0, 0, 0.08), 0rpx 12rpx 26rpx 0rpx rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  z-index: 999;
+}
+.publish-button-icon {
+  width: 50%;
+  height: 50%;
+}
