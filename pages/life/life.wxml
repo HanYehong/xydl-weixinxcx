@@ -5,27 +5,27 @@
       <text class="loginbut">登录/注册</text>
     </view> -->
     <view class="has-login center">
-      <text class="view-resume" bindtap="viewResume">个人>></text>
+      <text class="view-resume" bindtap="viewMe">个人>></text>
       <image class="head-pic" src='{{user.avatarUrl}}'></image>
       <view class="name">{{user.nickName}}</view>
     </view>
   </view>
   <view class='buttons'>
-    <view class="button" bindtap="viewDeliver">
-      <image class='button-logo' src='../../resource/images/chifan.png'></image>
-      <text class="deliver">午饭晚饭</text>
-    </view>
-    <view class="button" bindtap="viewInterview">
-      <image class='button-logo' src='../../resource/images/kuaidi.png'></image>
-      <text class="interview">代拿快递</text>
-    </view>
     <view class="button">
       <image class='button-logo' src='../../resource/images/shiwu.png'></image>
       <text class="invitation">失物招领</text>
     </view>
+    <view class="button" bindtap="viewExpress">
+      <image class='button-logo' src='../../resource/images/kuaidi.png'></image>
+      <text class="interview">帮拿快递</text>
+    </view>
     <view class="button" bindtap="viewCollect">
       <image class='button-logo' src='../../resource/images/ziyuan.png'></image>
       <text class="collect">福利资源</text>
+    </view>
+    <view class="button" bindtap="viewFeedback">
+      <image class='button-logo' src='../../resource/images/fankui.png'></image>
+      <text class="collect">意见反馈</text>
     </view>
   </view>
   <button  wx:if='{{isLogin}}' class="logout">已登录</button>

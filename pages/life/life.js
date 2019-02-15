@@ -20,38 +20,25 @@ Page({
     })
   },
 
-  viewRobot:() => {
-    wx.navigateTo({
-      url: '../robot/robot',
-    })
+  /**
+   * 帮拿快递
+   */
+  viewExpress:() => {
+    app.navTo('express')
   },
 
   /**
-   * 查看简历
+   * 个人页面
    */
-  viewResume: function () {
-    app.navTo('resume')
+  viewMe: function () {
+    app.navTo('me')
   },
 
   /**
-   * 查看投递
+   * 意见反馈
    */
-  viewDeliver: () => {
-    app.navTo('deliver')
-  },
-
-  /**
-   * 查看面试
-   */
-  viewInterview: () => {
-    app.navTo('interview')
-  },
-
-  /**
-   * 查看收藏
-   */
-  viewCollect: () => {
-    app.navTo('collection')
+  viewFeedback:function(){
+    app.navTo('feedback')    
   },
 
   /**

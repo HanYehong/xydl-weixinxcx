@@ -1,0 +1,113 @@
+.collapsible {
+  box-shadow: 0 5px 11px 0 rgba(212, 212, 212, 0.08), 0 4px 15px 0 rgba(212, 212, 212, 0.08);
+  transition: height 0.35s;
+  margin-bottom: 40rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.collapsible-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #002b41;
+  min-height: 120rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+  padding: 0 20rpx;
+}
+
+.collapsible > .collapsible-header-active::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4rpx;
+  z-index: 100;
+  background-color: #f2f2f3;
+}
+
+.collapsible-option {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 100;
+  padding-right: 20rpx;
+}
+
+.collapsible-title {
+  position: relative;
+  z-index: 100;
+}
+
+.collapsible-click-area {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.collapsible-transition {
+  transition: all .2s ease-in-out;
+}
+
+/* .collapsible-body-inner {
+  padding: 40rpx;
+} */
+
+.collapsible-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 20rpx;
+}
+
+.collapsible-item-image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 动画 Animation */
+.animate {
+  animation-fill-mode: both;
+  animation-duration: .5s;
+}
+
+@keyframes setHeight {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 300rpx;
+    opacity: 1;
+  }
+}
+.setHeight {
+  animation-name: setHeight;
+}
+
+@keyframes setHidden {
+  0% {
+    height: 300rpx;
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+.setHidden {
+  animation-name: setHidden;
+}

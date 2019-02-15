@@ -1,0 +1,18 @@
+<view class="card">
+  <view class="inner">
+    <!-- Start 商品信息 || 卡片信息 -->
+    <view class="card-main">
+      <view class="card-title card-col">
+        <text>{{cardTitle}}</text>
+      </view>
+      <view class="card-desc card-col">
+        <text>{{cardDesc}}</text>
+      </view>
+      <view class="card-detail card-col">
+        <view class="card-price">￥{{cardPrice}}</view>
+        <view class="card-views">{{cardViews}}</view>
+      </view>
+    </view>
+    <!-- End 商品信息 || 卡片信息 -->
+  </view>
+</view>

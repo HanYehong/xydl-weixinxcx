@@ -1,0 +1,13 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="section">
+      <textarea bindblur="bindTextAreaBlur"  placeholder="说说您对我们的意见或建议，我们将不断改进，感谢您的支持！" />
+    </view>
+    <view class="section">
+      <textarea bindblur="bindTextAreaBlur" style='height:50px;margin-top:16px;'  placeholder="留下您的联系方式，方便我们和您联系" />
+    </view>
+    <view class="section">
+      <button form-type="submit" class="weui-btn" type="default" size="default" style="width:100%;margin-top:5%;">提交</button>
+    </view>
+  </view>
+</view>

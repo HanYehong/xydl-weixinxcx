@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "桂旅星球",
+  "usingComponents": {
+    "gl-card": "/components/card/card"
+  }
+}

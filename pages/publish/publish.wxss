@@ -1,0 +1,14 @@
+/* pages/publish/publish.wxss */
+
+.simi-info{
+  padding: 6px;
+}
+
+.simi-info-text{
+  margin-left: 10px;
+}
+
+.simi-info-input{
+  margin-right: 10px;
+  border:0px;
+}
