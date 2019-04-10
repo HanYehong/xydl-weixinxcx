@@ -157,5 +157,8 @@ Page({
     this.setData({
       isAgree: !!e.detail.value.length
     });
+  },
+  navToManage: function() {
+    navTo("myExpressOrder");
   }
 });

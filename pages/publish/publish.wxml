@@ -3,7 +3,7 @@
 <view class="page">
   <!-- 管理已发布的带物信息 -->
   <view class="weui-cells weui-cells_after-title">
-    <navigator url="../user2cOrder/user2cOrder" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="../myExpressOrder/myExpressOrder" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
         <image src="/resource/images/edit_in.png"
                style="text-align:center;margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>

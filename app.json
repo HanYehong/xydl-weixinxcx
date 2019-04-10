@@ -13,7 +13,8 @@
     "pages/express/express",
     "pages/publish/publish",
     "pages/me/me",
-    "pages/feedback/feedback"
+    "pages/feedback/feedback",
+    "pages/myExpressOrder/myExpressOrder"
   ],
   "window": {
     "navigationBarBackgroundColor": "#C8141F",
