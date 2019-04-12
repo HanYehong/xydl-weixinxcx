@@ -9,27 +9,22 @@
 .title {
   width: 100%;
   height: 88rpx;
-  background: white;
+  background: #c8141f;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
 .titleSel {
-  color: #5f6fee;
+  color: #fff;
   font-size: 32rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.titleUnsel {
-  color: #858fab;
-  font-size: #858fab;
-}
-
 .headerLineSel {
-  background: #5f6fee;
+  background: #fff;
   height: 6rpx;
   width: 40rpx;
   position: relative;
@@ -37,7 +32,7 @@
 }
 
 .headerLineUnsel {
-  background: #fff;
+  background: #c8141f;
   height: 6rpx;
   width: 40rpx;
   position: relative;
