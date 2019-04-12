@@ -7,9 +7,30 @@ Page({
     currentIndex: 0,
     orderListDoing: [
       {
-        
+        expressType:'',
+        getCode:'',
+        destination:'',
+        money:''
+      },
+      {
+        expressType:'',
+        getCode:'',
+        destination:'',
+        money:''
+      },
+      {
+        expressType:'',
+        getCode:'',
+        destination:'',
+        money:''
+      },
+      {
+        expressType:'',
+        getCode:'',
+        destination:'',
+        money:''
       }
-    ]
+    ],
   },
   //swiper切换时会调用
   pagechange: function (e) {
