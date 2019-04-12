@@ -5,10 +5,11 @@ Page({
    */
   data: {
     currentIndex: 0,
-    lastX: 0,
-    lastY: 0,
-    "firstList": ["LXT", "LXT", "LXT", "LXT", "LXT", "LXT"],
-    "secondList": ["GFF", "GFF", "GFF", "GFF", "GFF", "GFF", "GFF", "GFF"]
+    orderListDoing: [
+      {
+        
+      }
+    ]
   },
   //swiper切换时会调用
   pagechange: function (e) {
