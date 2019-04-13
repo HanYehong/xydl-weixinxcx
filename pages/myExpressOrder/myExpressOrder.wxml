@@ -20,8 +20,24 @@
   <!--内容布局-->
   <swiper class='swiper' bindchange='pagechange' current='{{currentIndex}}'>
     <swiper-item class='swiper'>
-      <view>
-        <view>第一页</view>
+      <view wx:for="{{orderListDoing}}" wx:key="{{expressType}}">
+        <view class="express-order">
+          <view class="image" style="background-color: {{item.color}}">
+            {{item.name}}
+          </view>
+          <view class="text-parent">
+            <view class="text">
+              取货码：{{item.getCode}}
+            </view>
+            <view class="text">
+              目的地：{{item.destination}}
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{index != orderListDoing.length - 1}}" class="line"></view>
+        <view wx:else class="bottom-line">
+          <span>到底啦，我是有底线的</span>
+        </view>
       </view>
     </swiper-item>
     <swiper-item class='swiper'>

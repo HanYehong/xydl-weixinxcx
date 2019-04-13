@@ -52,3 +52,58 @@
   padding-bottom: 20rpx;
   padding-top: 20rpx;
 }
+
+.express-order {
+  display: inline-block;
+  width: 100%;
+}
+
+.express-order .image {
+  border-radius: 50px;
+  text-align: center;
+  line-height: 150rpx;
+  width: 150rpx;
+  height: 150rpx;
+  font-size: 24px;
+  font-weight: bolder;
+  margin: 15px;
+  float: left;
+}
+
+.express-order .text-parent {
+  margin-top: 18px;
+  float: left;
+}
+
+.express-order .text {
+  font-size: 14px;
+  color: #7f7f7f;
+}
+
+.line {
+  width: 95%;    /* 分隔线的长度 */
+  margin: auto;
+  height: 1px;    /* 分隔线粗细 */
+  text-align: center;
+  background: #ccc;
+}
+
+/* 分隔线--底部 */
+.bottom-line{
+  width: 100%;    /* 分隔线的长度 */
+  margin: auto;
+  height: 1px;    /* 分隔线粗细 */
+  text-align: center;
+  font-size: 24rpx;
+  color: #aaa;
+  background: #ccc;
+  margin-top: 5px;
+  margin-bottom: 22px;
+}
+
+.bottom-line span{
+  position: relative;
+  top: -8px;
+  background: #fff;
+  padding: 0px 10px;
+}
