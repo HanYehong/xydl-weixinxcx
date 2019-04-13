@@ -73,11 +73,20 @@
 .express-order .text-parent {
   margin-top: 18px;
   float: left;
+  width: 60%;
 }
 
 .express-order .text {
   font-size: 14px;
   color: #7f7f7f;
+}
+
+.express-order .do-button {
+  width: 120rpx;
+  height: 50rpx;
+  font-size: 9px;
+  background: #28A167;
+  color: #fff;
 }
 
 .line {
@@ -106,4 +115,9 @@
   top: -8px;
   background: #fff;
   padding: 0px 10px;
+}
+
+.flex-wrp-row {
+  display: flex;
+  flex-direction: row;
 }

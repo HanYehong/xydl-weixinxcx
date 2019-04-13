@@ -22,8 +22,10 @@
     <swiper-item class='swiper'>
       <view wx:for="{{orderListDoing}}" wx:key="{{expressType}}">
         <view class="express-order">
-          <view class="image" style="background-color: {{item.color}}">
-            {{item.name}}
+          <view style="width: 40%;">
+            <view class="image" style="background-color: {{item.color}}">
+              {{item.expressName}}
+            </view>
           </view>
           <view class="text-parent">
             <view class="text">
@@ -31,6 +33,12 @@
             </view>
             <view class="text">
               目的地：{{item.destination}}
+            </view>
+            <view style="width: 100%;">
+              <view style="color: #c141f8; float:left;">
+                状态：{{item.statusText}}
+              </view>
+              <button class="do-button" style="float:right;">授权</button>
             </view>
           </view>
         </view>

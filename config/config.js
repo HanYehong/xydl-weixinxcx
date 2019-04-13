@@ -5,58 +5,6 @@ module.exports = {
     SCHOOL: 60092
   },
   CATEGORY:'校门',
-  EXPRESS: [
-    {
-      ID: 0,
-      NAME: '中通快递',
-      COLOR: '#E2C08D'
-    },
-    {
-      ID: 1,
-      NAME: '韵达快递',
-      COLOR: '#007ACC'
-    },
-    {
-      ID: 2,
-      NAME: '申通快递',
-      COLOR: '#1DA260'
-    },
-    {
-      ID: 3,
-      NAME: '圆通快递',
-      COLOR: '#FFCE44'
-    },
-    {
-      ID: 4,
-      NAME: '京东物流',
-      COLOR: '#DD4FD3'
-    },
-    {
-      ID: 5,
-      NAME: '顺丰速运',
-      COLOR: '#7BCA3D'
-    },
-    {
-      ID: 6,
-      NAME: '天天快递',
-      COLOR: '#DD2149'
-    },
-    {
-      ID: 7,
-      NAME: '德邦物流',
-      COLOR: '#FBBA8E'
-    },
-    {
-      ID: 8,
-      NAME: '百世汇通',
-      COLOR: '#FC6D26'
-    },
-    {
-      ID: 9,
-      NAME: '国通快递',
-      COLOR: '#3F88BF'
-    },
-  ]
 }
 
 //GET请求后台服务器

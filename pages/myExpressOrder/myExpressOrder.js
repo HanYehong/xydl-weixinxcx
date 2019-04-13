@@ -1,5 +1,5 @@
 var app = getApp();
-let config = require("../../config/config");
+let enums = require("../../config/enums");
 Page({
   /**
    * 页面的初始数据
@@ -13,8 +13,8 @@ Page({
         destination:'东七C205',
         money:'2',
         color:'',
-        name: '',
-        status: '',
+        expressName: '',
+        status: 0,
         statusText: ''
       },
       {
@@ -23,8 +23,8 @@ Page({
         destination:'东八楼下',
         money:'4',
         color:'',
-        name: '',
-        status: '',
+        expressName: '',
+        status: 2,
         statusText: ''
       },
       {
@@ -33,8 +33,8 @@ Page({
         destination:'北大活',
         money:'2',
         color:'',
-        name: '',
-        status: '',
+        expressName: '',
+        status: 3,
         statusText: ''
       },
       {
@@ -43,8 +43,8 @@ Page({
         destination:'南管B206',
         money:'3',
         color:'',
-        name: '',
-        status: '',
+        expressName: '',
+        status: 7,
         statusText: ''
       }
     ],
@@ -54,10 +54,13 @@ Page({
     console.log(this.data.orderListDoing);
     let orderListDoingAnother = this.data.orderListDoing;
     for (let i = 0; i < orderListDoingAnother.length; i++) {
-      orderListDoingAnother[i].color = this.getColorById(orderListDoingAnother[i].expressType);
+      orderListDoingAnother[i].color = enums.getExpressColorBycode(orderListDoingAnother[i].expressType);
     }
     for (let i = 0; i < orderListDoingAnother.length; i++) {
-      orderListDoingAnother[i].name = this.getNameById(orderListDoingAnother[i].expressType).substring(0, 2);
+      orderListDoingAnother[i].expressName = enums.getExpressNameBycode(orderListDoingAnother[i].expressType).substring(0, 2);
+    }
+    for (let i = 0; i < orderListDoingAnother.length; i++) {
+      orderListDoingAnother[i].statusText = enums.getStatusNameByCode(orderListDoingAnother[i].status);
     }
     this.setData({
       orderListDoing: orderListDoingAnother
