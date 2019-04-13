@@ -8,6 +8,7 @@ Page({
     currentIndex: 0,
     orderListDoing: [
       {
+        orderNumber: 'DL201904131345',
         expressType: 0,
         getCode:'8526',
         destination:'东七C205',
@@ -15,9 +16,12 @@ Page({
         color:'',
         expressName: '',
         status: 0,
-        statusText: ''
+        statusText: '',
+        button: 0,
+        buttonText: ''
       },
       {
+        orderNumber: 'DL201904131903',
         expressType: 1,
         getCode:'1235',
         destination:'东八楼下',
@@ -25,9 +29,12 @@ Page({
         color:'',
         expressName: '',
         status: 2,
-        statusText: ''
+        statusText: '',
+        button: 0,
+        buttonText: ''
       },
       {
+        orderNumber: 'DL201904121012',
         expressType: 2,
         getCode:'364',
         destination:'北大活',
@@ -35,17 +42,22 @@ Page({
         color:'',
         expressName: '',
         status: 3,
-        statusText: ''
+        statusText: '',
+        button: 0,
+        buttonText: ''
       },
       {
+        orderNumber: 'DL201904011504',
         expressType: 3,
         getCode:'2365',
         destination:'南管B206',
         money:'3',
         color:'',
         expressName: '',
-        status: 7,
-        statusText: ''
+        status: 6,
+        statusText: '',
+        button: 0,
+        buttonText: ''
       }
     ],
   },
@@ -54,13 +66,31 @@ Page({
     console.log(this.data.orderListDoing);
     let orderListDoingAnother = this.data.orderListDoing;
     for (let i = 0; i < orderListDoingAnother.length; i++) {
+      // 获取快递颜色
       orderListDoingAnother[i].color = enums.getExpressColorBycode(orderListDoingAnother[i].expressType);
-    }
-    for (let i = 0; i < orderListDoingAnother.length; i++) {
+      // 获取快递名称
       orderListDoingAnother[i].expressName = enums.getExpressNameBycode(orderListDoingAnother[i].expressType).substring(0, 2);
-    }
-    for (let i = 0; i < orderListDoingAnother.length; i++) {
+      // 获取状态名称
       orderListDoingAnother[i].statusText = enums.getStatusNameByCode(orderListDoingAnother[i].status);
+      // 获取操作按钮
+      switch (orderListDoingAnother[i].status) {
+        case enums.STATUS.WAIT_ACCEPT.code:
+          orderListDoingAnother[i].button = enums.BUTTON.CANCEL.code;
+          orderListDoingAnother[i].buttonText = enums.BUTTON.CANCEL.name;
+          break;
+        case enums.STATUS.WAIT_AUTHORIZATION.code:
+          orderListDoingAnother[i].button = enums.BUTTON.AUTHORIZE.code;
+          orderListDoingAnother[i].buttonText = enums.BUTTON.AUTHORIZE.name;
+          break;
+        case enums.STATUS.WAIT_CONFIRM.code:
+          orderListDoingAnother[i].button = enums.BUTTON.CONFIRM.code;
+          orderListDoingAnother[i].buttonText = enums.BUTTON.CONFIRM.name;
+          break;
+        case enums.STATUS.WAIT_SEND.code:
+          orderListDoingAnother[i].button = enums.BUTTON.CANCEL.code;
+          orderListDoingAnother[i].buttonText = enums.BUTTON.CONFIRM.name;
+          break;
+      }
     }
     this.setData({
       orderListDoing: orderListDoingAnother
@@ -75,22 +105,10 @@ Page({
     
   },
 
-  getColorById(id) {
-    for (let i = 0; i < config.EXPRESS.length; i++) {
-      if (config.EXPRESS[i].ID == id) {
-        return config.EXPRESS[i].COLOR;
-      }
-    }
-  },
-  getNameById(id) {
-    for (let i = 0; i < config.EXPRESS.length; i++) {
-      if (config.EXPRESS[i].ID == id) {
-        return config.EXPRESS[i].NAME;
-      }
-    }
-  },
-
-  //swiper切换时会调用
+  /**
+   * swiper切换时会调用
+   * @param {*} e 
+   */
   pagechange: function (e) {
     if ("touch" === e.detail.source) {
       this.setData({
@@ -98,12 +116,20 @@ Page({
       })
     }
   },
-  //用户点击tab时调用
+
+  /**
+   * 用户点击tab时调用
+   * @param {*} e 
+   */
   titleClick: function (e) {
-    let currentPageIndex =
-      this.setData({
-        //拿到当前索引并动态改变
-        currentIndex: e.currentTarget.dataset.idx
-      })
+    this.setData({
+      //拿到当前索引并动态改变
+      currentIndex: e.currentTarget.dataset.idx
+    })
+  },
+
+  buttonClick(e) {
+    console.log(e.currentTarget.dataset.code);
+    console.log(e.currentTarget.dataset.order);
   }
 })

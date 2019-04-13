@@ -51,6 +51,7 @@ module.exports = {
       color: '#3F88BF'
     },
   },
+
   STATUS: {
     WAIT_ACCEPT: {
       code: 0,
@@ -64,25 +65,44 @@ module.exports = {
       code: 2,
       name: '待确认'
     },
-    WAIT_PUBLISHOR_PAY: {
-      code: 3,
-      name: '待发布者付款'
-    },
     WAIT_ACCEPTOR_PAY: {
-      code: 4,
+      code: 3,
       name: '待接单者付款'
     },
     COMPLETE: {
-      code: 5,
+      code: 4,
       name: '已完成'
     },
     UN_COMPLETE: {
-      code: 6,
+      code: 5,
       name: '未完成'
     },
     WAIT_AUTHORIZATION: {
-      code: 7,
+      code: 6,
       name: '待授权'
+    }
+  },
+
+  BUTTON: {
+    CANCEL: {
+      code: 0,
+      name: '取消'
+    },
+    CONFIRM: {
+      code: 1,
+      name: '确认'
+    },
+    ARRIVED: {
+      code: 2,
+      name: '已送达'
+    },
+    PAY: {
+      code: 3,
+      name: '支付'
+    },
+    AUTHORIZE: {
+      code: 4,
+      name: '授权'
     }
   },
 
