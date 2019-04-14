@@ -1,6 +1,6 @@
 //小程序网络请求的二次封装,引用:var network = require("../../utils/network.js")
 // var API_URL = 'https://34068512.qcloud.la/ddw.core/api/v1/'//测试环境地址
-var API_URL = 'https://gank.io/api/'//测试环境地址
+var API_URL = 'http://localhost:7777/'//测试环境地址
 
 //GET请求
 function GET(url, params, success, fail) {
@@ -21,24 +21,25 @@ function request(method, url, params, success, fail) {
     title: '加载中'
   })
   wx.request({
-    url: url.indexOf("http")>=0?url :(API_URL+url),
+    url: url.indexOf("http") >= 0 ? url :(API_URL + url),
     data: params,
     method: method, // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
     header: {
+      "token": ""
       // 'X-WX-Id': 'TESTER'//用户信息
-    }, // 设置请求的 header
+    },
     success: function (res) {
       if (res.statusCode >= 200 && res.statusCode < 300) {
         success(res.data)
-        console.log('请求成功: ', res.data)
+        console.log(url + '<<< 请求成功: ', res.data)
       }
       else {
         if (fail) {//用户覆盖默认处理方式
           fail(res);
         } else {
-          console.log('请求失败(业务): ', res);//错误统一处理
+          console.log(url + '<<< 请求失败: ', res);//错误统一处理
         }
-      }
+      } 
 
     },
     fail: function (erroorRes) {

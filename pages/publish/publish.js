@@ -40,7 +40,17 @@ Page({
       { name: '可能加急', value: '1' },
       { name: '上门取货', value: '2' }
     ],
-    isAgree: true//是否同意条款
+    isAgree: true,//是否同意条款
+    type: 0,
+    expressList: [
+      '圆通快递',
+      '中通快递',
+      '申通快递',
+      '韵达快递',
+      '顺丰快递',
+      '京东快递',
+      '百世汇通'
+    ]
   },
   /**
    * C端确认发布带物需求订单
@@ -157,5 +167,12 @@ Page({
     this.setData({
       isAgree: !!e.detail.value.length
     });
+  },
+  navToManage: function() {
+    navTo("myExpressOrder");
+  },
+
+  bindPickerChange: function() {
+    console.log("hi");
   }
 });

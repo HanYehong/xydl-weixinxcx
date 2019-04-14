@@ -4,7 +4,7 @@ module.exports = {
     MAP: 60093,
     SCHOOL: 60092
   },
-  CATEGORY:'校门'
+  CATEGORY:'校门',
 }
 
 //GET请求后台服务器
