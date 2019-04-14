@@ -8,29 +8,29 @@ Page({
     goodsData: [],
     expressOrderList:[
       {
-        'expressOrderNumber':'',
+        'orderNumber':'DL2019040312345',
         'expressName':'韵达快递',
         'expressSize':'小物',
-        'expressDescription':'是一个很小的东西，很好拿的',
-        'destination':'东7宿舍楼下',
+        'description':'送到楼下就行，谢谢',
+        'destination':'信息楼',
         'special':'易碎',
         'orderPrice':'5'
       },
       {
-        'expressOrderNumber': '',
-        'expressName': '韵达快递',
+        'orderNumber': 'DL2019040312346',
+        'expressName': '中通快递',
         'expressSize': '小物',
-        'expressDescription': '是一个很小的东西，很好拿的',
+        'description': '是一个很小的东西，很好拿的',
         'destination': '东7宿舍楼下',
         'special': '易碎',
         'orderPrice': '5'
       },
       {
-        'expressOrderNumber': '',
-        'expressName': '韵达快递',
-        'expressSize': '小物',
-        'expressDescription': '是一个很小的东西，很好拿的',
-        'destination': '东7宿舍楼下',
+        'orderNumber': 'DL2019040312347',
+        'expressName': '京东物流',
+        'expressSize': '大物',
+        'description': '比较大，希望男同学能帮忙拿一下~',
+        'destination': '东5宿舍楼下',
         'special': '易碎',
         'orderPrice': '5'
       },

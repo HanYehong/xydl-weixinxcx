@@ -4,5 +4,37 @@
     <image class="publish-button-icon" src="/resource/images/publish-icon.svg" />
   </view>
   <!-- <gl-card wx:if="{{requestDone}}" class="card-wrapper" wx:for="{{goodsData}}" wx:key="index" card-title="{{item.title}}" card-desc="{{item.desc}}" card-price="{{item.price}}" card-views="{{item.views}}" data-price="{{item.price}}" data-views="{{item.views}}" data-desc="{{item.desc}}" data-title="{{item.title}}" data-goods-id="{{item.id}}" bindtap="bindViewTap"></gl-card> -->
-  <gl-card wx:if="{{requestDone}}" class="card-wrapper" wx:for="{{expressOrderList}}" wx:key="expressOrderNumber" expressName="{{item.expressName}}" expressSize="{{item.expressSize}}" expressDescription="{{item.expressDescription}}" destination="{{item.destination}}" special="{{item.special}}" orderPrice="{{item.orderPrice}}" grabOrder="clickFun" ></gl-card>
+  <view wx:if="{{requestDone}}" class="card-wrapper">
+    <view wx:for="{{expressOrderList}}" wx:key="{{orderNumber}}" class="card">
+      <view class="inner">
+        <!-- Start 商品信息 || 卡片信息 -->
+        <view class="card-main">
+          <view class="card-title card-col">
+            <text>{{item.expressName}}</text>
+          </view>
+          <view class="card-desc card-col">
+            <view>
+              <text>快递大小：</text><text>{{item.expressSize}}</text>
+            </view>
+            <view>
+              <text>快递描述：</text><text>{{item.description}}</text>
+            </view>
+            <view>
+              <text>送达地点：</text><text>{{item.destination}}</text>
+            </view>
+            <view>
+              <text style='color:#f7642c'>{{item.special}}</text>
+            </view>
+          </view>
+          <view class="card-detail card-col">
+            <view class="card-price">￥{{item.orderPrice}}</view>
+            <view class="card-views">
+              <button bindtap='clickFun' style='width:50px;border-radius:10px;font-size:10px;background:#c8141f;color:#fff'>抢</button>
+            </view>
+          </view>
+        </view>
+          <!-- End 商品信息 || 卡片信息 -->
+        </view>
+      </view>
+  </view>
 </view>
