@@ -77,6 +77,7 @@ Page({
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
+          // 调用抢单接口
         } else if (res.cancel) {
           console.log('用户点击取消')
         }

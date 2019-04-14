@@ -10,54 +10,82 @@ Page({
       {
         orderNumber: 'DL201904131345',
         expressType: 0,
-        getCode:'8526',
+        pickupCode:'8526',
         destination:'东七C205',
-        money:'2',
+        description: '',
+        orderPrice: 2.0,
         color:'',
         expressName: '',
         status: 0,
         statusText: '',
         button: 0,
-        buttonText: ''
+        buttonText: '',
+        expressSize:'大物',
+        name: '张三',
+        phone: '15189809881',
+        specialAttention: '易碎',
+        beginDate: '2019-04-11 10:30',
+        endDate: '2019-04-14 18:00'
       },
       {
         orderNumber: 'DL201904131903',
         expressType: 1,
-        getCode:'1235',
+        pickupCode:'1235',
         destination:'东八楼下',
-        money:'4',
+        description: '',
+        orderPrice: 4.0,
         color:'',
         expressName: '',
         status: 2,
         statusText: '',
         button: 0,
-        buttonText: ''
+        buttonText: '',
+        expressSize: '小物',
+        name: '张三',
+        phone: '15189809881',
+        specialAttention: '易碎、怕压',
+        beginDate: '2019-04-11 10:30',
+        endDate: '2019-04-14 18:00'
       },
       {
         orderNumber: 'DL201904121012',
         expressType: 2,
-        getCode:'364',
+        pickupCode:'364',
         destination:'北大活',
-        money:'2',
+        description: '',
+        orderPrice: 2.0,
         color:'',
         expressName: '',
         status: 3,
         statusText: '',
         button: 0,
-        buttonText: ''
+        buttonText: '',
+        expressSize: '中物',
+        name: '张三',
+        phone: '15189809881',
+        specialAttention: '易碎',
+        beginDate: '2019-04-11 10:30',
+        endDate: '2019-04-14 18:00'
       },
       {
         orderNumber: 'DL201904011504',
         expressType: 3,
-        getCode:'2365',
+        pickupCode:'2365',
         destination:'南管B206',
-        money:'3',
+        description: '',
+        orderPrice: 3.0,
         color:'',
         expressName: '',
         status: 6,
         statusText: '',
         button: 0,
-        buttonText: ''
+        buttonText: '',
+        expressSize: '小物',
+        name: '张三',
+        phone: '15189809881',
+        specialAttention: '怕压',
+        beginDate: '2019-04-11 10:30',
+        endDate: '2019-04-14 18:00'
       }
     ],
   },
@@ -131,5 +159,17 @@ Page({
   buttonClick(e) {
     console.log(e.currentTarget.dataset.code);
     console.log(e.currentTarget.dataset.order);
+  },
+
+  navToDetail(e) {
+    let orderNumber = e.currentTarget.dataset.order;
+    for (let i = 0; i < this.data.orderListDoing.length; i++) {
+      if (this.data.orderListDoing[i].orderNumber === orderNumber) {
+        wx.navigateTo({
+          url: '../orderDetail/orderDetail?order=' + JSON.stringify(this.data.orderListDoing[i]),
+        })
+        break;
+      }
+    }
   }
 })

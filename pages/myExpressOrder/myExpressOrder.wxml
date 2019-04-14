@@ -21,15 +21,18 @@
   <swiper class='swiper' bindchange='pagechange' current='{{currentIndex}}'>
     <swiper-item class='swiper'>
       <view wx:for="{{orderListDoing}}" wx:key="{{expressType}}">
-        <view class="express-order">
+        <view class="express-order" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
           <view style="width: 40%;">
             <view class="image" style="background-color: {{item.color}}">
               {{item.expressName}}
             </view>
           </view>
           <view class="text-parent">
-            <view class="text">
-              取货码：{{item.getCode}}
+            <view style="width: 100%;">
+              <view class="text">
+                取货码：{{item.pickupCode}}
+              </view>
+              <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.orderPrice}}</view>
             </view>
             <view class="text">
               目的地：{{item.destination}}

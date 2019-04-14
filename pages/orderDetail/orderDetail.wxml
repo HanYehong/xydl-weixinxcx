@@ -1,0 +1,25 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class='buttom-line'>
+  <span>基本信息</span>
+</view>
+<view>订单号：{{orderInfo.orderNumber}}</view>
+<view>快递大小：{{orderInfo.expressSize}}</view>
+<view>快递类型：{{orderInfo.expressName}}</view>
+<view>快递介绍：{{orderInfo.description}}</view>
+<view class='buttom-line'>
+  <span>私密信息</span>
+</view>
+<view>收货人的姓名：{{orderInfo.name}}</view>
+<view>收货人的手机号：{{orderInfo.phone}}</view>
+<view>目的地：{{orderInfo.destination}}</view>
+<view>取货码：{{orderInfo.pickupCode}}</view>
+<view class='buttom-line'>
+  <span>特别注意</span>
+</view>
+<view>{{orderInfo.specialAttention}}</view>
+<view class='buttom-line'>
+  <span>订单时效</span>
+</view>
+<view>{{orderInfo.beginDate}} ~ {{orderInfo.endDate}}</view>
+<view>订单状态：{{orderInfo.statusText}}</view>
+<view>{{orderInfo.orderPrice}}</view>

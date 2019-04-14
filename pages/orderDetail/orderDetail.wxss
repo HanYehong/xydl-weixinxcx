@@ -1,0 +1,20 @@
+/* pages/orderDetail/orderDetail.wxss */
+/* 分隔线--底部 */
+.bottom-line{
+  width: 100%;    /* 分隔线的长度 */
+  margin: auto;
+  height: 1px;    /* 分隔线粗细 */
+  text-align: center;
+  font-size: 24rpx;
+  color: #aaa;
+  background: #ccc;
+  margin-top: 5px;
+  margin-bottom: 22px;
+}
+
+.bottom-line span{
+  position: relative;
+  top: -8px;
+  background: #fff;
+  padding: 0px 10px;
+}
