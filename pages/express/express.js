@@ -69,7 +69,18 @@ Page({
     app.navTo('publish')
   },
 
-  clickFun: function(){
-    console.log("1");
+  grapOrder(e){
+    console.log(e.currentTarget.dataset.order);
+    wx.showModal({
+      title: '提示',
+      content: '确认接取该订单吗？友情提示：随意取消订单是会影响信誉分的哟~',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
   }
 })

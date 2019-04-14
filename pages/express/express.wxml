@@ -29,7 +29,7 @@
           <view class="card-detail card-col">
             <view class="card-price">￥{{item.orderPrice}}</view>
             <view class="card-views">
-              <button bindtap='clickFun' style='width:50px;border-radius:10px;font-size:10px;background:#c8141f;color:#fff'>抢</button>
+              <button bindtap='grapOrder' data-order="{{item.orderNumber}}" style='width:50px;border-radius:10px;font-size:10px;background:#c8141f;color:#fff'>接</button>
             </view>
           </view>
         </view>
