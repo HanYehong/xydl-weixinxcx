@@ -3,14 +3,27 @@
     <!-- Start 商品信息 || 卡片信息 -->
     <view class="card-main">
       <view class="card-title card-col">
-        <text>{{cardTitle}}</text>
+        <text>{{expressName}}</text>
       </view>
       <view class="card-desc card-col">
-        <text>{{cardDesc}}</text>
+        <view>
+          <text>快递大小：</text><text>{{expressSize}}</text>
+        </view>
+        <view>
+          <text>快递描述：</text><text>{{expressDescription}}</text>
+        </view>
+        <view>
+          <text>送达地点：</text><text>{{destination}}</text>
+        </view>
+        <view>
+          <text style='color:#f7642c'>{{special}}</text>
+        </view>
       </view>
       <view class="card-detail card-col">
-        <view class="card-price">￥{{cardPrice}}</view>
-        <view class="card-views">{{cardViews}}</view>
+        <view class="card-price">￥{{orderPrice}}</view>
+        <view class="card-views">
+          <button bindtap='clickFun' style='width:50px;border-radius:10px;font-size:10px;background:#c8141f;color:#fff'>抢</button>
+        </view>
       </view>
     </view>
     <!-- End 商品信息 || 卡片信息 -->

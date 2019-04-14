@@ -12,8 +12,8 @@
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
   </view>
-  <!-- 快递大小 -->
-  <view class="weui-cells__title">物品信息</view>
+  <!-- 订单信息 -->
+  <view class="weui-cells__title">物品大小</view>
   <view class="weui-cells weui-cells_after-title">
     <radio-group>
       <label class="weui-cell weui-check__label">
@@ -29,6 +29,21 @@
         </view>
       </label>
     </radio-group>
+  </view>
+  <view class="weui-cells__title">订单信息</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input simi-info">
+      <view class="weui-cell__bd cell-title simi-info-text">送达地点</view>
+      <view class="weui-cell__ft">
+        <input class='simi-info-input' placeholder='送达地点'></input>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input simi-info">
+      <view class="weui-cell__bd cell-title simi-info-text">快递名称</view>
+      <view class="weui-cell__ft">
+        <input class='simi-info-input' placeholder='如：中通快递'></input>
+      </view>
+    </view>
   </view>
   <view class="weui-cells">
     <view class="weui-cell">
@@ -78,12 +93,6 @@
       <view class="weui-cell__bd cell-title simi-info-text">取货码</view>
       <view class="weui-cell__ft">
         <input class='simi-info-input' placeholder='取货码'></input>
-      </view>
-    </view>
-    <view class="weui-cell weui-cell_input simi-info">
-      <view class="weui-cell__bd cell-title simi-info-text">送达地点</view>
-      <view class="weui-cell__ft">
-        <input class='simi-info-input' placeholder='送达地点'></input>
       </view>
     </view>
   </view>

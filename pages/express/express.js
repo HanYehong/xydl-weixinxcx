@@ -6,6 +6,35 @@ Page({
   data: {
     goodsUrl: 'https://easy-mock.com/mock/5bffe30cab841f18c58ca0ec/data/goods',
     goodsData: [],
+    expressOrderList:[
+      {
+        'expressOrderNumber':'',
+        'expressName':'韵达快递',
+        'expressSize':'小物',
+        'expressDescription':'是一个很小的东西，很好拿的',
+        'destination':'东7宿舍楼下',
+        'special':'易碎',
+        'orderPrice':'5'
+      },
+      {
+        'expressOrderNumber': '',
+        'expressName': '韵达快递',
+        'expressSize': '小物',
+        'expressDescription': '是一个很小的东西，很好拿的',
+        'destination': '东7宿舍楼下',
+        'special': '易碎',
+        'orderPrice': '5'
+      },
+      {
+        'expressOrderNumber': '',
+        'expressName': '韵达快递',
+        'expressSize': '小物',
+        'expressDescription': '是一个很小的东西，很好拿的',
+        'destination': '东7宿舍楼下',
+        'special': '易碎',
+        'orderPrice': '5'
+      },
+    ],
     linearColors: [],
     requestDone: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -38,5 +67,9 @@ Page({
 
   navigateToPublish: function () {
     app.navTo('publish')
+  },
+
+  clickFun: function(){
+    console.log("1");
   }
 })

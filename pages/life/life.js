@@ -42,6 +42,13 @@ Page({
   },
 
   /**
+  * 意见反馈
+  */
+  viewRobot: function () {
+    app.navTo('robot')
+  },
+
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
