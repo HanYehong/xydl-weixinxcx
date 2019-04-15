@@ -80,6 +80,10 @@ module.exports = {
     WAIT_AUTHORIZATION: {
       code: 6,
       name: '待授权'
+    },
+    REFUSE_ACCEPT: {
+      code: 7,
+      name: '拒绝其接单'
     }
   },
 
