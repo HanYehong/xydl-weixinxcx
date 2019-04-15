@@ -6,7 +6,6 @@ Page({
    */
   data: {
     orderInfo: {},
-    name:'name',
     showInfo: true,
     targetTime: 0,
     myFormat: ['天', '时', '分', '秒'],
@@ -83,9 +82,4 @@ Page({
     })
   },
 
-  myLinsterner(e) {
-    this.setData({
-        status: '结束'
-    });
-  } 
 })

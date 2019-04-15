@@ -1,4 +1,9 @@
 /* pages/orderDetail/orderDetail.wxss */
+
+page{
+  background: rgba(255, 206, 69, 0.2);
+}
+
 .title {
   font-size: 17px;
   font-weight: bold;
