@@ -1,6 +1,7 @@
 import { $wuxXnumber } from '../../components/wux'
 var network = require("../../utils/network.js")
 var util = require('../../utils/util.js');
+let enums = require('../../config/enums')
 var app = getApp();
 Page({
   data: {
@@ -15,42 +16,53 @@ Page({
     startDate:'',
     date: "",
     time:"",
-    // 分类
-    groupList: [{ name: '手机数码', icon: '', check: 0 },
-    { name: '家用电器', icon: '', check: 0 },
-    { name: '个性护装', icon: '', check: 0 },
-    { name: '食品药品', icon: '', check: 0 },
-    { name: '衣物配饰', icon: '', check: 0 },
-    { name: '电脑配件', icon: '', check: 0 },
-    { name: '书籍文件', icon: '', check: 0 },
-    { name: '箱包', icon: '', check: 0 },
-    { name: '其他', icon: '', check: 0 },
-    ],
-    extraList: [//特别属性
-      { name: '易碎', value: '0' },
-      { name: '怕压', value: '2' }
-    ],
-    sizeList: [//特别属性
-      { name: '小物', value: '0' },
-      { name: '中物', value: '1' },
-      { name: '大物', value: '2' }
-    ],
-    serveList: [//服务
-      { name: '我要整箱(23 kg)', value: '0' },
-      { name: '可能加急', value: '1' },
-      { name: '上门取货', value: '2' }
-    ],
-    isAgree: true,//是否同意条款
+    extraList: [], //特别属性
+    sizeList: [], //特别属性
+    isAgree: true, //是否同意条款
     type: 0,
-    expressList: [
-      '圆通快递',
-      '中通快递',
-      '申通快递',
-      '韵达快递',
-      '顺丰快递',
-      '京东快递',
-      '百世汇通'
-    ]
+    expressList: []
+  },
+
+  onLoad() {
+    let extraList = [];
+    for (let index in enums.SPECIAL_ATTENTION) {
+      let val = {
+        name: enums.SPECIAL_ATTENTION[index].name,
+        value: enums.SPECIAL_ATTENTION[index].code
+      }
+      extraList.push(val);
+    }
+
+    console.log(extraList);
+
+    let sizeList = [];
+    for (let index in enums.EXPRESS_SIZE) {
+      let val = {
+        name: enums.EXPRESS_SIZE[index].name,
+        value: enums.EXPRESS_SIZE[index].code
+      }
+      sizeList.push(val);
+    }
+
+    console.log(sizeList);
+
+    let expressList = [];
+    for (let index in enums.EXPRESS) {
+      let val = {
+        name: enums.EXPRESS[index].name,
+        value: enums.EXPRESS[index].code
+      }
+      expressList.push(val);
+    }
+
+    console.log(expressList);
+    //初始化日期选择的最小值为当前日期
+    this.setData({
+      extraList,
+      sizeList,
+      expressList,
+      startDate: util.getCurrentDate(),
+    })
   },
   /**
    * C端确认发布带物需求订单
@@ -82,22 +94,7 @@ Page({
     })
   },
 
-  onLoad() {
-    $wuxXnumber.init('config', {
-      longpress: !0,
-      step: .5,
-      min: 0.5,
-      max: 50,
-      value: 1,
-      callback: function (value) {
-        console.log("当前的重量为: ", value)
-      },
-    });
-    //初始化日期选择的最小值为当前日期
-    this.setData({
-      startDate: util.getCurrentDate(),
-    })
-  },
+
   //失去焦点时获取订单描述信息
   getInfoText: function (e) {
     console.log("订单描述", e.detail.value);

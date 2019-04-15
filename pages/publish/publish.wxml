@@ -27,9 +27,9 @@
     <view class="weui-cell weui-cell_input simi-info">
       <view class="weui-cell__bd cell-title simi-info-text">快递类型</view>
       <view class="weui-cell__ft">
-        <picker bindchange="bindPickerChange" value="{{type}}" range="{{expressList}}">
+        <picker bindchange="bindPickerChange" value="{{value}}" range="{{expressList}}" range-key="name">
           <view>
-            {{expressList[type]}}
+            {{expressList[value].name}}
           </view>
         </picker>
       </view>
@@ -74,6 +74,12 @@
       <view class="weui-cell__bd cell-title simi-info-text">你的手机号</view>
       <view class="weui-cell__ft">
         <input class='simi-info-input' placeholder='手机号'></input>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input simi-info">
+      <view class="weui-cell__bd cell-title simi-info-text">收货地址</view>
+      <view class="weui-cell__ft">
+        <input class='simi-info-input' placeholder='收货地址'></input>
       </view>
     </view>
     <view class="weui-cell weui-cell_input simi-info">

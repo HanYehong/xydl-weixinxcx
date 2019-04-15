@@ -110,6 +110,32 @@ module.exports = {
     }
   },
 
+  SPECIAL_ATTENTION: {
+    YI_SUI: {
+      code: 0,
+      name: '易碎'
+    },
+    PA_YA: {
+      code: 1,
+      name: '怕压'
+    }
+  },
+
+  EXPRESS_SIZE: {
+    LARGE: {
+      code: 0,
+      name: '大物',
+    },
+    MIDDLE: {
+      code: 1,
+      name: '中物'
+    },
+    SMALL: {
+      code: 2,
+      name: '大物'
+    }
+  },
+
   getExpressNameBycode(code) {
     for (let index in this.EXPRESS) {
       if (this.EXPRESS[index].code == code) {

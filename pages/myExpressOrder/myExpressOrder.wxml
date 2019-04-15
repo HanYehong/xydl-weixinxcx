@@ -74,7 +74,7 @@
             </view>
           </view>
         </view>
-        <view wx:if="{{index != orderListDoing.length - 1}}" class="line"></view>
+        <view wx:if="{{index != orderListComplete.length - 1}}" class="line"></view>
         <i-load-more wx:else loading="{{ false }}" />
       </view>
     </swiper-item>
@@ -103,7 +103,7 @@
             </view>
           </view>
         </view>
-        <view wx:if="{{index != orderListDoing.length - 1}}" class="line"></view>
+        <view wx:if="{{index != orderListUncomplete.length - 1}}" class="line"></view>
         <i-load-more wx:else loading="{{ false }}" />
       </view>
     </swiper-item>
