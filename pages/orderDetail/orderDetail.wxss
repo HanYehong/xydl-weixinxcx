@@ -9,6 +9,10 @@ page{
   font-weight: bold;
 }
 
+.title-two {
+  margin-top: 10px;
+}
+
 .item {
   width: 100%;
   display: inline-block;
@@ -31,21 +35,10 @@ page{
   color: #c8141f;
 }
 
-.bottom-line{
-  width: 100%;    /* 分隔线的长度 */
+.line {
+  width: 95%;    /* 分隔线的长度 */
   margin: auto;
   height: 1px;    /* 分隔线粗细 */
   text-align: center;
-  font-size: 24rpx;
-  color: #aaa;
-  background: #ccc;
-  margin-top: 5px;
-  margin-bottom: 22px;
-}
-
-.bottom-line span{
-  position: relative;
-  top: -8px;
-  background: #fff;
-  padding: 0px 10px;
+  background: #e9eaec;
 }

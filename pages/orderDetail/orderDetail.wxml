@@ -16,32 +16,40 @@
     <view class="item">
       <view class="label">订单号：</view><span class="content">{{orderInfo.orderNumber}}</span>
     </view>
+    <view class="line"></view>
     <view class="item">
       <view class="label">大小：</view><span class="content">{{orderInfo.expressSize}}</span>
     </view>
+    <view class="line"></view>
     <view class="item">
       <view class="label">类型：</view><span class="content">{{orderInfo.expressName}}</span>
     </view>
+    <view class="line"></view>
     <view class="item">
       <view class="label">介绍：</view><span class="content">{{orderInfo.description}}</span>
     </view>
+    <view class="line"></view>
     <view class="item">
       <view class="label">发布时间：</view><span class="content">{{orderInfo.beginDate}}</span>
     </view>
+    <view class="line"></view>
     <view class="item">
       <view class="label">截至时间：</view><span class="content">{{orderInfo.endDate}}</span>
     </view>
     <view class="item" wx:if="{{orderInfo.completeDate}}">
       <view class="label">完成时间：</view><span class="content">{{orderInfo.completeDate}}</span>
     </view>
+    <view class="line"></view>
     <view class="item">
       <view class="label">订单状态：</view><span class="content">{{orderInfo.statusText}}</span>
     </view>
+    <view class="line"></view>
     <view class="item">
       <view class="label">订单价格：</view><span class="content price">￥{{orderInfo.orderPrice}}</span>
     </view>
+    <view class="line"></view>
   </view>
-  <view class="title">
+  <view class="title title-two">
     <span>私密信息</span>
     <i-switch value="{{showInfo}}" size="large"  style="margin-left: 2px;" bind:change="changeSwitch" slot="footer">
       <view slot="open">显示</view>
@@ -52,21 +60,26 @@
     <view class="item">
       <view class="label">姓名：</view><span class="content">{{orderInfo.name}}</span>
     </view>
+    <view class="line"></view>
     <view class="item">
       <view class="label">手机号：</view><span class="content">{{orderInfo.phone}}</span>
     </view>
+    <view class="line"></view>
     <view class="item">
       <view class="label">目的地：</view><span class="content">{{orderInfo.destination}}</span>
     </view>
+    <view class="line"></view>
     <view class="item">
       <view class="label">取货码：</view><span class="content">{{orderInfo.pickupCode}}</span>
     </view>
+    <view class="line"></view>
   </view>
 </view>
 
 <i-button wx:if="{{orderInfo.status == 0 || orderInfo.status == 1 || orderInfo.status == 6}}" bind:click="cancel" data-order="{{orderInfo.orderNumber}}" type="error" shape="circle" size="small">取消</i-button>
-<i-button wx:if="{{orderInfo.status == 6}}" bind:click="authorize" data-order="{{orderInfo.orderNumber}}" type="warning" shape="circle" size="small">授权</i-button>
-<i-button wx:if="{{orderInfo.status == 2}}" bind:click="sureAccept" data-order="{{orderInfo.orderNumber}}" type="success" shape="circle" size="small">确认收货</i-button>
-<i-button wx:if="{{orderInfo.status == 6}}" bind:click="sureAccept" data-order="{{orderInfo.orderNumber}}" type="success" shape="circle" size="small">拒绝其接单</i-button>
+<i-button wx:if="{{orderInfo.status == 6}}" bind:click="authorize" data-order="{{orderInfo.orderNumber}}" type="success" shape="circle" size="small">授权</i-button>
+<i-button wx:if="{{orderInfo.status == 2}}" bind:click="confirm" data-order="{{orderInfo.orderNumber}}" type="success" shape="circle" size="small">确认收货</i-button>
+<i-button wx:if="{{orderInfo.status == 6}}" bind:click="refuse" data-order="{{orderInfo.orderNumber}}" type="warning" shape="circle" size="small">拒绝其接单</i-button>
+<i-button wx:if="{{orderInfo.status == 5}}" bind:click="publish" data-order="{{orderInfo.orderNumber}}" type="warning" shape="circle" size="small">重新发布</i-button>
 <!-- <i-button bind:click="sureSend" data-order="{{orderInfo.orderNumber}}" type="success" shape="circle" size="small">已送达</i-button> -->
 <!-- <i-button bind:click="pay" data-order="{{orderInfo.orderNumber}}" type="info" shape="circle" size="small">支付</i-button> -->
