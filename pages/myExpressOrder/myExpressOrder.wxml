@@ -46,19 +46,65 @@
           </view>
         </view>
         <view wx:if="{{index != orderListDoing.length - 1}}" class="line"></view>
-        <view wx:else class="bottom-line">
-          <span>到底啦，我是有底线的</span>
+        <i-load-more wx:else loading="{{ false }}" />
+      </view>
+    </swiper-item>
+    <swiper-item class='swiper'>
+      <view wx:for="{{orderListComplete}}" wx:key="{{expressType}}">
+        <view class="express-order">
+          <view style="width: 40%;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+            <view class="image" style="background-color: {{item.color}}">
+              {{item.expressName}}
+            </view>
+          </view>
+          <view class="text-parent">
+            <view style="width: 100%;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+              <view class="text">
+                取货码：{{item.pickupCode}}
+              </view>
+              <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.orderPrice}}</view>
+            </view>
+            <view class="text" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+              目的地：{{item.destination}}
+            </view>
+            <view style="width: 100%;">
+              <view style="color: #c141f8; float:left;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+                状态：{{item.statusText}}
+              </view>
+            </view>
+          </view>
         </view>
+        <view wx:if="{{index != orderListDoing.length - 1}}" class="line"></view>
+        <i-load-more wx:else loading="{{ false }}" />
       </view>
     </swiper-item>
     <swiper-item class='swiper'>
-      <view>
-        <view>第二页</view>
-      </view>
-    </swiper-item>
-    <swiper-item class='swiper'>
-      <view>
-        <view>第三页</view>
+      <view wx:for="{{orderListUncomplete}}" wx:key="{{expressType}}">
+        <view class="express-order">
+          <view style="width: 40%;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+            <view class="image" style="background-color: {{item.color}}">
+              {{item.expressName}}
+            </view>
+          </view>
+          <view class="text-parent">
+            <view style="width: 100%;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+              <view class="text">
+                取货码：{{item.pickupCode}}
+              </view>
+              <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.orderPrice}}</view>
+            </view>
+            <view class="text" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+              目的地：{{item.destination}}
+            </view>
+            <view style="width: 100%;">
+              <view style="color: #c141f8; float:left;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+                状态：{{item.statusText}}
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{index != orderListDoing.length - 1}}" class="line"></view>
+        <i-load-more wx:else loading="{{ false }}" />
       </view>
     </swiper-item>
   </swiper>

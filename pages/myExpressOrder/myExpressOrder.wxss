@@ -94,7 +94,7 @@
   margin: auto;
   height: 1px;    /* 分隔线粗细 */
   text-align: center;
-  background: #ccc;
+  background: #e9eaec;
 }
 
 /* 分隔线--底部 */
