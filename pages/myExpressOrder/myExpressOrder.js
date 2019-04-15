@@ -25,7 +25,7 @@ Page({
         phone: '15189809881',
         specialAttention: '易碎',
         beginDate: '2019-04-11 10:30',
-        endDate: '2019-04-14 18:00'
+        endDate: '2019-04-15 18:00'
       },
       {
         orderNumber: 'DL201904131903',

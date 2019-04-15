@@ -6,6 +6,11 @@ Page({
    */
   data: {
     orderInfo: {},
+    name:'name',
+    showInfo: true,
+    targetTime: 0,
+    myFormat: ['天', '时', '分', '秒'],
+    clearTimer: false
   },
 
   /**
@@ -15,7 +20,8 @@ Page({
     let obj = JSON.parse(options.order);
     console.log(obj.orderNumber);
     this.setData({
-      orderInfo: obj
+      orderInfo: obj,
+      targetTime: new Date(obj.endDate).getTime(),
     })
   },
 
@@ -44,7 +50,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.setData({
+      clearTimer: true
+    });
   },
 
   /**
@@ -66,5 +74,18 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  changeSwitch(event){
+    const detail = event.detail;
+    this.setData({
+        showInfo : detail.value
+    })
+  },
+
+  myLinsterner(e) {
+    this.setData({
+        status: '结束'
+    });
+  } 
 })

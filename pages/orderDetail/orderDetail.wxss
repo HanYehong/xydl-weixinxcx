@@ -1,5 +1,31 @@
 /* pages/orderDetail/orderDetail.wxss */
-/* 分隔线--底部 */
+.title {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.item {
+  width: 100%;
+  display: inline-block;
+  margin: 5px;
+}
+
+.label {
+  float: left;
+  width: 70px;
+  text-align: right;
+  font-weight: bolder;
+}
+
+.content {
+  float: left;
+  text-align: left;
+}
+
+.price {
+  color: #c8141f;
+}
+
 .bottom-line{
   width: 100%;    /* 分隔线的长度 */
   margin: auto;
