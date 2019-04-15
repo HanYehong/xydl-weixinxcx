@@ -84,7 +84,7 @@
 .express-order .do-button {
   width: 120rpx;
   height: 50rpx;
-  font-size: 9px;
+  font-size: 10px;
   background: #28A167;
   color: #fff;
 }

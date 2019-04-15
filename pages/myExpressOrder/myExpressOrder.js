@@ -213,25 +213,6 @@ Page({
       orderListCompleteAnother[i].expressName = enums.getExpressNameBycode(orderListCompleteAnother[i].expressType).substring(0, 2);
       // 获取状态名称
       orderListCompleteAnother[i].statusText = enums.getStatusNameByCode(orderListCompleteAnother[i].status);
-      // 获取操作按钮
-      switch (orderListCompleteAnother[i].status) {
-        case enums.STATUS.WAIT_ACCEPT.code:
-          ListCompleteAnother[i].button = enums.BUTTON.CANCEL.code;
-          orderListCompleteAnother[i].buttonText = enums.BUTTON.CANCEL.name;
-          break;
-        case enums.STATUS.WAIT_AUTHORIZATION.code:
-          orderListCompleteAnother[i].button = enums.BUTTON.AUTHORIZE.code;
-          orderListCompleteAnother[i].buttonText = enums.BUTTON.AUTHORIZE.name;
-          break;
-        case enums.STATUS.WAIT_CONFIRM.code:
-          orderListCompleteAnother[i].button = enums.BUTTON.CONFIRM.code;
-          orderListCompleteAnother[i].buttonText = enums.BUTTON.CONFIRM.name;
-          break;
-        case enums.STATUS.WAIT_SEND.code:
-          orderListCompleteAnother[i].button = enums.BUTTON.CANCEL.code;
-          orderListCompleteAnother[i].buttonText = enums.BUTTON.CONFIRM.name;
-          break;
-      }
     }
     for (let i = 0; i < orderListUncompleteAnother.length; i++) {
       // 获取快递颜色
@@ -240,25 +221,6 @@ Page({
       orderListUncompleteAnother[i].expressName = enums.getExpressNameBycode(orderListUncompleteAnother[i].expressType).substring(0, 2);
       // 获取状态名称
       orderListUncompleteAnother[i].statusText = enums.getStatusNameByCode(orderListUncompleteAnother[i].status);
-      // 获取操作按钮
-      switch (orderListUncompleteAnother[i].status) {
-        case enums.STATUS.WAIT_ACCEPT.code:
-          orderListUncompleteAnother[i].button = enums.BUTTON.CANCEL.code;
-          orderListUncompleteAnother[i].buttonText = enums.BUTTON.CANCEL.name;
-          break;
-        case enums.STATUS.WAIT_AUTHORIZATION.code:
-          orderListUncompleteAnother[i].button = enums.BUTTON.AUTHORIZE.code;
-          orderListUncompleteAnother[i].buttonText = enums.BUTTON.AUTHORIZE.name;
-          break;
-        case enums.STATUS.WAIT_CONFIRM.code:
-          orderListUncompleteAnother[i].button = enums.BUTTON.CONFIRM.code;
-          orderListUncompleteAnother[i].buttonText = enums.BUTTON.CONFIRM.name;
-          break;
-        case enums.STATUS.WAIT_SEND.code:
-          orderListUncompleteAnother[i].button = enums.BUTTON.CANCEL.code;
-          orderListUncompleteAnother[i].buttonText = enums.BUTTON.CONFIRM.name;
-          break;
-      }
     }
     this.setData({
       orderListDoing: orderListDoingAnother,
@@ -305,10 +267,23 @@ Page({
 
   navToDetail(e) {
     let orderNumber = e.currentTarget.dataset.order;
-    for (let i = 0; i < this.data.orderListDoing.length; i++) {
-      if (this.data.orderListDoing[i].orderNumber === orderNumber) {
+    let type = e.currentTarget.dataset.type;
+    let array = [];
+    switch (type) {
+      case 'processing':
+        array = this.data.orderListDoing;
+        break;
+      case 'complete':
+        array = this.data.orderListComplete;
+        break;
+      case 'uncomplete':
+        array = this.data.orderListUncomplete;
+        break;
+    }
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].orderNumber === orderNumber) {
         wx.navigateTo({
-          url: '../orderDetail/orderDetail?order=' + JSON.stringify(this.data.orderListDoing[i]),
+          url: '../orderDetail/orderDetail?order=' + JSON.stringify(array[i]),
         })
         break;
       }

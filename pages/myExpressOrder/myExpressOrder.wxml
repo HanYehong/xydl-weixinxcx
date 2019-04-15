@@ -22,23 +22,23 @@
     <swiper-item class='swiper'>
       <view wx:for="{{orderListDoing}}" wx:key="{{expressType}}">
         <view class="express-order">
-          <view style="width: 40%;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+          <view style="width: 40%;" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='processing'>
             <view class="image" style="background-color: {{item.color}}">
               {{item.expressName}}
             </view>
           </view>
           <view class="text-parent">
-            <view style="width: 100%;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+            <view style="width: 100%;" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='processing'>
               <view class="text">
                 取货码：{{item.pickupCode}}
               </view>
               <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.orderPrice}}</view>
             </view>
-            <view class="text" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+            <view class="text" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='processing'>
               目的地：{{item.destination}}
             </view>
             <view style="width: 100%;">
-              <view style="color: #c141f8; float:left;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+              <view style="color: #c141f8; float:left;" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='processing'>
                 状态：{{item.statusText}}
               </view>
               <button wx:if="{{item.status != 3}}" bindtap="buttonClick" data-code="{{item.button}}" data-order="{{item.orderNumber}}" class="do-button" style="float:right;">{{item.buttonText}}</button>
@@ -51,24 +51,24 @@
     </swiper-item>
     <swiper-item class='swiper'>
       <view wx:for="{{orderListComplete}}" wx:key="{{expressType}}">
-        <view class="express-order">
-          <view style="width: 40%;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+        <view class="express-order" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='complete'>
+          <view style="width: 40%;">
             <view class="image" style="background-color: {{item.color}}">
               {{item.expressName}}
             </view>
           </view>
           <view class="text-parent">
-            <view style="width: 100%;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+            <view style="width: 100%;">
               <view class="text">
                 取货码：{{item.pickupCode}}
               </view>
               <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.orderPrice}}</view>
             </view>
-            <view class="text" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+            <view class="text">
               目的地：{{item.destination}}
             </view>
             <view style="width: 100%;">
-              <view style="color: #c141f8; float:left;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+              <view style="color: #c141f8; float:left;">
                 状态：{{item.statusText}}
               </view>
             </view>
@@ -80,24 +80,24 @@
     </swiper-item>
     <swiper-item class='swiper'>
       <view wx:for="{{orderListUncomplete}}" wx:key="{{expressType}}">
-        <view class="express-order">
-          <view style="width: 40%;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+        <view class="express-order" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='uncomplete'>
+          <view style="width: 40%;">
             <view class="image" style="background-color: {{item.color}}">
               {{item.expressName}}
             </view>
           </view>
           <view class="text-parent">
-            <view style="width: 100%;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+            <view style="width: 100%;">
               <view class="text">
                 取货码：{{item.pickupCode}}
               </view>
               <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.orderPrice}}</view>
             </view>
-            <view class="text" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+            <view class="text">
               目的地：{{item.destination}}
             </view>
             <view style="width: 100%;">
-              <view style="color: #c141f8; float:left;" bindtap='navToDetail' data-order='{{item.orderNumber}}'>
+              <view style="color: #c141f8; float:left;">
                 状态：{{item.statusText}}
               </view>
             </view>
