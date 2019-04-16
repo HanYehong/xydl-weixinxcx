@@ -20,7 +20,8 @@ Page({
     sizeList: [], //特别属性
     isAgree: true, //是否同意条款
     type: 0,
-    expressList: []
+    expressList: [],
+    expressName: []
   },
 
   onLoad() {
@@ -47,22 +48,27 @@ Page({
     console.log(sizeList);
 
     let expressList = [];
+    let expressName = [];
     for (let index in enums.EXPRESS) {
       let val = {
         name: enums.EXPRESS[index].name,
         value: enums.EXPRESS[index].code
       }
       expressList.push(val);
+      expressName.push(enums.EXPRESS[index].name);
     }
 
     console.log(expressList);
+    console.log(expressName);
     //初始化日期选择的最小值为当前日期
     this.setData({
       extraList,
       sizeList,
       expressList,
+      expressName,
       startDate: util.getCurrentDate(),
     })
+
   },
   /**
    * C端确认发布带物需求订单
@@ -169,7 +175,7 @@ Page({
     navTo("myExpressOrder");
   },
 
-  bindPickerChange: function() {
-    console.log("hi");
+  expressPickerChange(e) {
+    console.log(e.detail.value);
   }
 });
