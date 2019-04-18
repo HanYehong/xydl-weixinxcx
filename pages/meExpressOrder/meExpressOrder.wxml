@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-panel">
+        <view class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_small-appmsg">
+                <view class="weui-cells weui-cells_in-small-appmsg">
+                  <view wx:for="{{showList}}" wx:key="text">
+                    <navigator url="{{item.url}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                        <view class="weui-cell__hd"><image src="{{item.img}}" style="width: 30px;height: 30px;margin-right: 5px;margin-top:5px;" /></view>
+                        <view class="weui-cell__bd weui-cell_primary">
+                            <view>{{item.text}}</view>
+                        </view>
+                        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                    </navigator>
+                  </view>
+                </view>
+            </view>
+        </view>
+    </view>
+  </view>
+  <view class="page__ft"></view>
+</view>

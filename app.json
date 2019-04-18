@@ -15,7 +15,8 @@
     "pages/me/me",
     "pages/feedback/feedback",
     "pages/myExpressOrder/myExpressOrder",
-    "pages/orderDetail/orderDetail"
+    "pages/orderDetail/orderDetail",
+    "pages/meExpressOrder/meExpressOrder"
   ],
   "window": {
     "navigationBarBackgroundColor": "#C8141F",

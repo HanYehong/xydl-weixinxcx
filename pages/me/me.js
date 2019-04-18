@@ -11,7 +11,7 @@ Page({
       },
       {
         text:'我的快递订单',
-        url:'expressorder',
+        url:'/pages/meExpressOrder/meExpressOrder',
         img:'/resource/images/my_dingdan.png'
       },
       {
@@ -27,7 +27,7 @@ Page({
     ],
     navi: [
       '../../example/order/order',
-      '../../example/collect/collect',
+      '../../meExpressOrder/meExpressOrder',
       '../../example/setion/setion',
       '../../example/fdback/fdback',
     ],
