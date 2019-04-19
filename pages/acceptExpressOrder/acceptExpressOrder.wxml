@@ -1,0 +1,78 @@
+<view class='container'>
+  <!--Tab布局-->
+  <view class='title'>
+    <view class='titleSel' bindtap='titleClick' data-idx='0'>
+      <text>进行中</text>
+      <hr class="{{0 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}}" />
+    </view>
+
+    <view class='titleSel' bindtap='titleClick' data-idx='1'>
+      <text>已完成</text>
+      <hr class="{{1 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}} " />
+    </view>
+
+  </view>
+
+  <!--内容布局-->
+  <swiper class='swiper' bindchange='pagechange' current='{{currentIndex}}'>
+    <swiper-item class='swiper'>
+      <view wx:for="{{orderListDoing}}" wx:key="{{expressType}}">
+        <view class="express-order">
+          <view style="width: 40%;" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='processing'>
+            <view class="image" style="background-color: {{item.color}}">
+              {{item.expressName}}
+            </view>
+          </view>
+          <view class="text-parent">
+            <view style="width: 100%;" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='processing'>
+              <view class="text">
+                取货码：{{item.pickupCode}}
+              </view>
+              <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.orderPrice}}</view>
+            </view>
+            <view class="text" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='processing'>
+              目的地：{{item.destination}}
+            </view>
+            <view style="width: 100%;">
+              <view style="color: #c141f8; float:left;" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='processing'>
+                状态：{{item.statusText}}
+              </view>
+              <button wx:if="{{item.status != 2 && item.status != 5}}" bindtap="buttonClick" data-code="{{item.button}}" data-order="{{item.orderNumber}}" class="do-button" style="float:right;">{{item.buttonText}}</button>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{index != orderListDoing.length - 1}}" class="line"></view>
+        <i-load-more wx:else loading="{{ false }}" />
+      </view>
+    </swiper-item>
+    <swiper-item class='swiper'>
+      <view wx:for="{{orderListComplete}}" wx:key="{{expressType}}">
+        <view class="express-order" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='complete'>
+          <view style="width: 40%;">
+            <view class="image" style="background-color: {{item.color}}">
+              {{item.expressName}}
+            </view>
+          </view>
+          <view class="text-parent">
+            <view style="width: 100%;">
+              <view class="text">
+                取货码：{{item.pickupCode}}
+              </view>
+              <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.orderPrice}}</view>
+            </view>
+            <view class="text">
+              目的地：{{item.destination}}
+            </view>
+            <view style="width: 100%;">
+              <view style="color: #c141f8; float:left;">
+                状态：{{item.statusText}}
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{index != orderListComplete.length - 1}}" class="line"></view>
+        <i-load-more wx:else loading="{{ false }}" />
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

@@ -1,0 +1,44 @@
+/* pages/acceptOrderDetail/acceptOrderDetail.wxss *//* pages/orderDetail/orderDetail.wxss */
+
+page{
+  background: rgba(255, 206, 69, 0.2);
+}
+
+.title {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.title-two {
+  margin-top: 10px;
+}
+
+.item {
+  width: 100%;
+  display: inline-block;
+  margin: 5px;
+}
+
+.label {
+  float: left;
+  width: 70px;
+  text-align: right;
+  font-weight: bolder;
+}
+
+.content {
+  float: left;
+  text-align: left;
+}
+
+.price {
+  color: #c8141f;
+}
+
+.line {
+  width: 95%;    /* 分隔线的长度 */
+  margin: auto;
+  height: 1px;    /* 分隔线粗细 */
+  text-align: center;
+  background: #e9eaec;
+}

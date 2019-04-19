@@ -65,25 +65,17 @@ module.exports = {
       code: 2,
       name: '待确认'
     },
-    WAIT_ACCEPTOR_PAY: {
-      code: 3,
-      name: '待接单者付款'
-    },
     COMPLETE: {
-      code: 4,
+      code: 3,
       name: '已完成'
     },
     UN_COMPLETE: {
-      code: 5,
+      code: 4,
       name: '未完成'
     },
     WAIT_AUTHORIZATION: {
-      code: 6,
+      code: 5,
       name: '待授权'
-    },
-    REFUSE_ACCEPT: {
-      code: 7,
-      name: '拒绝其接单'
     }
   },
 

@@ -205,7 +205,6 @@ Page({
           orderListDoingAnother[i].buttonText = enums.BUTTON.CONFIRM.name;
           break;
       }
-      orderListDoingAnother[i].test = 1;
     }
     for (let i = 0; i < orderListCompleteAnother.length; i++) {
       // 获取快递颜色

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-switch": "../../dist/switch/index",
+    "i-count-down": "../../dist/count-down/index",
+    "i-button": "../../dist/button/index"
+  }
+}

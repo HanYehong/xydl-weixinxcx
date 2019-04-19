@@ -1,0 +1,123 @@
+/* pages/acceptExpressOrder/acceptExpressOrder.wxss */.container {
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.title {
+  width: 100%;
+  height: 88rpx;
+  background: #c8141f;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.titleSel {
+  color: #fff;
+  font-size: 32rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headerLineSel {
+  background: #fff;
+  height: 6rpx;
+  width: 40rpx;
+  position: relative;
+  margin-top: 10rpx;
+}
+
+.headerLineUnsel {
+  background: #c8141f;
+  height: 6rpx;
+  width: 40rpx;
+  position: relative;
+  margin-top: 10rpx;
+}
+
+.swiper {
+  width: 100%;
+  flex: 1;
+  height:100vh;
+  overflow: scroll;
+}
+
+.recordItem {
+  margin-top: 10rpx;
+  background-color: white;
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+}
+
+.express-order {
+  display: inline-block;
+  width: 100%;
+}
+
+.express-order .image {
+  border-radius: 50px;
+  text-align: center;
+  line-height: 150rpx;
+  width: 150rpx;
+  height: 150rpx;
+  font-size: 24px;
+  font-weight: bolder;
+  margin: 15px;
+  float: left;
+}
+
+.express-order .text-parent {
+  margin-top: 18px;
+  float: left;
+  width: 60%;
+}
+
+.express-order .text {
+  font-size: 14px;
+  color: #7f7f7f;
+}
+
+.express-order .do-button {
+  width: 120rpx;
+  height: 50rpx;
+  font-size: 10px;
+  background: #28A167;
+  color: #fff;
+}
+
+.line {
+  width: 95%;    /* 分隔线的长度 */
+  margin: auto;
+  height: 1px;    /* 分隔线粗细 */
+  text-align: center;
+  background: #e9eaec;
+}
+
+/* 分隔线--底部 */
+.bottom-line{
+  width: 100%;    /* 分隔线的长度 */
+  margin: auto;
+  height: 1px;    /* 分隔线粗细 */
+  text-align: center;
+  font-size: 24rpx;
+  color: #aaa;
+  background: #ccc;
+  margin-top: 5px;
+  margin-bottom: 22px;
+}
+
+.bottom-line span{
+  position: relative;
+  top: -8px;
+  background: #fff;
+  padding: 0px 10px;
+}
+
+.flex-wrp-row {
+  display: flex;
+  flex-direction: row;
+}

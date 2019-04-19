@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "i-divider": "../../dist/divider/index",
+    "i-load-more": "../../dist/load-more/index"
+  }
+}
