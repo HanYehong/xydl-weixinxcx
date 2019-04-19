@@ -1,4 +1,5 @@
-let app = getApp()
+let app = getApp();
+let service = require("../../config/service.js");
 Page({
   data:{
     message:[],
@@ -41,7 +42,7 @@ Page({
   sendMessage:function(){
     var that = this;
     if(this.data.inputMsg != ""){
-      //消息封装，自己发送出去的
+      //消息封装
       var msg = {
         type:0,
         src: app.globalData.userInfo_WX.avatarUrl,
@@ -50,25 +51,18 @@ Page({
       //发送信息
       this.setMessage(msg);
       //消息回复
-      wx.request({
-        url:"http://192.168.43.38:7777/xydl-robot/robot/message",
-        header:{"Content-type":"application/json"},
-        data:{
-          msg:msg.content
-        },
-        success:function(res){
-          //封装消息，接收到的
-          console.log(res)
-          var reply = {
-            type:1,
-            src:"../../resource/images/robot.png",
-            content:res.data.content
-          };
-          that.setMessage(reply);
-          that.setData({
-            scrollTop: that.data.scrollTop + that.data.msgHeight
-          })
-        }
+      service.post(service.API_URL + service.LIFE_SERVICE + '/robot/chat', {"msg": msg.content}).then(data => {
+        console.log("请求机器人<<< ");
+        console.log(data);
+        var reply = {
+          type:1,
+          src:"../../resource/images/robot.png",
+          content: data
+        };
+        that.setMessage(reply);
+        that.setData({
+          scrollTop: that.data.scrollTop + that.data.msgHeight
+        })
       })
     }
   },
