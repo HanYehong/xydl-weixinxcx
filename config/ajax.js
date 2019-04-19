@@ -1,125 +1,59 @@
-// /**
-//  * Get请求
-//  * @param {*} url 
-//  * @param {*} params 
-//  * @param {*} success 
-//  * @param {*} fail 
-//  */
-// function GET(url, params, success, fail) {
-//   request('GET', url, params, success, fail)
-// }
+// Zuul网关地址
+let API_URL = 'http://localhost:7777';
+let LIFE_SERVICE = '/xydl-life';
 
-// /**
-//  * POST请求
-//  * @param {*} url 
-//  * @param {*} params 
-//  * @param {*} success 
-//  * @param {*} fail 
-//  */
-// function POST(url, params, success, fail) {
-//   request('POST', url, params, success, fail)
-// }
+// let robotChatService = post.then(API_URL + LIFE_SERVICE + '/robot/chat', 'hi');
 
-// /**
-//  * 请求方法
-//  * @param {*} method 
-//  * @param {*} url 
-//  * @param {*} params 
-//  * @param {*} success 
-//  * @param {*} fail 
-//  */
-// function request(method, url, params, success, fail) {
-//   var params = params;
-//   wx.showLoading({
-//     title: '加载中'
-//   })
-//   wx.request({
-//     url: url.indexOf("http") >= 0 ? url :(API_URL + url),
-//     data: params,
-//     method: method,
-//     header: {
-//       "token": ""
-//     },
-//     success: function (res) {
-//       if (res.statusCode >= 200 && res.statusCode < 300) {
-//         success(res.data)
-//         console.log(url + '<<< 请求成功: ', res.data)
-//       }
-//       else {
-//         if (fail) {//用户覆盖默认处理方式
-//           fail(res);
-//         } else {
-//           console.log(url + '<<< 请求失败: ', res);//错误统一处理
-//         }
-//       } 
-
-//     },
-//     fail: function (erroorRes) {
-//       if (fail) {//用户覆盖默认处理方式
-//         fail(erroorRes);
-//       } else {
-//         console.log('请求失败(http): ', erroorRes);//错误统一处理
-//       }
-//     },
-//     complete: function () {
-//       wx.hideLoading();//隐藏loading
-//       wx.stopPullDownRefresh();//结束下拉刷新
-//     }
-//   })
-// }
-
-// /**
-//  * 模拟线程延迟执行
-//  * @param {*} complete 
-//  */
-// function DELAY(complete) {
-//   wx.showLoading({
-//     title: '加载中'
-//   });
-//   setTimeout(function () {
-//     wx.hideLoading();
-//     complete();
-//   }, 1000);
-// }
-
-// module.exports = {
-//   GET: GET,
-//   POST: POST,
-//   DELAY: DELAY
-// }
-function createGetService(url) {
-  return async function (conf = {}) {
-    let res, data
-    try {
-      res = await axios.request({
+function post (url, data){
+  return new Promise((resolve, reject) => {
+     //init
+     var that = this;
+     var postData = data;
+     /*
+     //自动添加签名字段到postData，makeSign(obj)是一个自定义的生成签名字符串的函数
+     postData.signature = that.makeSign(postData);
+     */
+     //网络请求
+     wx.request({
         url: url,
-        params: conf,
-        method: 'get'
-      })
-      return Promise.resolve(res)
-    } catch (err) {
-      return Promise.resolve({})
-    }
-  }
+        data: postData,
+        method: 'POST',
+        header: { 'content-type': 'application/json;charset=UTF-8' },
+        success: function (res) {//服务器返回数据
+          console.log(res);
+          if (res.statusCode == 200) {
+            console.log("post 请求成功 ---")
+            if (res.data.code == 10000) {
+              console.log("后台处理数据成功 ###");
+              return resolve(res.data.data);
+            } else {
+              showError(res.data.msg);
+            }
+          } else {
+            showError("服务繁忙，请稍后再试");
+          }
+        },
+        error: function (e) {
+           reject('网络出错');
+        }
+     })
+  });
 }
 
-function createPostService(url) {
-  return async function (conf = {}) {
-    let res, data
-    try {
-      res = await axios.request({
-        url: url,
-        data: conf,
-        method: 'post'
-      })
-      return Promise.resolve(res)
-    } catch (err) {
-      return Promise.resolve({})
-    }
-  }
+/**
+ * 弹窗提示网络错误
+ */
+function showError(content){
+  wx.showModal({
+    title: '错误',
+    content: content,
+    showCancel: false,
+  })
 }
 
-export default {
-  createGetService: createGetService,
-  createPostService: createPostService
+/**
+ * 定义接口
+ */
+module.exports = {
+  post,API_URL,LIFE_SERVICE
 }
