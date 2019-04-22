@@ -6,7 +6,7 @@ Page({
     showList:[
       {
         text: '我的认证',
-        url: 'myidentity',
+        url: '/pages/identity/identity',
         img: '/resource/images/identity.png'
       },
       {

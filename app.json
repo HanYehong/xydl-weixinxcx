@@ -18,7 +18,8 @@
     "pages/orderDetail/orderDetail",
     "pages/meExpressOrder/meExpressOrder",
     "pages/acceptExpressOrder/acceptExpressOrder",
-    "pages/acceptOrderDetail/acceptOrderDetail"
+    "pages/acceptOrderDetail/acceptOrderDetail",
+    "pages/identity/identity"
   ],
   "window": {
     "navigationBarBackgroundColor": "#C8141F",
