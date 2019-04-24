@@ -1,4 +1,7 @@
 // pages/identity/identity.js
+let ajax = require('../../config/ajax')
+let service = require('../../config/service')
+
 Page({
 
   /**
@@ -14,7 +17,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    ajax.GET(service.API_URL + service.USER_SERVICE + '/user/isAuthorize', {username: 'zhangsan', password: '123456'}).then(data => {
+      if (data == 1) {
+        console.log("已认证");
+        this.setData({
+          isIdentity: true
+        })
+      } else {
+        console.log("未实名认证");
+        this.setData({
+          isIdentity: false
+        })
+      }
+    })
   },
 
   /**
@@ -69,7 +84,12 @@ Page({
   identity() {
     console.log(this.data.username);
     console.log(this.data.password);
-    this.isIdentity = true;
+    ajax.POST(service.API_URL + service.USER_SERVICE + '/user/authorize', {username: 'zhangsan', password: '123456'}).then(data => {
+      console.log("认证成功");
+      this.setData({
+        isIdentity: true
+      })
+    })
     this.showIdentityInfo;
   },
 
