@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    content: '',
+    contact: ''
   },
 
   /**
@@ -62,5 +63,9 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  commit(e) {
+    console.log(e);
   }
 })

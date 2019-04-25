@@ -1,7 +1,6 @@
 // pages/identity/identity.js
 let ajax = require('../../config/ajax')
 let service = require('../../config/service')
-const { $Toast } = require('../../dist/base/index')
 
 Page({
 
@@ -89,7 +88,6 @@ Page({
     console.log(this.data.username);
     console.log(this.data.password);
     ajax.POST(service.API_URL + service.USER_SERVICE + '/user/authorize', {username: 'zhangsan2', password: '123456'}).then(data => {
-      console.log("认证成功");
       console.log(data);
       wx.showToast({
         content: '认证成功',
