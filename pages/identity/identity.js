@@ -1,6 +1,7 @@
 // pages/identity/identity.js
 let ajax = require('../../config/ajax')
 let service = require('../../config/service')
+const { $Toast } = require('../../dist/base/index')
 
 Page({
 
@@ -10,23 +11,26 @@ Page({
   data: {
     username: '',
     password: '',
-    isIdentity: false
+    isIdentity: false,
+    identityData: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    ajax.GET(service.API_URL + service.USER_SERVICE + '/user/isAuthorize', {username: 'zhangsan', password: '123456'}).then(data => {
-      if (data == 1) {
-        console.log("已认证");
-        this.setData({
-          isIdentity: true
-        })
-      } else {
+    ajax.GET(service.API_URL + service.USER_SERVICE + '/user/isAuthorize').then(data => {
+      if (data == 0) {
         console.log("未实名认证");
         this.setData({
           isIdentity: false
+        })
+      } else {
+        console.log("已认证");
+        console.log(data);
+        this.setData({
+          isIdentity: true,
+          identityData: data
         })
       }
     })
@@ -84,16 +88,18 @@ Page({
   identity() {
     console.log(this.data.username);
     console.log(this.data.password);
-    ajax.POST(service.API_URL + service.USER_SERVICE + '/user/authorize', {username: 'zhangsan', password: '123456'}).then(data => {
+    ajax.POST(service.API_URL + service.USER_SERVICE + '/user/authorize', {username: 'zhangsan2', password: '123456'}).then(data => {
       console.log("认证成功");
+      console.log(data);
+      wx.showToast({
+        content: '认证成功',
+        type: 'success'
+      })
       this.setData({
-        isIdentity: true
+        isIdentity: true,
+        identityData: data
       })
     })
-    this.showIdentityInfo;
   },
 
-  showIdentityInfo() {
-    
-  }
 })

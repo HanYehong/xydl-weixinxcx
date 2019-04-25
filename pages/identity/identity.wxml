@@ -5,4 +5,13 @@
   </i-panel>
   <i-button bind:click="identity" type="success" shape="circle" size="small">认证</i-button>
 </view>
-<view wx:else>已认证</view>
+<view wx:else>
+  <view>
+    {{identityData.realName}},
+    {{identityData.studentId}},
+    {{identityData.sex == 1 ? '男' : '女'}},
+    {{identityData.academic}},
+    {{identityData.major}},
+    {{identityData.groupClass}}
+  </view>
+</view>
