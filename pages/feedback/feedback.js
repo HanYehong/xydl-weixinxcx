@@ -1,4 +1,6 @@
 // example/fdback/fdback.js
+let ajax = require('../../config/ajax');
+let service = require('../../config/service');
 Page({
 
   /**
@@ -6,7 +8,8 @@ Page({
    */
   data: {
     content: '',
-    contact: ''
+    contact: '',
+    formData: ''
   },
 
   /**
@@ -67,5 +70,16 @@ Page({
 
   commit(e) {
     console.log(e);
+    let that = this;
+    ajax.POST(service.API_URL + service.LIFE_SERVICE + '/feedback/commit', {content: e.detail.value.content, contactWay: e.detail.value.contact}).then(data => {
+      wx.showToast({
+        title: '我们已得到反馈',
+        success: res => {
+        //用onLoad周期方法重新加载，实现当前页面的刷新
+        that.setData({
+          formData: ''
+        })
+      }})
+    })
   }
 })

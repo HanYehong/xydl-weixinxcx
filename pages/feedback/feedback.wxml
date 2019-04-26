@@ -2,10 +2,10 @@
   <view class="page__bd">
     <form bindsubmit='commit'>
       <view class="section">
-        <textarea name="content" placeholder="说说您对我们的意见或建议，我们将不断改进，感谢您的支持！" />
+        <textarea name="content" value="{{formData}}" placeholder="说说您对我们的意见或建议，我们将不断改进，感谢您的支持！" />
       </view>
       <view class="section">
-        <textarea name="contact" style='height:50px;margin-top:16px;'  placeholder="留下您的联系方式，方便我们和您联系" />
+        <textarea name="contact" value="{{formData}}" style='height:50px;margin-top:16px;'  placeholder="留下您的联系方式，方便我们和您联系" />
       </view>
       <view class="section">
         <button form-type="submit" class="weui-btn" type="default" size="default" style="width:100%;margin-top:5%;">提交</button>
