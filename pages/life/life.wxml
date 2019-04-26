@@ -11,7 +11,7 @@
     </view>
   </view>
   <view class='buttons'>
-    <view class="button">
+    <view class="button" bindtap="viewLostFound">
       <image class='button-logo' src='../../resource/images/shiwu.png'></image>
       <text class="invitation">失物招领</text>
     </view>

@@ -1,0 +1,40 @@
+<view class="tabTit box">
+  <view class="flex1{{!tab[0]?' active':''}}" data-index="0" bindtap="filterTab">
+    <text>物品类型</text>
+  </view>
+  <view class="flex1{{!tab[1]?' active':''}}" data-index="1" bindtap="filterTab">
+    <text>失物地点</text>
+  </view>
+  <view class="flex1{{!tab[2]?' active':''}}" data-index="2" bindtap="filterTab">
+    <picker value="{{date}}" mode="date" bindchange="bindDateChange">
+    <view class="weui-input">{{date||'发布日期'}}</view>
+  </picker>
+  </view>
+</view>
+<!--筛选项-->
+<view class="tabLayer" hidden="{{tab[0]}}">
+    <text class="{{pinpai_id==0?'active':''}}" data-id="0" data-index="0" data-txt="物品类型" bindtap="filter">不限</text>
+    <text class="{{pinpai_id==item.id?'active':''}}" wx:for="{{pinpaiList}}" wx:key="pp" wx:for-item="item" data-id="{{item.id}}" data-index="0" data-txt="{{item.title}}" bindtap="filter">{{item.title}}</text>
+</view>
+<view class="tabLayer" hidden="{{tab[1]}}">
+    <text class="{{jiage_id==0?'active':''}}" data-id="0" data-index="1" data-txt="失物地点" bindtap="filter">不限</text>
+    <text class="{{jiage_id==1?'active':''}}" data-id="1" data-index="1" data-txt="信息楼" bindtap="filter">信息楼</text>
+    <text class="{{jiage_id==2?'active':''}}" data-id="2" data-index="1" data-txt="经管楼" bindtap="filter">经管楼</text>
+    <text class="{{jiage_id==3?'active':''}}" data-id="3" data-index="1" data-txt="东区操场" bindtap="filter">东区操场</text>
+</view>
+ 
+<view class='list'>
+  <block wx:for='{{dataList}}' wx:key='list' wx:for-item="item">
+  <view class="list_item">
+      <navigator url='details?id={{item.goods_id}}'>
+      <view class='img'>
+        <image src="{{imghref}}{{item.goods_img}}"  mode="scaleToFill"/>
+      </view>
+      <view class='info'>
+        <view class='shiwu-content'>{{item.goods_title}}</view>
+      </view>
+       </navigator>
+      <view class='clear'></view>
+  </view>
+  </block>
+</view>

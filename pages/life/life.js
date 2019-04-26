@@ -21,6 +21,13 @@ Page({
   },
 
   /**
+   * 失物招领
+   */
+  viewLostFound:() => {
+    app.navTo('lostFound')
+  },
+
+  /**
    * 帮拿快递
    */
   viewExpress:() => {
