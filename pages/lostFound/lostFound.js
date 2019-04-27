@@ -1,3 +1,4 @@
+let app = getApp();
 Page({
 
   /**
@@ -106,7 +107,11 @@ Page({
   //加载数据
   getDataList: function () {
     //调用数据接口，获取数据
-    
+
   },
+
+  navigateToPublish() {
+    app.navTo("publishLost");
+  }
 
 })

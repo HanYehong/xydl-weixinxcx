@@ -6,6 +6,9 @@
     <view class="weui-input">{{date||'发布日期'}}</view>
   </picker>
 </view>
+<view class="publish-button" bindtap="navigateToPublish">
+  <image class="publish-button-icon" src="/resource/images/publish-icon.svg" />
+</view>
 <!--筛选项-->
 <view class="tabLayer" hidden="{{tab[0]}}">
     <text class="{{type==0?'active':''}}" data-id="0" data-index="0" data-txt="物品类型" bindtap="filter">不限</text>

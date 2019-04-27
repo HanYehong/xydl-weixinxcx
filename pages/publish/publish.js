@@ -5,7 +5,6 @@ let enums = require('../../config/enums')
 var app = getApp();
 Page({
   data: {
-
     files: [],//选择的图片本地路径
     description: '',//描述
     weight: 0.5,
