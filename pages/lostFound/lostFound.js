@@ -8,45 +8,47 @@ Page({
     date:'',
     tab: [true, true, true],
     pinpaiList: [{ 'id': '1', 'title': 'U盘' }, { 'id': '2', 'title': '笔记本' }],
-    pinpai_id: 0,//品牌
-    pinpai_txt: '',
-    jiage_id: 0,//价格
-    jiage_txt: '',
-    xiaoliang_id: 0,//销量
-    xiaoliang_txt: '',
     dataList: [
       {
         goods_id: 1,
         goods_title: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
-        goods_img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        goods_xiaoliang: '0',
-        goods_price: '60'
+        goods_img: 'http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg',
+        location: '信息楼',
+        type: '笔记本',
+        createTime: '2019-4-27 13:55'
       }, {
         goods_id: 1,
-        goods_title: '商品标题2',
-        goods_img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        goods_xiaoliang: '0',
-        goods_price: '70'
+        goods_title: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
+        goods_img: 'http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg',
+        location: '信息楼',
+        type: '笔记本',
+        createTime: '2019-4-27 13:55'
       }, {
         goods_id: 1,
-        goods_title: '商品标题3',
-        goods_img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        goods_xiaoliang: '0',
-        goods_price: '80'
+        goods_title: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
+        goods_img: 'http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg',
+        location: '信息楼',
+        type: '笔记本',
+        createTime: '2019-4-27 13:55'
       }, {
         goods_id: 1,
-        goods_title: '商品标题4',
-        goods_img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        goods_xiaoliang: '0',
-        goods_price: '90'
+        goods_title: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
+        goods_img: 'http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg',
+        location: '信息楼',
+        type: '笔记本',
+        createTime: '2019-4-27 13:55'
       }, {
         goods_id: 1,
-        goods_title: '商品标题5',
-        goods_img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        goods_xiaoliang: '0',
-        goods_price: '110'
+        goods_title: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
+        goods_img: 'http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg',
+        location: '信息楼',
+        type: '笔记本',
+        createTime: '2019-4-27 13:55'
       }
     ],
+    type: 0,
+    location: 0,
+    createTime: 0
   },
 
   // 选项卡
@@ -66,15 +68,18 @@ Page({
 
   //筛选项点击操作
   filter: function (e) {
-    var self = this, id = e.currentTarget.dataset.id, txt = e.currentTarget.dataset.txt, tabTxt = this.data.tabTxt;
-    switch (e.currentTarget.dataset.index) {
+    let index = e.currentTarget.dataset.index;
+    let id = e.currentTarget.dataset.id;
+    let txt = e.currentTarget.dataset.txt;
+    let tabTxt = this.data.tabTxt;
+    let self = this;
+    switch (index) {
       case '0':
         tabTxt[0] = txt;
         self.setData({
           tab: [true, true, true],
           tabTxt: tabTxt,
-          pinpai_id: id,
-          pinpai_txt: txt
+          type: id
         });
         break;
       case '1':
@@ -82,8 +87,7 @@ Page({
         self.setData({
           tab: [true, true, true],
           tabTxt: tabTxt,
-          jiage_id: id,
-          jiage_txt: txt
+          location: id
         });
         break;
       case '2':
@@ -91,8 +95,7 @@ Page({
         self.setData({
           tab: [true, true, true],
           tabTxt: tabTxt,
-          xiaoliang_id: id,
-          xiaoliang_txt: txt
+          createTime: date
         });
         break;
     }
@@ -103,8 +106,7 @@ Page({
   //加载数据
   getDataList: function () {
     //调用数据接口，获取数据
-
-
-  }
+    
+  },
 
 })
