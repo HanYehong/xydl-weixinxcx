@@ -10,11 +10,33 @@ Page({
     contentCount: 0,
     title: '',
     content: '',
-    images: []
+    images: [],
+    showDialog1: false,
+    showDialog2: false,
+    items1: [
+      { name: 'U盘', value: '0' },
+      { name: '水杯', value: '1' },
+      { name: '本子', value: '2' },
+      { name: '钥匙', value: '3' },
+      { name: '小挂件', value: '4' },
+      { name: '笔', value: '5' },
+      { name: '首饰', value: '6' },
+      { name: '钱包', value: '7' },],
+    items2: [
+      { name: '信息楼', value: '0' },
+      { name: '经管楼', value: '1' },
+      { name: '图书馆', value: '2' },
+      { name: '东西管', value: '3' },
+      { name: '南管', value: '4' },
+      { name: '学海湾', value: '5' },
+      { name: '天印湖边', value: '6' },
+      { name: '食堂', value: '7' },],
+      value1: '',
+      value2: ''
   },
 
   onLoad(options) {
-    $init(this)
+    $init(this);
   },
 
   handleTitleInput(e) {
@@ -105,6 +127,103 @@ Page({
       //   wx.hideLoading()
       // })
     }
-  }
+  },
+
+  /*点击变色*/
+  click: function (e) {
+    var id = e.currentTarget.dataset.id
+    var that = this
+    that.setData({
+      id: id
+    })
+  },
+
+  radioChange1: function (e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    var that = this
+    let id = e.detail.value;
+    this.data.items1.forEach(x => {
+      if (x.value == id) {
+        that.setData({
+          value1: x.name
+        })
+      }
+    })
+    console.log(this.data.value1)
+  },
+
+  radioChange2: function (e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    var that = this
+    let id = e.detail.value;
+    this.data.items2.forEach(x => {
+      if (x.value == id) {
+        that.setData({
+          value2: x.name
+        })
+      }
+    })
+    console.log(this.data.value2)
+  },
+
+  toggleDialog1() {
+    this.setData({
+      showDialog1: !this.data.showDialog1
+    });
+  },
+  toggleDialog2() {
+    this.setData({
+      showDialog2: !this.data.showDialog2
+    });
+  },
+  freeBack1: function () {
+    var that = this
+    if (this.data.value == 'show') {
+      wx.showModal({
+        title: '提示',
+        content: '你没有选择任何内容',
+      })
+    }
+    that.setData({
+      showDialog1: !this.data.showDialog1
+    })
+  },
+  freetoBack1: function () {
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '你没有选择任何内容',
+    })
+    that.setData({
+      showDialog1: !this.data.showDialog1,
+      value1: '',
+      checked: false,
+    })
+  },
+
+  freeBack2: function () {
+    var that = this
+    if (this.data.value == 'show') {
+      wx.showModal({
+        title: '提示',
+        content: '你没有选择任何内容',
+      })
+    }
+    that.setData({
+      showDialog2: !this.data.showDialog2
+    })
+  },
+  freetoBack2: function () {
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '你没有选择任何内容',
+    })
+    that.setData({
+      showDialog2: !this.data.showDialog2,
+      value2: '',
+      checked: false,
+    })
+  },
 
 })

@@ -4,7 +4,7 @@
 
     <!-- 问题标题  -->
     <view class="question-title-wrap">
-      <input class="question-title" placeholder="请输入标题" maxlength="40" placeholder-style="color:#b3b3b3;font-size:18px;" bindinput="handleTitleInput"></input>
+      <input class="question-title" placeholder="你的联系方式（非必填）" maxlength="40" placeholder-style="color:#b3b3b3;font-size:14px;" bindinput="handleTitleInput"></input>
       <view class="title-input-counter">{{titleCount}}/40</view>
     </view>
 
@@ -12,13 +12,65 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="请输入问题的正文内容。" maxlength="500" placeholder-style="color:#b3b3b3;font-size:14px;" style="height: 12rem" bindinput="handleContentInput" />
+          <textarea class="weui-textarea" placeholder="请描述物品特征，以及取物地点等信息" maxlength="500" placeholder-style="color:#b3b3b3;font-size:14px;" style="height: 12rem" bindinput="handleContentInput" />
           <view class="weui-textarea-counter">{{contentCount}}/500</view>
         </view>
       </view>
     </view>
 
   </view>
+
+  <view class="free-btns" style="margin-top: 10vh;background:none;">
+  <button class="free-btn" bindtap="toggleDialog1">
+   物品类型：{{value1}}
+  </button>
+ </view>
+ 
+ <view class="free-dialog {{ showDialog1 ? 'free-dialog--show' : '' }}">
+  <view class="free-dialog__mask" bindtap="toggleDialog1" />
+  <view class="free-dialog__container">
+   <view style="padding: 5% 5% 15%;">
+    <form bindsubmit='submit' bindreset="reset">
+     <view bindtap='freetoBack1' class="free-button free-dialog-reset">取消</view>
+     <view bindtap='freeBack1' class="free-button free-dialog-submit">确定</view>
+ 
+     <radio-group class='free-radios' bindchange="radioChange1">
+      <label class="free-radio" bindtap="click" wx:for="{{items1}}" wx:key="{{items1}}" data-id="{{index}}" style="{{index==id?'background:#48c23d;color:#fff;':'background:#fff;color:#000;'}}">
+       <radio value="{{item.value}}" name="{{item.name}}"></radio>
+       <label class="free-text">{{item.name}}</label>
+      </label>
+     </radio-group>
+    </form>
+ 
+   </view>
+ </view>
+</view>
+
+<view class="free-btns" style="margin-top: 10vh;background:none;">
+  <button class="free-btn" bindtap="toggleDialog2">
+   拾物地点：{{value2}}
+  </button>
+ </view>
+ 
+ <view class="free-dialog {{ showDialog2 ? 'free-dialog--show' : '' }}">
+  <view class="free-dialog__mask" bindtap="toggleDialog2" />
+  <view class="free-dialog__container">
+   <view style="padding: 5% 5% 15%;">
+    <form bindsubmit='submit' bindreset="reset">
+     <view bindtap='freetoBack2' class="free-button free-dialog-reset">取消</view>
+     <view bindtap='freeBack2' class="free-button free-dialog-submit">确定</view>
+ 
+     <radio-group class='free-radios' bindchange="radioChange2">
+      <label class="free-radio" bindtap="click" wx:for="{{items2}}" wx:key="{{items2}}" data-id="{{index}}" style="{{index==id?'background:#48c23d;color:#fff;':'background:#fff;color:#000;'}}">
+       <radio value="{{item.value}}" name="{{item.name}}"></radio>
+       <label class="free-text">{{item.name}}</label>
+      </label>
+     </radio-group>
+    </form>
+ 
+   </view>
+ </view>
+</view>
 
   <view class="question-images-area">
 
