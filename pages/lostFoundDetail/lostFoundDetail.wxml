@@ -1,0 +1,20 @@
+<!--pages/lbsDetail/lbsDetail.wxml-->
+<view class="intro">
+    <swiper class="slide" indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}">
+        <swiper-item wx:for="{{target.lostImage[0] ? target.lostImage : ['https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=455610afdfc8a786a12a4c0e5708c9c7/5bafa40f4bfbfbedcb2d862a76f0f736afc31f6a.jpg']}}" wx:key="true">
+          <image src="{{item}}" class="slide-image" />
+        </swiper-item>
+    </swiper>
+    <view class="intro-info padding-leftRight">
+        <view class='info'>
+          <view>联系方式：{{target.contact}}</view>
+          <view>{{target.content}}</view>
+          <view style="display: inline-block; margin-top:10px;">
+            <view style="float: left;">{{target.lostTypeText}}</view>
+            <view style="float: left; margin-left:5px;">{{target.lostLocationText}}</view>
+          </view>
+          <view style="float: right; margin-top:10px;">{{target.createTime}}</view>
+      </view>
+    </view>
+</view>

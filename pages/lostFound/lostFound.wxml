@@ -23,20 +23,18 @@
  
 <view class='list'>
   <block wx:for='{{dataList}}' wx:key='list' wx:for-item="item">
-  <view class="list_item">
-      <navigator url='details?id={{item.goods_id}}'>
+  <view class="list_item" bindtap='navToDetail' data-id='{{item.lostNumber}}'>
       <view class='img'>
-        <image src="{{imghref}}{{item.goods_img}}"  mode="scaleToFill"/>
+        <image src="{{item.lostImage[0] ? item.lostImage[0] : 'https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=455610afdfc8a786a12a4c0e5708c9c7/5bafa40f4bfbfbedcb2d862a76f0f736afc31f6a.jpg'}}"  mode="scaleToFill"/>
       </view>
       <view class='info'>
         <view style="display: inline-block; font-size: 28rpx;">
-          <view style="float: left;">{{item.type}}</view>
-          <view style="float: left; margin-left:5px;">{{item.location}}</view>
+          <view style="float: left;">{{item.lostType}}</view>
+          <view style="float: left; margin-left:5px;">{{item.lostLocation}}</view>
         </view>
-        <view class='shiwu-content'>{{item.goods_title}}</view>
+        <view class='shiwu-content'>{{item.content}}</view>
         <view style="float: right; font-size: 25rpx;">{{item.createTime}}</view>
       </view>
-       </navigator>
       <view class='clear'></view>
   </view>
   </block>

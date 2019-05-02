@@ -16,6 +16,8 @@
 	"libVersion": "1.9.98",
 	"appid": "wx357d84bfbb36170b",
 	"projectname": "xydl-weixin",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

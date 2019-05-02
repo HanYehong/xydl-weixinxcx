@@ -1,4 +1,4 @@
-<view class="question-form">
+<view class="question-form" xmlns:wx="http://www.w3.org/1999/xhtml">
 
   <view class="question-input-area">
 
@@ -17,15 +17,23 @@
         </view>
       </view>
     </view>
-
   </view>
 
-  <view class="free-btns" style="margin-top: 10vh;background:none;">
-  <button class="free-btn" bindtap="toggleDialog1">
-   物品类型：{{value1}}
-  </button>
- </view>
- 
+  <view style='margin:20px; display: inline-block; width:100%'>
+    <view style="margin-top: 5vh;background:none; width:40%; float:left;">
+      <button bindtap="toggleDialog1" style='border: 1px #c8141f solid; width:100%'>
+        <view>物品类型</view>
+        <view>{{value1}}</view>
+      </button>
+    </view>
+    <view style="margin-top: 5vh;background:none; width:40%; float:left; margin-left:10%;">
+      <button bindtap="toggleDialog2" style='border: 1px #c8141f solid; width:100%'>
+        <view>拾物地点</view>
+        <view>{{value2}}</view>
+      </button>
+    </view>
+  </view>
+
  <view class="free-dialog {{ showDialog1 ? 'free-dialog--show' : '' }}">
   <view class="free-dialog__mask" bindtap="toggleDialog1" />
   <view class="free-dialog__container">
@@ -33,24 +41,16 @@
     <form bindsubmit='submit' bindreset="reset">
      <view bindtap='freetoBack1' class="free-button free-dialog-reset">取消</view>
      <view bindtap='freeBack1' class="free-button free-dialog-submit">确定</view>
- 
      <radio-group class='free-radios' bindchange="radioChange1">
-      <label class="free-radio" bindtap="click" wx:for="{{items1}}" wx:key="{{items1}}" data-id="{{index}}" style="{{index==id?'background:#48c23d;color:#fff;':'background:#fff;color:#000;'}}">
+      <label class="free-radio" bindtap="click1" wx:for="{{items1}}" wx:key="{{items1}}" data-id="{{item.value}}" style="{{item.value==id1?'background:#48c23d;color:#fff;':'background:#fff;color:#000;'}}">
        <radio value="{{item.value}}" name="{{item.name}}"></radio>
        <label class="free-text">{{item.name}}</label>
       </label>
      </radio-group>
     </form>
- 
    </view>
  </view>
 </view>
-
-<view class="free-btns" style="margin-top: 10vh;background:none;">
-  <button class="free-btn" bindtap="toggleDialog2">
-   拾物地点：{{value2}}
-  </button>
- </view>
  
  <view class="free-dialog {{ showDialog2 ? 'free-dialog--show' : '' }}">
   <view class="free-dialog__mask" bindtap="toggleDialog2" />
@@ -59,26 +59,22 @@
     <form bindsubmit='submit' bindreset="reset">
      <view bindtap='freetoBack2' class="free-button free-dialog-reset">取消</view>
      <view bindtap='freeBack2' class="free-button free-dialog-submit">确定</view>
- 
      <radio-group class='free-radios' bindchange="radioChange2">
-      <label class="free-radio" bindtap="click" wx:for="{{items2}}" wx:key="{{items2}}" data-id="{{index}}" style="{{index==id?'background:#48c23d;color:#fff;':'background:#fff;color:#000;'}}">
+      <label class="free-radio" bindtap="click2" wx:for="{{items2}}" wx:key="{{items2}}" data-id="{{item.value}}" style="{{item.value==id2?'background:#48c23d;color:#fff;':'background:#fff;color:#000;'}}">
        <radio value="{{item.value}}" name="{{item.name}}"></radio>
        <label class="free-text">{{item.name}}</label>
       </label>
      </radio-group>
     </form>
- 
    </view>
  </view>
 </view>
 
   <view class="question-images-area">
-
     <!-- 添加图片按钮  -->
     <view class="question-images-tool">
       <button type="default" size="mini" bindtap="chooseImage" wx:if="{{images.length < 3}}">添加图片</button>
     </view>
-
     <!-- 图片缩略图  -->
     <view class="question-images">
       <block wx:for="{{images}}" wx:key="*this">
@@ -88,7 +84,6 @@
         </view>
       </block>
     </view>
-
   </view>
 
   <!-- 提交表单按钮  -->

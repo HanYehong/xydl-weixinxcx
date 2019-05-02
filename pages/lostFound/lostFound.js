@@ -11,39 +11,39 @@ Page({
     pinpaiList: [{ 'id': '1', 'title': 'U盘' }, { 'id': '2', 'title': '笔记本' }],
     dataList: [
       {
-        goods_id: 1,
-        goods_title: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
-        goods_img: 'http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg',
-        location: '信息楼',
-        type: '笔记本',
+        lostNumber: 1,
+        content: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
+        lostImage: [],
+        lostLocation: 5,
+        lostType: 3,
         createTime: '2019-4-27 13:55'
       }, {
-        goods_id: 1,
-        goods_title: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
-        goods_img: 'http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg',
-        location: '信息楼',
-        type: '笔记本',
+        lostNumber: 1,
+        content: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
+        lostImage: ['http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg'],
+        lostLocation: 2,
+        lostType: 1,
         createTime: '2019-4-27 13:55'
       }, {
-        goods_id: 1,
-        goods_title: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
-        goods_img: 'http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg',
-        location: '信息楼',
-        type: '笔记本',
+        lostNumber: 1,
+        content: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
+        lostImage: ['http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg'],
+        lostLocation: 1,
+        lostType: 0,
         createTime: '2019-4-27 13:55'
       }, {
-        goods_id: 1,
-        goods_title: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
-        goods_img: 'http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg',
-        location: '信息楼',
-        type: '笔记本',
+        lostNumber: 1,
+        content: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
+        lostImage: ['http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg'],
+        lostLocation: 3,
+        lostType: 3,
         createTime: '2019-4-27 13:55'
       }, {
-        goods_id: 1,
-        goods_title: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
-        goods_img: 'http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg',
-        location: '信息楼',
-        type: '笔记本',
+        lostNumber: 1,
+        content: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
+        lostImage: ['http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg'],
+        lostLocation: 4,
+        lostType: 1,
         createTime: '2019-4-27 13:55'
       }
     ],
@@ -112,6 +112,14 @@ Page({
 
   navigateToPublish() {
     app.navTo("publishLost");
+  },
+
+  navToDetail(e) {
+    let id = e.currentTarget.dataset.id;
+    console.log("选中的失物招领为：" + id);
+    wx.navigateTo({
+      url: '/pages/lostFoundDetail/lostFoundDetail?lostNumber=' + id,
+    })
   }
 
 })
