@@ -14,7 +14,7 @@
   <!-- 订单信息 -->
   <view class="weui-cells__title">物品大小</view>
   <view class="weui-cells weui-cells_after-title">
-    <radio-group>
+    <radio-group bindchange="changeRadio">
       <label class="weui-cell weui-check__label">
         <view wx:for="{{sizeList}}" wx:key="value">
           <radio style='float:left;margin-left:5px;' value="{{item.value}}" name="sizeList" checked='{{item.value == 0 ? true : false}}'></radio>
@@ -109,16 +109,16 @@
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__bd cell-title">有效截至日期</view>
       <view class="weui-cell__ft">
-        <picker mode="date" value="{{date}}" start="{{startDate}}" bindchange="bindDateChange">
-          <view class="weui-input">{{date||'到哪天自动删除'}}</view>
+        <picker mode="date" value="{{form.date}}" start="{{startDate}}" bindchange="bindDateChange">
+          <view class="weui-input">{{form.date||'到哪天自动删除'}}</view>
         </picker>
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__bd cell-title">有效截至时间</view>
       <view class="weui-cell__ft">
-        <picker mode="time" value="{{time}}" start="{{startTime}}" bindchange="bindTimeChange">
-          <view class="weui-input">{{time||'到什么时候自动删除'}}</view>
+        <picker mode="time" value="{{form.time}}" start="{{startTime}}" bindchange="bindTimeChange">
+          <view class="weui-input">{{form.time||'到什么时候自动删除'}}</view>
         </picker>
       </view>
     </view>
@@ -150,6 +150,6 @@
     </label>
   </checkbox-group>
   <view class="weui-btn-area">
-    <button class="weui-btn" type="primary" bindtap="cReleaseOrder">确认发布</button>
+    <button class="weui-btn" type="primary" bindtap="publish">确认发布</button>
   </view>
 </view>

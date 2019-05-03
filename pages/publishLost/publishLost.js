@@ -19,6 +19,7 @@ Page({
   },
 
   onLoad(options) {
+    $init(this);
     let items1 = [];
     for (let item in enums.LOCATION) {
       items1.push({

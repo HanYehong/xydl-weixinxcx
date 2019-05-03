@@ -5,20 +5,20 @@ let enums = require('../../config/enums')
 var app = getApp();
 Page({
   data: {
-    files: [],//选择的图片本地路径
-    description: '',//描述
+    form: {
+      description: '',//描述
+      //日期选择
+      date: "",
+      time: "",
+      size: -1,
+    },
     weight: 0.5,
-    fromCityName: '',
-    toCityName: '',
-    //日期选择
-    startDate: '',
-    startDate:'',
-    date: "",
-    time:"",
-    extraList: [], //特别属性
-    sizeList: [], //特别属性
-    isAgree: true, //是否同意条款
+    startDate: '',    
+    startTime: '',
+    isAgree: true, //是否同意条款    
     type: 0,
+    extraList: [], //特别属性
+    sizeList: [],
     expressList: [],
     expressName: []
   },
@@ -176,5 +176,20 @@ Page({
 
   expressPickerChange(e) {
     console.log(e.detail.value);
+  },
+
+  changeRadio(e) {
+    console.log("物品大小：")
+    console.log(e);
+    let form = this.data.form;
+    form.size = e.detail.value;
+    this.setData({
+      form
+    })
+    console.log(this.data.form);
+  },
+
+  publish() {
+
   }
 });
