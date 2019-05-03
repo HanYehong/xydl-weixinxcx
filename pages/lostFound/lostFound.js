@@ -1,14 +1,16 @@
 let app = getApp();
+let enums = require("../../config/enums");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabTxt: ['物品类型', '失物地点'],//分类
-    date:'',
+    tabTxt: ['失物地点', '物品类型'],//分类
     tab: [true, true, true],
     pinpaiList: [{ 'id': '1', 'title': 'U盘' }, { 'id': '2', 'title': '笔记本' }],
+    lostLocation: [],
+    lostType: [],
     dataList: [
       {
         lostNumber: 1,
@@ -47,9 +49,33 @@ Page({
         createTime: '2019-4-27 13:55'
       }
     ],
-    type: 0,
-    location: 0,
-    createTime: 0
+    type: -1,
+    location: -1,
+    createTime: ''
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    let lostLocation = [];
+    for (let item in enums.LOCATION) {
+      lostLocation.push({
+        id: item,
+        name: enums.LOCATION[item]
+      })
+    }
+    let lostType = [];
+    for (let item in enums.LOSTTYPE) {
+      lostType.push({
+        id: item,
+        name: enums.LOSTTYPE[item]
+      })
+    }
+    this.setData({
+      lostLocation,
+      lostType
+    })
   },
 
   // 选项卡
@@ -63,8 +89,9 @@ Page({
 
   bindDateChange: function (e) {
     this.setData({
-      date: e.detail.value
+      createTime: e.detail.value
     })
+    this.getDataList();
   },
 
   //筛选项点击操作
@@ -78,28 +105,20 @@ Page({
       case '0':
         tabTxt[0] = txt;
         self.setData({
-          tab: [true, true, true],
-          tabTxt: tabTxt,
-          type: id
+          location: id
         });
         break;
       case '1':
         tabTxt[1] = txt;
         self.setData({
-          tab: [true, true, true],
-          tabTxt: tabTxt,
-          location: id
-        });
-        break;
-      case '2':
-        tabTxt[2] = txt;
-        self.setData({
-          tab: [true, true, true],
-          tabTxt: tabTxt,
-          createTime: date
+          type: id
         });
         break;
     }
+    self.setData({
+      tab: [true, true, true],
+      tabTxt
+    });
     //数据筛选
     self.getDataList();
   },
@@ -107,7 +126,9 @@ Page({
   //加载数据
   getDataList: function () {
     //调用数据接口，获取数据
-
+    console.log("地点：" + this.data.location);
+    console.log("类型：" + this.data.type);
+    console.log("日期：" + this.data.createTime);
   },
 
   navigateToPublish() {

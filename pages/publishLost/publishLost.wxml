@@ -22,13 +22,13 @@
   <view style='margin:20px; display: inline-block; width:100%'>
     <view style="margin-top: 5vh;background:none; width:40%; float:left;">
       <button bindtap="toggleDialog1" style='border: 1px #c8141f solid; width:100%'>
-        <view>物品类型</view>
+        <view>拾物地点</view>
         <view>{{value1}}</view>
       </button>
     </view>
     <view style="margin-top: 5vh;background:none; width:40%; float:left; margin-left:10%;">
       <button bindtap="toggleDialog2" style='border: 1px #c8141f solid; width:100%'>
-        <view>拾物地点</view>
+        <view>物品类型</view>
         <view>{{value2}}</view>
       </button>
     </view>
