@@ -8,7 +8,7 @@ Page({
    */
   data: {
     activeCategory:'',//当前激活的分类
-    categoryData: ['校门', '食堂', '宿舍楼', '图书馆','教学楼','学院','快递点','运动场','小吃店','超市','医务室','银行','活动场所','生活服务'],
+    categoryData: ['校门', '食堂', '宿舍楼', '图书馆','教学楼','学院','快递点','运动场','小吃店','超市水果店','医务室','银行','活动场所','生活服务'],
     coreLongitude: '118.879990',//中心经度
     coreLatitude: '31.922330',//中心纬度
     polyline: [],
@@ -79,7 +79,7 @@ Page({
           bgColor:'#fff',
           padding:10,
           textAlign:'center',
-          display:'CLICK'
+          display:'BYCLICK'
         },
         width: 32,
         height: 40
