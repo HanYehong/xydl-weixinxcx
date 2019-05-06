@@ -9,6 +9,7 @@ Page({
     coreLatitude: '31.922330',//中心纬度
     scale: 17,//缩放级别
     markers: [],//标记点
+    car: [0, 8,20,37, 66, 79, 88, 90, 92, 101],
     polyline: [{
       points: [
         {latitude: 31.922931, longitude: 118.888233},   // 教育超市
@@ -173,25 +174,53 @@ Page({
     this.setData({
       markers
     })
-    var that = this;
-    var i = 0;
-    // var timer = setInterval(function () {
-    //   wx.request({
-    //     url: 'http://192.168.43.38:7777/xydl-atlas/carMarkers',
-    //     method: 'GET',
-    //     header: { 'content-type': 'application/json' },
-    //     data: {},
-    //     success: function (res) {
-    //       console.log(res.data.data);
-    //       that.setCarMarkers(res.data.data);
-    //       i++;
-    //       if (i == 20) {
-    //         clearInterval(timer);
-    //       }
+    var timer = setInterval(this.changeCarPoints, 3000)
+  },
+
+  changeCarPoints: function () {
+    let markers = this.data.markers;
+    if (markers.length >= 25 ) {
+      for(let item = 0; item < 10; item++) {
+        markers.pop();
+      }
+    }
+    console.log("markers:")
+    console.log(markers);
+    let car = this.data.car;
+    let that = this;
+    car.forEach(x => {
+      markers.push({
+        id: 'car'+x,
+        latitude: that.data.polyline[0].points[x].latitude,
+        longitude: that.data.polyline[0].points[x].longitude,
+        iconPath: "../../resource/images/gongjiao.png",
+        width: 32,
+        height: 40
+      })
+    })
+    for (let i = 0; i < car.length; i++) {
+      car[i] = (car[i] + 1) % 109;
+    }
+    this.setData({
+      markers,
+      car
+    })
+    console.log("car:")
+    console.log(this.data.car);
+    // wx.request({
+    //   url: 'http://192.168.43.38:7777/xydl-atlas/carMarkers',
+    //   method: 'GET',
+    //   header: { 'content-type': 'application/json' },
+    //   data: {},
+    //   success: function (res) {
+    //     console.log(res.data.data);
+    //     that.setCarMarkers(res.data.data);
+    //     i++;
+    //     if (i == 20) {
+    //       clearInterval(timer);
     //     }
-    //   })
-    // }
-    //   , 2000)
+    //   }
+    // })
   },
 
   /**
