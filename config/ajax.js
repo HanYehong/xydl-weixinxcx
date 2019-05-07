@@ -2,6 +2,9 @@ function POST (url, data){
   return new Promise((resolve, reject) => {
      var that = this;
      var postData = data;
+     wx.showLoading({
+      title: '加载中',
+     })
      wx.request({
         url: url,
         data: postData,
@@ -23,6 +26,9 @@ function POST (url, data){
         },
         error: function (e) {
           showError('网络出错');
+        },
+        complete: function (e) {
+          wx.hideLoading();
         }
      })
   });
@@ -32,6 +38,9 @@ function GET (url, data) {
   return new Promise((resolve, reject) => {
     var that = this;
     var postData = data;
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: url,
       data: postData,
@@ -53,6 +62,9 @@ function GET (url, data) {
       },
       error: function (e) {
         reject('网络出错');
+      },
+      complete: function (e) {
+        wx.hideLoading();
       }
     })
   });

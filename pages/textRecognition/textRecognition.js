@@ -1,5 +1,6 @@
 import { $init, $digest } from '../../utils/common.util'
-
+let ajax = require("../../config/ajax.js");
+let service = require("../../config/service.js");
 Page({
   data: {
     images: [],
@@ -12,31 +13,39 @@ Page({
   },
 
   chooseImage(e) {
+    this.setData({
+      resultText: ''
+    })
+    let that = this
     wx.chooseImage({
-      count: 3,
+      count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: res => {
-        const images = this.data.images.concat(res.tempFilePaths)
-        this.data.images = images.length <= 1 ? images : images.slice(0, 1)
-        $digest(this)
-        let that = this
-        res.tempFilePaths.forEach(x => {
-          let MyFile = new wx.BaaS.File()
-          let fileParams = {filePath: x}
-          let metaData = {categoryName: '文字识别图片库'}
-          MyFile.upload(fileParams, metaData).then(res => {
-            // 上传成功
-            let data = res.data  // res.data 为 Object 类型
-            let filesPath = that.data.filesPath
-            filesPath.push(data.path)
-            that.setData({
-              filesPath
-            })
-            console.log("文件上传成功，数据：")
-            console.log(data);
-          }, err => {
-            // HError 对象
+        let images = res.tempFilePaths;
+        let MyFile = new wx.BaaS.File()
+        let fileParams = {filePath: images[0]}
+        let metaData = {categoryName: '文字识别图片库'}
+        wx.showLoading({
+          title: '加载文件',
+        })
+        MyFile.upload(fileParams, metaData).then(res => {
+          // 上传成功
+          wx.hideLoading();
+          let filesPath = [];
+          filesPath.push(res.data.path);
+          that.setData({
+            filesPath,
+            images
+          })
+          console.log("文件上传成功，数据：")
+          console.log(that.data.images);
+        }, err => {
+          // HError 对象
+          wx.showToast({
+            title: '加载失败',
+            icon: 'error',
+            duration: 2000
           })
         })
       }
@@ -44,18 +53,17 @@ Page({
   },
 
   removeImage(e) {
-    const idx = e.target.dataset.idx
-    this.data.images.splice(idx, 1)
-    this.data.filesPath.splice(idx, 1)
-    $digest(this)
+    this.setData({
+      images: [],
+      filesPath: []
+    })
+    console.log(this.data.images);
   },
 
   handleImagePreview(e) {
-    const idx = e.target.dataset.idx
     const images = this.data.images
-
     wx.previewImage({
-      current: images[idx],
+      current: images[0],
       urls: images,
     })
   },
@@ -63,10 +71,14 @@ Page({
   beginRecognize() {
     console.log("识别中……")
     console.log(this.data.filesPath)
-    this.setData({
-      resultText: '识别结果识别结果识别结果识别结果识别结果识别结果识别结果识别结果识别结果识别结果识别结果识别结果'
+    let that = this;
+    ajax.POST(service.ROBOT_RECOFNIZE, {"imageUrl": that.data.filesPath[0]}).then(data => {
+      console.log("识别成功，结果：")
+      console.log(data);
+      that.setData({
+        resultText: data
+      })
     })
-    console.log("识别成功")
   },
 
   longTap() {

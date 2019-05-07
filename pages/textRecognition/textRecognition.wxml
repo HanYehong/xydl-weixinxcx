@@ -7,8 +7,8 @@
     <view class="question-images">
         <block wx:for="{{images}}" wx:key="*this">
             <view class="q-image-wrap">
-                <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
-                <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+                <image class="q-image" src="{{item}}" mode="aspectFill" bindtap="handleImagePreview"></image>
+                <view class="q-image-remover" bindtap="removeImage">删除</view>
             </view>
         </block>
     </view>

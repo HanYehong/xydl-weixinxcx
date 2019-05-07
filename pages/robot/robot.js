@@ -1,5 +1,6 @@
 let app = getApp();
 let ajax = require("../../config/ajax.js");
+let service = require("../../config/service.js");
 Page({
   data:{
     message:[],
@@ -54,7 +55,7 @@ Page({
       //发送信息
       this.setMessage(msg);
       //消息回复
-      ajax.POST(ajax.API_URL + ajax.LIFE_SERVICE + '/robot/chat', {"msg": msg.content}).then(data => {
+      ajax.POST(service.ROBOT_CHAT, {"msg": msg.content}).then(data => {
         console.log("机器人回复：");
         console.log(data);
         that.setReplyMessage(data);
