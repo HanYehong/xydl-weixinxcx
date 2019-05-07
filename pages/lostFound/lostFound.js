@@ -1,5 +1,8 @@
 let app = getApp();
 let enums = require("../../config/enums");
+let service = require("../../config/service.js");
+let ajax = require("../../config/ajax.js");
+let commonUtil = require("../../utils/common.util.js");
 Page({
 
   /**
@@ -8,47 +11,9 @@ Page({
   data: {
     tabTxt: ['失物地点', '物品类型'],//分类
     tab: [true, true, true],
-    pinpaiList: [{ 'id': '1', 'title': 'U盘' }, { 'id': '2', 'title': '笔记本' }],
     lostLocation: [],
     lostType: [],
-    dataList: [
-      {
-        lostNumber: 1,
-        content: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
-        lostImage: [],
-        lostLocation: 5,
-        lostType: 3,
-        createTime: '2019-4-27 13:55'
-      }, {
-        lostNumber: 1,
-        content: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
-        lostImage: ['http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg'],
-        lostLocation: 2,
-        lostType: 1,
-        createTime: '2019-4-27 13:55'
-      }, {
-        lostNumber: 1,
-        content: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
-        lostImage: ['http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg'],
-        lostLocation: 1,
-        lostType: 0,
-        createTime: '2019-4-27 13:55'
-      }, {
-        lostNumber: 1,
-        content: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
-        lostImage: ['http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg'],
-        lostLocation: 3,
-        lostType: 3,
-        createTime: '2019-4-27 13:55'
-      }, {
-        lostNumber: 1,
-        content: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
-        lostImage: ['http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg'],
-        lostLocation: 4,
-        lostType: 1,
-        createTime: '2019-4-27 13:55'
-      }
-    ],
+    dataList: [],
     type: -1,
     location: -1,
     createTime: ''
@@ -76,6 +41,7 @@ Page({
       lostLocation,
       lostType
     })
+    this.getDataList();
   },
 
   // 选项卡
@@ -129,6 +95,23 @@ Page({
     console.log("地点：" + this.data.location);
     console.log("类型：" + this.data.type);
     console.log("日期：" + this.data.createTime);
+    let that = this;
+    ajax.POST(service.LOST_FOUND_SELECT, {
+      lostType: that.data.type,
+      lostLocation: that.data.location,
+      createTime: that.data.createTime
+    }, '加载列表').then(data => {
+      console.log("筛选失物招领，数据：")
+      console.log(data);
+      data.forEach(x => {
+        x.lostTypeText = enums.LOSTTYPE[x.lostType];
+        x.lostLocationText = enums.LOCATION[x.lostLocation];
+        x.createTime = that.formatTime(x.createTime)
+      })
+      that.setData({
+        dataList: data
+      })
+    })
   },
 
   navigateToPublish() {
@@ -141,6 +124,23 @@ Page({
     wx.navigateTo({
       url: '/pages/lostFoundDetail/lostFoundDetail?lostNumber=' + id,
     })
+  },
+
+  /**************************************时间格式化处理************************************/
+  formatTime(date) {
+    var date = new Date(date);  
+    let year = date.getFullYear()
+    let month = this.format(date.getMonth() + 1)
+    let day = this.format(date.getDate())
+    let hour = this.format(date.getHours())
+    let minute = this.format(date.getMinutes())
+    let second = this.format(date.getSeconds())
+    return [year, month, day].join('-') + ' ' + [hour, minute, second].join(':')
+  },
+
+  format(data) {
+    if (data < 10) data = '0' + data;
+    return data;
   }
 
 })

@@ -1,18 +1,28 @@
-let API_URL = 'http://192.168.43.38:7777';
-let LIFE_SERVICE = '/xydl-life';
-let USER_SERVICE = '/xydl-user';
-let ATLAS_SERVICE = '/xydl-atlas';
-let ROBOT_CHAT = API_URL + LIFE_SERVICE + '/robot/chat';
-let ROBOT_RECOFNIZE = API_URL + LIFE_SERVICE + '/robot/recognize';
+const API_URL = 'http://192.168.43.38:7777';
+const LIFE_SERVICE = '/xydl-life';
+const USER_SERVICE = '/xydl-user';
+const ATLAS_SERVICE = '/xydl-atlas';
+/**
+ * 机器人相关接口
+ */
+const ROBOT_CHAT = API_URL + LIFE_SERVICE + '/robot/chat';
+const ROBOT_RECOFNIZE = API_URL + LIFE_SERVICE + '/robot/recognize';
+/**
+ * 失物招领相关接口
+ */
+const LOST_FOUND_SELECT = API_URL + LIFE_SERVICE + '/lostFound/select';
+const LOST_FOUND_PUBLISH = API_URL + LIFE_SERVICE + '/lostFound/publish';
+const LOST_FOUND_DELETE = API_URL + LIFE_SERVICE + '/lostFound/delete';
+const LOST_FOUND_LIST_MINE = API_URL + LIFE_SERVICE + '/lostFound/listMine';
 
 /**
  * 定义接口
  */
 module.exports = {
-  API_URL,
-  LIFE_SERVICE,
-  USER_SERVICE,
-  ATLAS_SERVICE,
   ROBOT_CHAT,
-  ROBOT_RECOFNIZE
+  ROBOT_RECOFNIZE,
+  LOST_FOUND_SELECT,
+  LOST_FOUND_PUBLISH,
+  LOST_FOUND_DELETE,
+  LOST_FOUND_LIST_MINE
 }
