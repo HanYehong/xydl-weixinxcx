@@ -2,7 +2,6 @@ let app = getApp();
 let enums = require("../../config/enums");
 let service = require("../../config/service.js");
 let ajax = require("../../config/ajax.js");
-let commonUtil = require("../../utils/common.util.js");
 Page({
 
   /**

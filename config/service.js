@@ -14,6 +14,7 @@ const LOST_FOUND_SELECT = API_URL + LIFE_SERVICE + '/lostFound/select';
 const LOST_FOUND_PUBLISH = API_URL + LIFE_SERVICE + '/lostFound/publish';
 const LOST_FOUND_DELETE = API_URL + LIFE_SERVICE + '/lostFound/delete';
 const LOST_FOUND_LIST_MINE = API_URL + LIFE_SERVICE + '/lostFound/listMine';
+const LOST_FOUND_GET_ONE = API_URL + LIFE_SERVICE + '/lostFound/getLostFound';
 
 /**
  * 定义接口
@@ -24,5 +25,6 @@ module.exports = {
   LOST_FOUND_SELECT,
   LOST_FOUND_PUBLISH,
   LOST_FOUND_DELETE,
-  LOST_FOUND_LIST_MINE
+  LOST_FOUND_LIST_MINE,
+  LOST_FOUND_GET_ONE
 }

@@ -1,6 +1,8 @@
 // pages/lbsDetail/lbsDetail.js
 const app = getApp();
-const enums = require("../../config/enums.js");
+let enums = require("../../config/enums");
+let service = require("../../config/service.js");
+let ajax = require("../../config/ajax.js");
 Page({
 
   /**
@@ -27,15 +29,16 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    let lostNumber = options.lostNumber;
-    console.log(lostNumber);
-    let target = this.data.target;
-    target.lostLocationText = enums.LOCATION[target.lostLocation];
-    target.lostTypeText = enums.LOSTTYPE[target.lostType];
-    this.setData({
-      target
+    console.log(options.lostNumber);
+    ajax.POST(service.LOST_FOUND_GET_ONE, {lostNumber: options.lostNumber}).then(data => {
+      console.log("得到失物招领详情：")
+      console.log(data);
+      data.lostLocationText = enums.LOCATION[data.lostLocation];
+      data.lostTypeText = enums.LOSTTYPE[data.lostType];
+      that.setData({
+        target: data
+      })
     })
-    console.log(this.data.target);
   },
 
   /**
