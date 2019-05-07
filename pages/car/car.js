@@ -184,8 +184,6 @@ Page({
         markers.pop();
       }
     }
-    console.log("markers:")
-    console.log(markers);
     let car = this.data.car;
     let that = this;
     car.forEach(x => {
@@ -205,8 +203,6 @@ Page({
       markers,
       car
     })
-    console.log("car:")
-    console.log(this.data.car);
     // wx.request({
     //   url: 'http://192.168.43.38:7777/xydl-atlas/carMarkers',
     //   method: 'GET',

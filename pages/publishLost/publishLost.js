@@ -5,17 +5,18 @@ const enums = require("../../config/enums.js");
 
 Page({
   data: {
-    titleCount: 0,
+    contactCount: 0,
     contentCount: 0,
-    title: '',
-    content: '',
     images: [],
     showDialog1: false,
     showDialog2: false,
     items1: [],
     items2: [],
     value1: '',
-    value2: ''
+    value2: '',
+    lostType: -1,
+    lostLocation: -1,
+    filesPath: []
   },
 
   onLoad(options) {
@@ -63,6 +64,25 @@ Page({
         const images = this.data.images.concat(res.tempFilePaths)
         this.data.images = images.length <= 3 ? images : images.slice(0, 3)
         $digest(this)
+        let that = this
+        res.tempFilePaths.forEach(x => {
+          let MyFile = new wx.BaaS.File()
+          let fileParams = {filePath: x}
+          let metaData = {categoryName: '失物招领图片库'}
+          MyFile.upload(fileParams, metaData).then(res => {
+            // 上传成功
+            let data = res.data  // res.data 为 Object 类型
+            let filesPath = that.data.filesPath
+            filesPath.push(data.path)
+            that.setData({
+              filesPath
+            })
+            console.log("文件上传成功，数据：")
+            console.log(data);
+          }, err => {
+            // HError 对象
+          })
+        })
       }
     })
   },
@@ -154,7 +174,8 @@ Page({
     this.data.items1.forEach(x => {
       if (x.value == id) {
         that.setData({
-          value1: x.name
+          value1: x.name,
+          lostLocation: id
         })
       }
     })
@@ -168,7 +189,8 @@ Page({
     this.data.items2.forEach(x => {
       if (x.value == id) {
         that.setData({
-          value2: x.name
+          value2: x.name,
+          lostType: id
         })
       }
     })
@@ -208,12 +230,25 @@ Page({
       showDialog2: !this.data.showDialog2
     })
   },
+
   freetoBack2: function () {
     var that = this
     that.setData({
       showDialog2: !this.data.showDialog2,
       checked: false,
     })
+  },
+
+  commit(e) {
+    let form = {
+      contactWay: e.detail.value.contactWay,
+      content: e.detail.value.content,
+      lostLocation: this.data.lostLocation,
+      lostType: this.data.lostType,
+      filesPath: this.data.filesPath
+    };
+    console.log("即将提交表单，表单数据为：");
+    console.log(form);
   },
 
 })
