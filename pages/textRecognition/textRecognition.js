@@ -5,7 +5,8 @@ Page({
   data: {
     images: [],
     filesPath: [],
-    resultText: ''
+    resultText: '',
+    isDisable: true
   },
 
   onLoad(options) {
@@ -14,7 +15,8 @@ Page({
 
   chooseImage(e) {
     this.setData({
-      resultText: ''
+      resultText: '',
+      isDisable: true
     })
     let that = this
     wx.chooseImage({
@@ -26,6 +28,9 @@ Page({
         let MyFile = new wx.BaaS.File()
         let fileParams = {filePath: images[0]}
         let metaData = {categoryName: '文字识别图片库'}
+        that.setData({
+          images
+        })
         wx.showLoading({
           title: '加载文件',
         })
@@ -36,7 +41,7 @@ Page({
           filesPath.push(res.data.path);
           that.setData({
             filesPath,
-            images
+            isDisable: false
           })
           console.log("文件上传成功，数据：")
           console.log(that.data.images);
@@ -55,7 +60,9 @@ Page({
   removeImage(e) {
     this.setData({
       images: [],
-      filesPath: []
+      filesPath: [],
+      resultText: '',
+      isDisable: true
     })
     console.log(this.data.images);
   },

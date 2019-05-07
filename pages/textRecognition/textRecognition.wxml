@@ -12,11 +12,11 @@
             </view>
         </block>
     </view>
-    <view style="margin-top: 10px;" wx:if="{{images.length > 0}}">
-        <i-button bind:click="beginRecognize" type="success" shape="circle" size="small">开始识别</i-button>
+    <view style="margin-top: 10px;">
+        <i-button disabled="{{isDisable}}" bind:click="beginRecognize" type="success" shape="circle" size="small">开始识别</i-button>
         <i-divider wx:if="{{resultText.length > 0}}"/>
-        <view style="padding: 20px;" bindlongtap="longTap">
-            <view style="color: #c8141f" wx:if="{{resultText.length > 0}}">[长按复制]</view>
+        <view style="padding: 20px;" bindlongtap="longTap" wx:if="{{resultText.length > 0}}">
+            <view style="color: #c8141f">[长按复制]</view>
             <span>{{resultText}}</span>
         </view>
     </view>
