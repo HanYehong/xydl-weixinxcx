@@ -41,16 +41,14 @@ Page({
     })
   },
 
-  handleTitleInput(e) {
+  handleContactInput(e) {
     const value = e.detail.value
-    this.data.title = value
-    this.data.titleCount = value.length
+    this.data.contactCount = value.length
     $digest(this)
   },
 
   handleContentInput(e) {
     const value = e.detail.value
-    this.data.content = value
     this.data.contentCount = value.length
     $digest(this)
   },
@@ -90,7 +88,10 @@ Page({
   removeImage(e) {
     const idx = e.target.dataset.idx
     this.data.images.splice(idx, 1)
+    this.data.filesPath.splice(idx, 1)
     $digest(this)
+    console.log("删除文件")
+    console.log(this.data.filesPath)
   },
 
   handleImagePreview(e) {

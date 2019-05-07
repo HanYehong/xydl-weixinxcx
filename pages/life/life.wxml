@@ -42,7 +42,7 @@
       <text class='gongju-text'>小智7号</text>
     </view>
   </view>
-  <view class='gongju-display-item-2'>
+  <view class='gongju-display-item-2' bindtap='viewRecognize'>
     <image class='gongju-logo' src='../../resource/images/shibie.png'></image>
     <view class='gongju-text-block'>
       <text class='gongju-text'>文字识别</text>

@@ -22,7 +22,8 @@
     "pages/identity/identity",
     "pages/lostFound/lostFound",
     "pages/publishLost/publishLost",
-    "pages/lostFoundDetail/lostFoundDetail"
+    "pages/lostFoundDetail/lostFoundDetail",
+    "pages/textRecognition/textRecognition"
   ],
   "window": {
     "navigationBarBackgroundColor": "#C8141F",

@@ -49,10 +49,17 @@ Page({
   },
 
   /**
-  * 意见反馈
-  */
+   * 机器人聊天
+   */
   viewRobot: function () {
     app.navTo('robot')
+  },
+
+  /**
+   * 文字识别
+   */
+  viewRecognize: function () {
+    app.navTo('textRecognition')
   },
 
   /**

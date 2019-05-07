@@ -3,7 +3,7 @@
     <view class="question-input-area">
       <!-- 联系方式  -->
       <view class="question-title-wrap">
-        <input name="contactWay" class="question-title" placeholder="你的联系方式（非必填）" maxlength="40" placeholder-style="color:#b3b3b3;font-size:14px;" bindinput="handleTitleInput"></input>
+        <input name="contactWay" class="question-title" placeholder="你的联系方式（非必填）" maxlength="40" placeholder-style="color:#b3b3b3;font-size:14px;" bindinput="handleContactInput"></input>
         <view class="title-input-counter">{{contactCount}}/40</view>
       </view>
 
