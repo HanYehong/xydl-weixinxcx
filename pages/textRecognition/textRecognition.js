@@ -79,7 +79,7 @@ Page({
     console.log("识别中……")
     console.log(this.data.filesPath)
     let that = this;
-    ajax.POST(service.ROBOT_RECOFNIZE, {"imageUrl": that.data.filesPath[0]}).then(data => {
+    ajax.POST(service.ROBOT_RECOFNIZE, {"imageUrl": that.data.filesPath[0]}, '识别中').then(data => {
       console.log("识别成功，结果：")
       console.log(data);
       that.setData({

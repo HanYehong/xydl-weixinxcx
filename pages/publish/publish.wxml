@@ -109,7 +109,7 @@
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__bd cell-title">有效截至日期</view>
       <view class="weui-cell__ft">
-        <picker mode="date" value="{{form.date}}" start="{{startDate}}" bindchange="bindDateChange">
+        <picker mode="date" value="{{form.date}}" bindchange="bindDateChange">
           <view class="weui-input">{{form.date||'到哪天自动删除'}}</view>
         </picker>
       </view>
@@ -117,7 +117,7 @@
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__bd cell-title">有效截至时间</view>
       <view class="weui-cell__ft">
-        <picker mode="time" value="{{form.time}}" start="{{startTime}}" bindchange="bindTimeChange">
+        <picker mode="time" value="{{form.time}}" bindchange="bindTimeChange">
           <view class="weui-input">{{form.time||'到什么时候自动删除'}}</view>
         </picker>
       </view>

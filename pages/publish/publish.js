@@ -1,6 +1,3 @@
-import { $wuxXnumber } from '../../components/wux'
-var network = require("../../utils/network.js")
-var util = require('../../utils/util.js');
 let enums = require('../../config/enums')
 var app = getApp();
 Page({
@@ -13,8 +10,6 @@ Page({
       size: -1,
     },
     weight: 0.5,
-    startDate: '',    
-    startTime: '',
     isAgree: true, //是否同意条款    
     type: 0,
     extraList: [], //特别属性
@@ -65,7 +60,6 @@ Page({
       sizeList,
       expressList,
       expressName,
-      startDate: util.getCurrentDate(),
     })
 
   },
@@ -73,29 +67,30 @@ Page({
    * C端确认发布带物需求订单
    */
   cReleaseOrder: function () {
-
-    network.DELAY(function () {
-      wx.showModal({
-        title: '成功',
-        content: '带物需求订单发布成功,请等待接单',
-        showCancel: false,
-        success: function (res) {
-          //订单发布成功
-         app.navTo('express')
-        }
-      });
+    wx.showModal({
+      title: '成功',
+      content: '带物需求订单发布成功,请等待接单',
+      showCancel: false,
+      success: function (res) {
+        //订单发布成功
+        app.navTo('express')
+      }
     });
   },
 
   bindDateChange: function (e) {
+    let form = this.data.form;
+    form.date = e.detail.value;
     this.setData({
-      date: e.detail.value
+      form
     })
   },
 
   bindTimeChange: function (e) {
+    let form = this.data.form;
+    form.time = e.detail.value;
     this.setData({
-      time: e.detail.value
+      form
     })
   },
 
