@@ -27,8 +27,10 @@
       </view>
       <view class='info'>
         <view style="display: inline-block; font-size: 28rpx;">
-          <view style="float: left;">{{item.lostTypeText}}</view>
-          <view style="float: left; margin-left:5px;">{{item.lostLocationText}}</view>
+          <image style="float: left; width: 25px; height: 25px;" src="/resource/images/type.png"></image>
+          <view style="float: left; margin-left:2px;">{{item.lostTypeText}}</view>
+          <image style="float: left; width: 25px; height: 25px; margin-left:5px;" src="/resource/images/location.png"></image>
+          <view style="float: left; margin-left:2px;">{{item.lostLocationText}}</view>
         </view>
         <view class='shiwu-content'>{{item.content}}</view>
         <view style="float: right; font-size: 25rpx;">{{item.createTime}}</view>

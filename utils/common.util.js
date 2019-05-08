@@ -6,11 +6,19 @@ const formatNumber = (n) => {
 }
 
 const formatTime = (date) => {
-  return formatDate(date) + ' ' + [
-    date.getHours(),
-    date.getMinutes(),
-    date.getSeconds()
-  ].map(formatNumber).join(':')
+  var date = new Date(date);  
+  let year = date.getFullYear()
+  let month = format(date.getMonth() + 1)
+  let day = format(date.getDate())
+  let hour = format(date.getHours())
+  let minute = format(date.getMinutes())
+  let second = format(date.getSeconds())
+  return [year, month, day].join('-') + ' ' + [hour, minute, second].join(':')
+}
+
+const format = (data) => {
+  if (data < 10) data = '0' + data;
+  return data;
 }
 
 const formatDate = (date) => {

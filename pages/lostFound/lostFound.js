@@ -2,6 +2,7 @@ let app = getApp();
 let enums = require("../../config/enums");
 let service = require("../../config/service.js");
 let ajax = require("../../config/ajax.js");
+let commonUtil = require("../../utils/common.util.js");
 Page({
 
   /**
@@ -105,7 +106,7 @@ Page({
       data.forEach(x => {
         x.lostTypeText = enums.LOSTTYPE[x.lostType];
         x.lostLocationText = enums.LOCATION[x.lostLocation];
-        x.createTime = that.formatTime(x.createTime)
+        x.createTime = commonUtil.formatTime(x.createTime)
       })
       that.setData({
         dataList: data
@@ -124,22 +125,5 @@ Page({
       url: '/pages/lostFoundDetail/lostFoundDetail?lostNumber=' + id,
     })
   },
-
-  /**************************************时间格式化处理************************************/
-  formatTime(date) {
-    var date = new Date(date);  
-    let year = date.getFullYear()
-    let month = this.format(date.getMonth() + 1)
-    let day = this.format(date.getDate())
-    let hour = this.format(date.getHours())
-    let minute = this.format(date.getMinutes())
-    let second = this.format(date.getSeconds())
-    return [year, month, day].join('-') + ' ' + [hour, minute, second].join(':')
-  },
-
-  format(data) {
-    if (data < 10) data = '0' + data;
-    return data;
-  }
 
 })

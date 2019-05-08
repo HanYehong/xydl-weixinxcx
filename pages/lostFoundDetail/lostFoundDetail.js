@@ -3,6 +3,7 @@ const app = getApp();
 let enums = require("../../config/enums");
 let service = require("../../config/service.js");
 let ajax = require("../../config/ajax.js");
+let commonUtil = require("../../utils/common.util.js");
 Page({
 
   /**
@@ -13,15 +14,7 @@ Page({
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
-    target: {
-      lostNumber: 1,
-      content: '失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领失物招领',
-      lostImage:[],
-      lostLocation: 2,
-      lostType: 1,
-      contact: '15189809881',
-      createTime: '2019-4-27 13:55'
-    }
+    target: {}
   },
 
   /**
@@ -35,6 +28,7 @@ Page({
       console.log(data);
       data.lostLocationText = enums.LOCATION[data.lostLocation];
       data.lostTypeText = enums.LOSTTYPE[data.lostType];
+      data.createTime = commonUtil.formatTime(data.createTime);
       that.setData({
         target: data
       })

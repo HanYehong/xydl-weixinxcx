@@ -8,13 +8,21 @@
     </swiper>
     <view class="intro-info padding-leftRight">
         <view class='info'>
-          <view>联系方式：{{target.contact}}</view>
-          <view>{{target.content}}</view>
-          <view style="display: inline-block; margin-top:10px;">
-            <view style="float: left;">{{target.lostTypeText}}</view>
-            <view style="float: left; margin-left:5px;">{{target.lostLocationText}}</view>
+          <view style="padding: 10px; background: #edece8; width: 100%;">联系方式：{{target.contactWay.length < 1 ? '无' : target.contactWay}}</view>
+          <view style="margin-top:10px; padding: 10px; border: 1px #ccc solid; margin: 10px; min-height: 100px;">
+            {{target.content}}
           </view>
-          <view style="float: right; margin-top:10px;">{{target.createTime}}</view>
+          <view style="margin-top:10px; padding: 10px; font-size: 28rpx;">
+            <view style="float: left;">
+              <image style="float: left; width: 25px; height: 25px;" src="/resource/images/type.png"></image>
+              <view style="float: left; margin-left:2px;">{{target.lostTypeText}}</view>
+              <image style="float: left; width: 25px; height: 25px; margin-left:5px;" src="/resource/images/location.png"></image>
+              <view style="float: left; margin-left:2px;">{{target.lostLocationText}}</view>
+            </view>
+            <view style="float: left; margin-left: 20%;">
+              <view>{{target.createTime}}</view>
+            </view>
+          </view>
       </view>
     </view>
 </view>
