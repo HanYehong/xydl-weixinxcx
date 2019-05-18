@@ -1,51 +1,51 @@
 module.exports = {
   EXPRESS: {
-    ZHONG_TONG: {
+    0: {
       code: 0,
       name: '中通快递',
       color: '#E2C08D'
     },
-    YUN_DA: {
+    1: {
       code: 1,
       name: '韵达快递',
       color: '#007ACC'
     },
-    SHEN_TONG: {
+    2: {
       code: 2,
       name: '申通快递',
       color: '#1DA260'
     },
-    YUAN_TONG: {
+    3: {
       code: 3,
       name: '圆通快递',
       color: '#FFCE44'
     },
-    JING_DONG: {
+    4: {
       code: 4,
       name: '京东物流',
       color: '#DD4FD3'
     },
-    SHUN_FENG: {
+    5: {
       code: 5,
       name: '顺丰速运',
       color: '#7BCA3D'
     },
-    TIAN_TIAN: {
+    6: {
       code: 6,
       name: '天天快递',
       color: '#DD2149'
     },
-    DE_BANG: {
+    7: {
       code: 7,
       name: '德邦物流',
       color: '#FBBA8E'
     },
-    BAI_SHI: {
+    8: {
       code: 8,
       name: '百世汇通',
       color: '#FC6D26'
     },
-    GUO_TONG: {
+    9: {
       code: 9,
       name: '国通快递',
       color: '#3F88BF'

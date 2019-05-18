@@ -41,9 +41,9 @@
       <view bindtap='freetoBack1' class="free-button free-dialog-reset">取消</view>
       <view bindtap='freeBack1' class="free-button free-dialog-submit">确定</view>
       <radio-group class='free-radios' bindchange="radioChange1">
-        <label class="free-radio" bindtap="click1" wx:for="{{items1}}" wx:key="{{items1}}" data-id="{{item.value}}" style="{{item.value==id1?'background:#48c23d;color:#fff;':'background:#fff;color:#000;'}}">
-        <radio value="{{item.value}}" name="{{item.name}}"></radio>
-        <label class="free-text">{{item.name}}</label>
+        <label wx:for="{{items1}}" wx:key="{{items1}}" class="{{item.value===lostLocation ? 'checked' : 'unchecked'}}">
+          <radio value="{{item.value}}" name="{{item.name}}"></radio>
+          <label class="free-text">{{item.name}}</label>
         </label>
       </radio-group>
       </form>
@@ -59,7 +59,7 @@
       <view bindtap='freetoBack2' class="free-button free-dialog-reset">取消</view>
       <view bindtap='freeBack2' class="free-button free-dialog-submit">确定</view>
       <radio-group class='free-radios' bindchange="radioChange2">
-        <label class="free-radio" bindtap="click2" wx:for="{{items2}}" wx:key="{{items2}}" data-id="{{item.value}}" style="{{item.value==id2?'background:#48c23d;color:#fff;':'background:#fff;color:#000;'}}">
+        <label wx:for="{{items2}}" wx:key="{{items2}}" class="{{item.value===lostType ? 'checked' : 'unchecked'}}">
         <radio value="{{item.value}}" name="{{item.name}}"></radio>
         <label class="free-text">{{item.name}}</label>
         </label>

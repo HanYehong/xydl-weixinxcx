@@ -123,6 +123,12 @@ radio-group label radio{
  background:#48c23d;
  color:#fff;
 }
+
+.unchecked {
+  background:#fff;
+  color:#000;
+}
+
 radio-group label .free-text{
  width:100%;
  text-align: center;

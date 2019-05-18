@@ -23,7 +23,7 @@
   <block wx:for='{{dataList}}' wx:key='list' wx:for-item="item">
   <view class="list_item" bindtap='navToDetail' data-id='{{item.lostNumber}}'>
       <view class='img'>
-        <image src="{{item.lostImage[0] ? item.lostImage[0] : 'https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=455610afdfc8a786a12a4c0e5708c9c7/5bafa40f4bfbfbedcb2d862a76f0f736afc31f6a.jpg'}}"  mode="scaleToFill"/>
+        <image src="{{item.imageList[0] ? item.imageList[0].imageUrl : 'https://cloud-minapp-22871.cloud.ifanrusercontent.com/暂无图片.png'}}"  mode="scaleToFill"/>
       </view>
       <view class='info'>
         <view style="display: inline-block; font-size: 28rpx;">

@@ -2,8 +2,8 @@
 <view class="intro">
     <swiper class="slide" indicator-dots="{{indicatorDots}}"
   autoplay="{{autoplay}}" interval="{{interval}}">
-        <swiper-item wx:for="{{target.lostImage[0] ? target.lostImage : ['https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=455610afdfc8a786a12a4c0e5708c9c7/5bafa40f4bfbfbedcb2d862a76f0f736afc31f6a.jpg']}}" wx:key="true">
-          <image src="{{item}}" class="slide-image" />
+        <swiper-item wx:for="{{target.imageList[0] ? target.imageList : [{imageUrl:'https://cloud-minapp-22871.cloud.ifanrusercontent.com/暂无图片.png'}]}}" wx:key="true">
+          <image src="{{item.imageUrl}}" class="slide-image" />
         </swiper-item>
     </swiper>
     <view class="intro-info padding-leftRight">

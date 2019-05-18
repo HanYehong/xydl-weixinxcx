@@ -1,6 +1,8 @@
 import { $init, $digest } from '../../utils/common.util'
 const enums = require("../../config/enums.js");
-
+let ajax = require("../../config/ajax.js");
+let service = require("../../config/service.js");
+let app = getApp();
 Page({
   data: {
     contactCount: 0,
@@ -61,6 +63,9 @@ Page({
         this.data.images = images.length <= 3 ? images : images.slice(0, 3)
         $digest(this)
         let that = this
+        wx.showLoading({
+          title: '加载图片'
+        });
         res.tempFilePaths.forEach(x => {
           let MyFile = new wx.BaaS.File()
           let fileParams = {filePath: x}
@@ -69,7 +74,7 @@ Page({
             // 上传成功
             let data = res.data  // res.data 为 Object 类型
             let filesPath = that.data.filesPath
-            filesPath.push(data.path)
+            filesPath.push({imageUrl: data.path})
             that.setData({
               filesPath
             })
@@ -79,6 +84,7 @@ Page({
             // HError 对象
           })
         })
+        wx.hideLoading();
       }
     })
   },
@@ -197,10 +203,20 @@ Page({
       content: e.detail.value.content,
       lostLocation: this.data.lostLocation,
       lostType: this.data.lostType,
-      filesPath: this.data.filesPath
+      imageList: this.data.filesPath
     };
     console.log("即将提交表单，表单数据为：");
     console.log(form);
+    ajax.POST(service.LOST_FOUND_PUBLISH, form, '正在发布').then(data => {
+      wx.showToast({
+        title: '发布成功',
+        icon: 'success',
+        duration: 2000,
+        complete: () => {
+          app.navTo("lostFound")
+        }
+      });
+    })
   },
 
 })
