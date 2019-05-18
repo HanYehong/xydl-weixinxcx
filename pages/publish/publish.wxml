@@ -96,12 +96,12 @@
         <view class="weui-cell__bd cell-title">有效截至日期</view>
         <view class="weui-cell__ft">
             <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-                <input value='{{form.date}}' placeholder='到什么时候自动删除'/>
-              </picker>
+              <view class="weui-input">{{form.date||'到什么时候自动结束'}}</view>
+            </picker>
         </view>
       </view>
     </view>
-    <view class="weui-cells__tips">逾期自动删除此发布</view>
+    <view class="weui-cells__tips">逾期自动结束此发布</view>
     <!-- 结算 -->
     <view class="weui-cells__title">结算</view>
     <view class="weui-cells weui-cells_after-title">
