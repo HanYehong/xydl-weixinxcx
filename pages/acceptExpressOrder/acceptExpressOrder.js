@@ -1,146 +1,55 @@
 var app = getApp();
 let enums = require("../../config/enums");
+let service = require("../../config/service.js");
+let ajax = require("../../config/ajax.js");
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     currentIndex: 0,
-    orderListDoing: [
-      {
-        orderNumber: 'DL201904131345',
-        expressType: 0,
-        pickupCode:'8526',
-        destination:'东七C205',
-        description: '',
-        orderPrice: 2.0,
-        color:'',
-        expressName: '',
-        status: 2,
-        statusText: '',
-        button: 0,
-        buttonText: '',
-        expressSize:'大物',
-        name: '张三',
-        phone: '15189809881',
-        specialAttention: '易碎',
-        beginDate: '2019-04-11 10:30',
-        endDate: '2019-04-15 18:00'
-      },
-      {
-        orderNumber: 'DL201904131903',
-        expressType: 1,
-        pickupCode:'1235',
-        destination:'东八楼下',
-        description: '',
-        orderPrice: 4.0,
-        color:'',
-        expressName: '',
-        status: 5,
-        statusText: '',
-        button: 0,
-        buttonText: '',
-        expressSize: '小物',
-        name: '张三',
-        phone: '15189809881',
-        specialAttention: '易碎、怕压',
-        beginDate: '2019-04-11 10:30',
-        endDate: '2019-04-14 18:00'
-      },
-      {
-        orderNumber: 'DL201904131904',
-        expressType: 1,
-        pickupCode:'1245',
-        destination:'东六楼下',
-        description: '',
-        orderPrice: 4.0,
-        color:'',
-        expressName: '',
-        status: 1,
-        statusText: '',
-        button: 0,
-        buttonText: '',
-        expressSize: '小物',
-        name: '张三',
-        phone: '15189809881',
-        specialAttention: '易碎、怕压',
-        beginDate: '2019-04-11 10:30',
-        endDate: '2019-04-14 18:00'
-      },
-    ],
-    orderListComplete: [
-      {
-        orderNumber: 'DL201904131345',
-        expressType: 5,
-        pickupCode:'8526',
-        destination:'东七C205',
-        description: '',
-        orderPrice: 2.0,
-        color:'',
-        expressName: '',
-        status: 3,
-        statusText: '',
-        button: 0,
-        buttonText: '',
-        expressSize:'大物',
-        name: '张三',
-        phone: '15189809881',
-        specialAttention: '易碎',
-        beginDate: '2019-04-11 10:30',
-        endDate: '2019-04-15 18:00'
-      },
-      {
-        orderNumber: 'DL201904131903',
-        expressType: 7,
-        pickupCode:'1235',
-        destination:'东八楼下',
-        description: '',
-        orderPrice: 4.0,
-        color:'',
-        expressName: '',
-        status: 3,
-        statusText: '',
-        button: 0,
-        buttonText: '',
-        expressSize: '小物',
-        name: '张三',
-        phone: '15189809881',
-        specialAttention: '易碎、怕压',
-        beginDate: '2019-04-11 10:30',
-        endDate: '2019-04-14 18:00'
-      },
-    ],
+    processing: [],
+    complete: [],
   },
 
   onLoad: function (options) {
-    let orderListDoingAnother = this.data.orderListDoing;
-    let orderListCompleteAnother = this.data.orderListComplete;
-    for (let i = 0; i < orderListDoingAnother.length; i++) {
-      // 获取快递颜色
-      orderListDoingAnother[i].color = enums.getExpressColorBycode(orderListDoingAnother[i].expressType);
-      // 获取快递名称
-      orderListDoingAnother[i].expressName = enums.getExpressNameBycode(orderListDoingAnother[i].expressType).substring(0, 2);
-      // 获取状态名称
-      orderListDoingAnother[i].statusText = enums.getStatusNameByCode(orderListDoingAnother[i].status);
-      // 获取操作按钮
-      switch (orderListDoingAnother[i].status) {
-        case enums.STATUS.WAIT_SEND.code:
-          orderListDoingAnother[i].button = enums.BUTTON.ARRIVED.code;
-          orderListDoingAnother[i].buttonText = enums.BUTTON.ARRIVED.name;
-          break;
+    let that = this;
+    ajax.GET(service.EXPRESS_ACCEPTOR_LIST, {}).then(data => {
+      console.log("获得已发布订单列表成功", data);
+      this.setData({
+        processing: data.processing,
+        complete: data.complete,
+      })
+    
+      let orderListDoingAnother = this.data.processing;
+      let orderListCompleteAnother = this.data.complete;
+      for (let i = 0; i < orderListDoingAnother.length; i++) {
+        // 获取快递颜色
+        orderListDoingAnother[i].color = enums.getExpressColorBycode(orderListDoingAnother[i].expressType);
+        // 获取快递名称
+        orderListDoingAnother[i].expressName = enums.getExpressNameBycode(orderListDoingAnother[i].expressType).substring(0, 2);
+        // 获取状态名称
+        orderListDoingAnother[i].statusText = enums.getStatusNameByCode(orderListDoingAnother[i].status);
+        // 获取操作按钮
+        switch (orderListDoingAnother[i].status) {
+          case enums.STATUS.WAIT_SEND.code:
+            orderListDoingAnother[i].button = enums.BUTTON.ARRIVED.code;
+            orderListDoingAnother[i].buttonText = enums.BUTTON.ARRIVED.name;
+            break;
+        }
       }
-    }
-    for (let i = 0; i < orderListCompleteAnother.length; i++) {
-      // 获取快递颜色
-      orderListCompleteAnother[i].color = enums.getExpressColorBycode(orderListCompleteAnother[i].expressType);
-      // 获取快递名称
-      orderListCompleteAnother[i].expressName = enums.getExpressNameBycode(orderListCompleteAnother[i].expressType).substring(0, 2);
-      // 获取状态名称
-      orderListCompleteAnother[i].statusText = enums.getStatusNameByCode(orderListCompleteAnother[i].status);
-    }
-    this.setData({
-      orderListDoing: orderListDoingAnother,
-      orderListComplete : orderListCompleteAnother,
+      for (let i = 0; i < orderListCompleteAnother.length; i++) {
+        // 获取快递颜色
+        orderListCompleteAnother[i].color = enums.getExpressColorBycode(orderListCompleteAnother[i].expressType);
+        // 获取快递名称
+        orderListCompleteAnother[i].expressName = enums.getExpressNameBycode(orderListCompleteAnother[i].expressType).substring(0, 2);
+        // 获取状态名称
+        orderListCompleteAnother[i].statusText = enums.getStatusNameByCode(orderListCompleteAnother[i].status);
+      }
+      this.setData({
+        processing: orderListDoingAnother,
+        complete : orderListCompleteAnother,
+      })
     })
   },
 
@@ -185,10 +94,10 @@ Page({
     let array = [];
     switch (type) {
       case 'processing':
-        array = this.data.orderListDoing;
+        array = this.data.processing;
         break;
       case 'complete':
-        array = this.data.orderListComplete;
+        array = this.data.complete;
         break;
     }
     for (let i = 0; i < array.length; i++) {

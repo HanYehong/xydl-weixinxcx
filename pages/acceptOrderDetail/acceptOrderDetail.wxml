@@ -30,11 +30,11 @@
     </view>
     <view class="line"></view>
     <view class="item">
-      <view class="label">发布时间：</view><span class="content">{{orderInfo.beginDate}}</span>
+      <view class="label">发布时间：</view><span class="content">{{orderInfo.createTime}}</span>
     </view>
     <view class="line"></view>
     <view class="item">
-      <view class="label">截至时间：</view><span class="content">{{orderInfo.endDate}}</span>
+      <view class="label">截至时间：</view><span class="content">{{orderInfo.orderDeadlineDate}}</span>
     </view>
     <view class="item" wx:if="{{orderInfo.completeDate}}">
       <view class="label">完成时间：</view><span class="content">{{orderInfo.completeDate}}</span>
@@ -45,7 +45,7 @@
     </view>
     <view class="line"></view>
     <view class="item">
-      <view class="label">订单价格：</view><span class="content price">￥{{orderInfo.orderPrice}}</span>
+      <view class="label">订单价格：</view><span class="content price">￥{{orderInfo.price}}</span>
     </view>
     <view class="line"></view>
   </view>

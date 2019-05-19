@@ -5,7 +5,7 @@ page{
 }
 
 .title {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -21,9 +21,10 @@ page{
 
 .label {
   float: left;
-  width: 70px;
+  width: 100px;
   text-align: right;
   font-weight: bolder;
+  font-size: 17px;
 }
 
 .content {
