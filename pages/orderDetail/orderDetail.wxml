@@ -76,10 +76,10 @@
   </view>
 </view>
 
-<i-button wx:if="{{orderInfo.status == 0 || orderInfo.status == 1 || orderInfo.status == 6}}" bind:click="cancel" data-order="{{orderInfo.orderNumber}}" type="error" shape="circle" size="small">取消</i-button>
-<i-button wx:if="{{orderInfo.status == 6}}" bind:click="authorize" data-order="{{orderInfo.orderNumber}}" type="success" shape="circle" size="small">授权</i-button>
+<i-button wx:if="{{orderInfo.status == 0 || orderInfo.status == 1 || orderInfo.status == 5}}" bind:click="cancel" data-order="{{orderInfo.orderNumber}}" type="error" shape="circle" size="small">取消</i-button>
+<i-button wx:if="{{orderInfo.status == 5}}" bind:click="authorize" data-order="{{orderInfo.orderNumber}}" type="success" shape="circle" size="small">授权</i-button>
 <i-button wx:if="{{orderInfo.status == 2}}" bind:click="confirm" data-order="{{orderInfo.orderNumber}}" type="success" shape="circle" size="small">确认收货</i-button>
-<i-button wx:if="{{orderInfo.status == 6}}" bind:click="refuse" data-order="{{orderInfo.orderNumber}}" type="warning" shape="circle" size="small">拒绝其接单</i-button>
-<i-button wx:if="{{orderInfo.status == 5}}" bind:click="publish" data-order="{{orderInfo.orderNumber}}" type="warning" shape="circle" size="small">重新发布</i-button>
+<i-button wx:if="{{orderInfo.status == 5}}" bind:click="refuse" data-order="{{orderInfo.orderNumber}}" type="warning" shape="circle" size="small">拒绝其接单</i-button>
+<i-button wx:if="{{orderInfo.status == 4}}" bind:click="rePublish" data-order="{{orderInfo.orderNumber}}" type="warning" shape="circle" size="small">重新发布</i-button>
 <!-- <i-button bind:click="sureSend" data-order="{{orderInfo.orderNumber}}" type="success" shape="circle" size="small">已送达</i-button> -->
 <!-- <i-button bind:click="pay" data-order="{{orderInfo.orderNumber}}" type="info" shape="circle" size="small">支付</i-button> -->
