@@ -20,7 +20,7 @@
   <!--内容布局-->
   <swiper class='swiper' bindchange='pagechange' current='{{currentIndex}}'>
     <swiper-item class='swiper'>
-      <view wx:for="{{orderListDoing}}" wx:key="{{expressType}}">
+      <view wx:for="{{processing}}" wx:key="{{expressType}}">
         <view class="express-order">
           <view style="width: 40%;" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='processing'>
             <view class="image" style="background-color: {{item.color}}">
@@ -32,7 +32,7 @@
               <view class="text">
                 取货码：{{item.pickupCode}}
               </view>
-              <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.orderPrice}}</view>
+              <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.price}}</view>
             </view>
             <view class="text" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='processing'>
               目的地：{{item.destination}}
@@ -45,12 +45,12 @@
             </view>
           </view>
         </view>
-        <view wx:if="{{index != orderListDoing.length - 1}}" class="line"></view>
+        <view wx:if="{{index != processing.length - 1}}" class="line"></view>
         <i-load-more wx:else loading="{{ false }}" />
       </view>
     </swiper-item>
     <swiper-item class='swiper'>
-      <view wx:for="{{orderListComplete}}" wx:key="{{expressType}}">
+      <view wx:for="{{complete}}" wx:key="{{expressType}}">
         <view class="express-order" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='complete'>
           <view style="width: 40%;">
             <view class="image" style="background-color: {{item.color}}">
@@ -62,7 +62,7 @@
               <view class="text">
                 取货码：{{item.pickupCode}}
               </view>
-              <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.orderPrice}}</view>
+              <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.price}}</view>
             </view>
             <view class="text">
               目的地：{{item.destination}}
@@ -74,12 +74,12 @@
             </view>
           </view>
         </view>
-        <view wx:if="{{index != orderListComplete.length - 1}}" class="line"></view>
+        <view wx:if="{{index != complete.length - 1}}" class="line"></view>
         <i-load-more wx:else loading="{{ false }}" />
       </view>
     </swiper-item>
     <swiper-item class='swiper'>
-      <view wx:for="{{orderListUncomplete}}" wx:key="{{expressType}}">
+      <view wx:for="{{uncomplete}}" wx:key="{{expressType}}">
         <view class="express-order" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='uncomplete'>
           <view style="width: 40%;">
             <view class="image" style="background-color: {{item.color}}">
@@ -91,7 +91,7 @@
               <view class="text">
                 取货码：{{item.pickupCode}}
               </view>
-              <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.orderPrice}}</view>
+              <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.price}}</view>
             </view>
             <view class="text">
               目的地：{{item.destination}}
@@ -103,7 +103,7 @@
             </view>
           </view>
         </view>
-        <view wx:if="{{index != orderListUncomplete.length - 1}}" class="line"></view>
+        <view wx:if="{{index != uncomplete.length - 1}}" class="line"></view>
         <i-load-more wx:else loading="{{ false }}" />
       </view>
     </swiper-item>

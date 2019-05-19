@@ -29,6 +29,7 @@ const EXPRESS_SENDED = API_URL + LIFE_SERVICE + '/express/sended';
 const EXPRESS_RECEIVED = API_URL + LIFE_SERVICE + '/express/received';
 const EXPRESS_CANCEL = API_URL + LIFE_SERVICE + '/express/cancel';
 const EXPRESS_RE_PUBLISH = API_URL + LIFE_SERVICE + '/express/rePublish';
+const EXPRESS_GET_ORDER = API_URL + LIFE_SERVICE + '/express/getExpressOrder';
 
 /**
  * 定义接口
@@ -51,5 +52,6 @@ module.exports = {
   EXPRESS_SENDED,
   EXPRESS_RECEIVED,
   EXPRESS_CANCEL,
-  EXPRESS_RE_PUBLISH
+  EXPRESS_RE_PUBLISH,
+  EXPRESS_GET_ORDER
 }

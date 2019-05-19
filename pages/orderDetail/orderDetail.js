@@ -1,4 +1,7 @@
 // pages/orderDetail/orderDetail.js
+let enums = require("../../config/enums");
+let service = require("../../config/service.js");
+let ajax = require("../../config/ajax.js");
 Page({
 
   /**
@@ -18,9 +21,16 @@ Page({
   onLoad: function (options) {
     let obj = JSON.parse(options.order);
     console.log(obj.orderNumber);
-    this.setData({
-      orderInfo: obj,
-      targetTime: new Date(obj.endDate).getTime(),
+    let that = this;
+    ajax.POST(service.EXPRESS_GET_ORDER, {orderNumber: obj.orderNumber}).then(data => {
+      console.log("得到订单详情", data);
+      data.expressSize = enums.EXPRESS_SIZE[data.size].name;
+      data.expressName = enums.EXPRESS[data.expressType].name;
+      data.statusText = enums.getStatusNameByCode(data.status);
+      that.setData({
+        orderInfo: data,
+        targetTime: new Date(obj.endDate).getTime()
+      })
     })
   },
 
