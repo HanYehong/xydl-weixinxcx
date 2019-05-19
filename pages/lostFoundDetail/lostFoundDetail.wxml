@@ -1,28 +1,29 @@
 <!--pages/lbsDetail/lbsDetail.wxml-->
 <view class="intro">
-    <swiper class="slide" indicator-dots="{{indicatorDots}}"
-  autoplay="{{autoplay}}" interval="{{interval}}">
-        <swiper-item wx:for="{{target.imageList[0] ? target.imageList : [{imageUrl:'https://cloud-minapp-22871.cloud.ifanrusercontent.com/暂无图片.png'}]}}" wx:key="true">
-          <image src="{{item.imageUrl}}" class="slide-image" />
-        </swiper-item>
-    </swiper>
-    <view class="intro-info padding-leftRight">
-        <view class='info'>
-          <view style="padding: 10px; background: #edece8; width: 100%;">联系方式：{{target.contactWay.length < 1 ? '无' : target.contactWay}}</view>
-          <view style="margin-top:10px; padding: 10px; border: 1px #ccc solid; margin: 10px; min-height: 100px;">
-            {{target.content}}
+  <swiper class="slide" indicator-dots="{{indicatorDots}}"
+autoplay="{{autoplay}}" interval="{{interval}}">
+      <swiper-item wx:for="{{target.imageList[0] ? target.imageList : [{imageUrl:'https://cloud-minapp-22871.cloud.ifanrusercontent.com/暂无图片.png'}]}}" wx:key="true">
+        <image src="{{item.imageUrl}}" class="slide-image" />
+      </swiper-item>
+  </swiper>
+  <view class="intro-info padding-leftRight">
+      <view class='info'>
+        <view style="padding: 10px; background: #edece8; width: 100%;">联系方式：{{target.contactWay.length < 1 ? '无' : target.contactWay}}</view>
+        <view style="margin-top:10px; padding: 10px; border: 1px #ccc solid; margin: 10px; min-height: 100px;">
+          {{target.content}}
+        </view>
+        <view style="margin-top:10px; padding: 10px; font-size: 28rpx;">
+          <view style="float: left;">
+            <image style="float: left; width: 25px; height: 25px;" src="/resource/images/type.png"></image>
+            <view style="float: left; margin-left:2px;">{{target.lostTypeText}}</view>
+            <image style="float: left; width: 25px; height: 25px; margin-left:5px;" src="/resource/images/location.png"></image>
+            <view style="float: left; margin-left:2px;">{{target.lostLocationText}}</view>
           </view>
-          <view style="margin-top:10px; padding: 10px; font-size: 28rpx;">
-            <view style="float: left;">
-              <image style="float: left; width: 25px; height: 25px;" src="/resource/images/type.png"></image>
-              <view style="float: left; margin-left:2px;">{{target.lostTypeText}}</view>
-              <image style="float: left; width: 25px; height: 25px; margin-left:5px;" src="/resource/images/location.png"></image>
-              <view style="float: left; margin-left:2px;">{{target.lostLocationText}}</view>
-            </view>
-            <view style="float: left; margin-left: 20%;">
-              <view>{{target.createTime}}</view>
-            </view>
+          <view style="float: left; margin-left: 20%;">
+            <view>{{target.createTime}}</view>
           </view>
-      </view>
+        </view>
     </view>
+  </view>
 </view>
+<i-button style="display: inline-block; width:100%; margin-top: 10px;" wx:if="{{showDeleteBtn}}" bind:click="delete" data-lost="{{target.lostNumber}}" type="error" shape="circle" size="small">删除</i-button>

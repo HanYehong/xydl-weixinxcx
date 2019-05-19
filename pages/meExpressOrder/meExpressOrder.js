@@ -9,12 +9,12 @@ Page({
       {
         text: '我发布的',
         url: '/pages/myExpressOrder/myExpressOrder',
-        img: '/resource/images/identity.png'
+        img: '/resource/images/fabu.png'
       },
       {
         text: '我接单的',
         url: '/pages/acceptExpressOrder/acceptExpressOrder',
-        img: '/resource/images/my_dingdan.png'
+        img: '/resource/images/jieshou.png'
       },
     ],
   },

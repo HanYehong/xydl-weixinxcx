@@ -30,6 +30,11 @@ const EXPRESS_RECEIVED = API_URL + LIFE_SERVICE + '/express/received';
 const EXPRESS_CANCEL = API_URL + LIFE_SERVICE + '/express/cancel';
 const EXPRESS_RE_PUBLISH = API_URL + LIFE_SERVICE + '/express/rePublish';
 const EXPRESS_GET_ORDER = API_URL + LIFE_SERVICE + '/express/getExpressOrder';
+/**
+ * 用户相关接口
+ */
+const USER_IS_IDENTITY = API_URL + USER_SERVICE + '/user/isAuthorize';
+const USER_IDENTITY = API_URL + USER_SERVICE + '/user/authorize';
 
 /**
  * 定义接口
@@ -53,5 +58,7 @@ module.exports = {
   EXPRESS_RECEIVED,
   EXPRESS_CANCEL,
   EXPRESS_RE_PUBLISH,
-  EXPRESS_GET_ORDER
+  EXPRESS_GET_ORDER,
+  USER_IS_IDENTITY,
+  USER_IDENTITY
 }

@@ -1,1 +1,9 @@
 /* pages/identity/identity.wxss */
+page{
+    background: rgba(255, 206, 69, 0.2);
+}
+
+.label{
+    margin: 10px;
+    font-weight: bolder;
+}

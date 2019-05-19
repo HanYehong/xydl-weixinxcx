@@ -14,13 +14,23 @@ Page({
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
-    target: {}
+    target: {},
+    showDeleteBtn: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.delete) {
+        this.setData({
+            showDeleteBtn: true
+        })
+    } else {
+        this.setData({
+            showDeleteBtn: false
+        })
+    }
     var that = this;
     console.log(options.lostNumber);
     ajax.POST(service.LOST_FOUND_GET_ONE, {lostNumber: options.lostNumber}).then(data => {
@@ -33,6 +43,36 @@ Page({
         target: data
       })
     })
+  },
+
+  delete(e) {
+    console.log("删除失物招领：" + e.currentTarget.dataset.lost);
+    wx.showModal({
+        title: '提示',
+        content: '确认删除吗？',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#000000',
+        confirmText: '确定',
+        confirmColor: '#3CC51F',
+        success: (result) => {
+          if(result.confirm){
+            ajax.POST(service.LOST_FOUND_DELETE, {lostNumber: e.currentTarget.dataset.lost}).then(data => {
+                console.log("删除成功");
+                wx.showToast({
+                    title: '已删除',
+                    icon: 'success',
+                    duration: 2000,
+                    complete: ()=>{
+                        app.redTo("myLostFound");
+                    }
+                });
+            })
+          }
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
   },
 
   /**

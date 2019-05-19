@@ -16,7 +16,7 @@ Page({
       },
       {
         text:'我的失物招领',
-        url:'lostorder',
+        url:'/pages/myLostFound/myLostFound',
         img: '/resource/images/my_shiwu.png'
       },
       {

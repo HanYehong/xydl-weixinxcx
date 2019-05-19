@@ -1,0 +1,20 @@
+<view class="list">
+    <block wx:for='{{dataList}}' wx:key='list' wx:for-item="item" bindlongtap="longTap" data-id='{{item.lostNumber}}'>
+        <view class="list_item" bindtap='navToDetail' data-id='{{item.lostNumber}}'>
+            <view class='img'>
+                <image src="{{item.imageList[0] ? item.imageList[0].imageUrl : 'https://cloud-minapp-22871.cloud.ifanrusercontent.com/暂无图片.png'}}"  mode="scaleToFill"/>
+            </view>
+            <view class='info'>
+                <view style="display: inline-block; font-size: 28rpx;">
+                <image style="float: left; width: 25px; height: 25px;" src="/resource/images/type.png"></image>
+                <view style="float: left; margin-left:2px;">{{item.lostTypeText}}</view>
+                <image style="float: left; width: 25px; height: 25px; margin-left:5px;" src="/resource/images/location.png"></image>
+                <view style="float: left; margin-left:2px;">{{item.lostLocationText}}</view>
+                </view>
+                <view class='shiwu-content'>{{item.content}}</view>
+                <view style="float: right; font-size: 25rpx;">{{item.createTime}}</view>
+            </view>
+            <view class='clear'></view>
+        </view>
+    </block>
+</view>

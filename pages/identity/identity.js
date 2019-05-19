@@ -18,7 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    ajax.GET(service.API_URL + service.USER_SERVICE + '/user/isAuthorize').then(data => {
+    ajax.GET(service.USER_IS_IDENTITY, {}).then(data => {
       if (data == 0) {
         console.log("未实名认证");
         this.setData({

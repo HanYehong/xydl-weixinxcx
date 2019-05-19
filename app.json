@@ -23,7 +23,8 @@
     "pages/lostFound/lostFound",
     "pages/publishLost/publishLost",
     "pages/lostFoundDetail/lostFoundDetail",
-    "pages/textRecognition/textRecognition"
+    "pages/textRecognition/textRecognition",
+    "pages/myLostFound/myLostFound"
   ],
   "window": {
     "navigationBarBackgroundColor": "#C8141F",
