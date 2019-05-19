@@ -1,43 +1,13 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+let ajax = require("../../config/ajax.js");
+let service = require("../../config/service.js");
+let enums = require("../../config/enums.js");
+let commonUtil = require("../../utils/common.util.js");
 Page({
   data: {
-    goodsUrl: 'https://easy-mock.com/mock/5bffe30cab841f18c58ca0ec/data/goods',
-    goodsData: [],
-    expressOrderList:[
-      {
-        'orderNumber':'DL2019040312345',
-        'expressName':'韵达快递',
-        'expressSize':'小物',
-        'description':'送到楼下就行，谢谢',
-        'destination':'信息楼',
-        'special':'易碎',
-        'orderPrice':'5'
-      },
-      {
-        'orderNumber': 'DL2019040312346',
-        'expressName': '中通快递',
-        'expressSize': '小物',
-        'description': '是一个很小的东西，很好拿的',
-        'destination': '东7宿舍楼下',
-        'special': '易碎',
-        'orderPrice': '5'
-      },
-      {
-        'orderNumber': 'DL2019040312347',
-        'expressName': '京东物流',
-        'expressSize': '大物',
-        'description': '比较大，希望男同学能帮忙拿一下~',
-        'destination': '东5宿舍楼下',
-        'special': '易碎',
-        'orderPrice': '5'
-      },
-    ],
-    linearColors: [],
-    requestDone: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    expressOrderList:[],
   },
   //事件处理函数
   bindViewTap: function (e) {
@@ -49,20 +19,22 @@ Page({
     })
   },
   onLoad: function () {
-    this.getGoodsData()
+    // this.getGoodsData()
+    let that = this;
+    ajax.GET(service.EXPRESS_UNACCEPT_LIST, {}).then(data => {
+      console.log("获取待接单列表成功", data);
+      data.forEach(e => {
+        e.expressName = enums.EXPRESS[e.expressType].name;
+        e.expressSize = enums.EXPRESS_SIZE[e.size].name;
+        e.createTime = commonUtil.formatTime(e.createTime);
+      });
+      that.setData({
+        expressOrderList: data
+      })
+    })
   },
   // 页面滚动时
   onPageScroll: function (ev) {
-  },
-
-  // 获取商品数据
-  getGoodsData: function () {
-    app.fetch('get', this.data.goodsUrl).then(res => {
-      this.setData({
-        goodsData: res.data,
-        requestDone: true
-      })
-    }).catch(err => console.log(err))
   },
 
   navigateToPublish: function () {
@@ -78,6 +50,17 @@ Page({
         if (res.confirm) {
           console.log('用户点击确定')
           // 调用抢单接口
+          ajax.POST(service.EXPRESS_CATCH, {orderNumber: e.currentTarget.dataset.order}, '接单中').then(data => {
+            console.log("接单成功");
+            wx.showToast({
+              title: '接单成功',
+              icon: 'success',
+              duration: 2000,
+              complete: ()=>{
+                app.navTo("express");
+              }
+            });
+          })
         } else if (res.cancel) {
           console.log('用户点击取消')
         }

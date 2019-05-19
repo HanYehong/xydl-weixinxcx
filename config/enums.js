@@ -114,15 +114,15 @@ module.exports = {
   },
 
   EXPRESS_SIZE: {
-    LARGE: {
+    0: {
       code: 0,
       name: '大物',
     },
-    MIDDLE: {
+    1: {
       code: 1,
       name: '中物'
     },
-    SMALL: {
+    2: {
       code: 2,
       name: '大物'
     }

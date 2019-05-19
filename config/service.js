@@ -1,4 +1,4 @@
-const API_URL = 'http://192.168.43.38:7777';
+const API_URL = 'http://localhost:7777';
 const LIFE_SERVICE = '/xydl-life';
 const USER_SERVICE = '/xydl-user';
 const ATLAS_SERVICE = '/xydl-atlas';
@@ -19,6 +19,16 @@ const LOST_FOUND_GET_ONE = API_URL + LIFE_SERVICE + '/lostFound/getLostFound';
  * 快递代领相关接口
  */
 const EXPRESS_PUBLISH = API_URL + LIFE_SERVICE + '/express/publish';
+const EXPRESS_UNACCEPT_LIST = API_URL + LIFE_SERVICE + '/express/listUnAcceptOrder';
+const EXPRESS_PUBLISHOR_LIST = API_URL + LIFE_SERVICE + '/express/listByPublishor';
+const EXPRESS_ACCEPTOR_LIST = API_URL + LIFE_SERVICE + '/express/listByAcceptor';
+const EXPRESS_CATCH = API_URL + LIFE_SERVICE + '/express/catch';
+const EXPRESS_AUTHORRIZATION = API_URL + LIFE_SERVICE + '/express/authorization';
+const EXPRESS_REFUSE_ACCEPT = API_URL + LIFE_SERVICE + '/express/refuseAccept';
+const EXPRESS_SENDED = API_URL + LIFE_SERVICE + '/express/sended';
+const EXPRESS_RECEIVED = API_URL + LIFE_SERVICE + '/express/received';
+const EXPRESS_CANCEL = API_URL + LIFE_SERVICE + '/express/cancel';
+const EXPRESS_RE_PUBLISH = API_URL + LIFE_SERVICE + '/express/rePublish';
 
 /**
  * 定义接口
@@ -31,5 +41,15 @@ module.exports = {
   LOST_FOUND_DELETE,
   LOST_FOUND_LIST_MINE,
   LOST_FOUND_GET_ONE,
-  EXPRESS_PUBLISH
+  EXPRESS_PUBLISH,
+  EXPRESS_UNACCEPT_LIST,
+  EXPRESS_PUBLISHOR_LIST,
+  EXPRESS_ACCEPTOR_LIST,
+  EXPRESS_CATCH,
+  EXPRESS_AUTHORRIZATION,
+  EXPRESS_REFUSE_ACCEPT,
+  EXPRESS_SENDED,
+  EXPRESS_RECEIVED,
+  EXPRESS_CANCEL,
+  EXPRESS_RE_PUBLISH
 }

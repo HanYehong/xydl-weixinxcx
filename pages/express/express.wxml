@@ -4,7 +4,7 @@
     <image class="publish-button-icon" src="/resource/images/publish-icon.svg" />
   </view>
   <!-- <gl-card wx:if="{{requestDone}}" class="card-wrapper" wx:for="{{goodsData}}" wx:key="index" card-title="{{item.title}}" card-desc="{{item.desc}}" card-price="{{item.price}}" card-views="{{item.views}}" data-price="{{item.price}}" data-views="{{item.views}}" data-desc="{{item.desc}}" data-title="{{item.title}}" data-goods-id="{{item.id}}" bindtap="bindViewTap"></gl-card> -->
-  <view wx:if="{{requestDone}}" class="card-wrapper">
+  <view class="card-wrapper">
     <view wx:for="{{expressOrderList}}" wx:key="{{orderNumber}}" class="card">
       <view class="inner">
         <!-- Start 商品信息 || 卡片信息 -->
@@ -23,11 +23,14 @@
               <text>送达地点：</text><text>{{item.destination}}</text>
             </view>
             <view>
-              <text style='color:#f7642c'>{{item.special}}</text>
+              <text style='color:#f7642c'>{{item.specialAttention}}</text>
+            </view>
+            <view>
+              <text>{{item.createTime}}</text>
             </view>
           </view>
           <view class="card-detail card-col">
-            <view class="card-price">￥{{item.orderPrice}}</view>
+            <view class="card-price">￥{{item.price}}</view>
             <view class="card-views">
               <button bindtap='grapOrder' data-order="{{item.orderNumber}}" style='width:50px;border-radius:10px;font-size:10px;background:#c8141f;color:#fff'>接</button>
             </view>
