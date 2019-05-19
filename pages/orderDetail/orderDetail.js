@@ -3,6 +3,7 @@ let app = getApp();
 let enums = require("../../config/enums");
 let service = require("../../config/service.js");
 let ajax = require("../../config/ajax.js");
+let businessUtil = require("../../utils/business.util.js");
 Page({
 
   /**
@@ -94,73 +95,23 @@ Page({
   },
 
   cancel(e) {
-    console.log("取消代领单：" + e.currentTarget.dataset.order);
-    ajax.POST(service.EXPRESS_CANCEL, {orderNumber: e.currentTarget.dataset.order}, '正在取消').then(data => {
-      wx.showToast({
-        title: '取消成功',
-        icon: 'success',
-        duration: 200,
-        complete: ()=>{
-          app.navTo("myExpressOrder");
-        }
-      });
-    })
+    businessUtil.cancel(e.currentTarget.dataset.order);
   },
 
   authorize(e) {
-    console.log("授权代领单：" + e.currentTarget.dataset.order);
-    ajax.POST(service.EXPRESS_AUTHORRIZATION, {orderNumber: e.currentTarget.dataset.order}, '授权中').then(data => {
-      wx.showToast({
-        title: '成功',
-        icon: 'success',
-        duration: 200,
-        complete: ()=>{
-          app.navTo("myExpressOrder");
-        }
-      });
-    })
+    businessUtil.authorize(e.currentTarget.dataset.order);
   },
 
   confirm(e) {
-    console.log("确认收货：" + e.currentTarget.dataset.order);
-    ajax.POST(service.EXPRESS_RECEIVED, {orderNumber: e.currentTarget.dataset.order}, '正在收货').then(data => {
-      wx.showToast({
-        title: '成功',
-        icon: 'success',
-        duration: 200,
-        complete: ()=>{
-          app.navTo("myExpressOrder");
-        }
-      });
-    })
+    businessUtil.confirm(e.currentTarget.dataset.order);
   },
 
   refuse(e) {
-    console.log("拒绝其接单：" + e.currentTarget.dataset.order);
-    ajax.POST(service.EXPRESS_REFUSE_ACCEPT, {orderNumber: e.currentTarget.dataset.order}, '拒绝中').then(data => {
-      wx.showToast({
-        title: '已拒绝',
-        icon: 'success',
-        duration: 200,
-        complete: ()=>{
-          app.navTo("myExpressOrder");
-        }
-      });
-    })
+    businessUtil.refuse(e.currentTarget.dataset.order);
   },
 
   rePublish(e) {
-    console.log("重新发布：" + e.currentTarget.dataset.order);
-    ajax.POST(service.EXPRESS_RE_PUBLISH, {orderNumber: e.currentTarget.dataset.order}, '发布中').then(data => {
-      wx.showToast({
-        title: '发布成功',
-        icon: 'success',
-        duration: 200,
-        complete: ()=>{
-          app.navTo("myExpressOrder");
-        }
-      });
-    })
+    businessUtil.rePublish(e.currentTarget.dataset.order);
   }
 
 })

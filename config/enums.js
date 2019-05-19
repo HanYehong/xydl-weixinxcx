@@ -92,12 +92,8 @@ module.exports = {
       code: 2,
       name: '已送达'
     },
-    PAY: {
-      code: 3,
-      name: '支付'
-    },
     AUTHORIZE: {
-      code: 4,
+      code: 3,
       name: '授权'
     }
   },

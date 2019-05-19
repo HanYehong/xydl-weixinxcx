@@ -2,6 +2,7 @@ var app = getApp();
 let enums = require("../../config/enums");
 let service = require("../../config/service.js");
 let ajax = require("../../config/ajax.js");
+let businessUtil = require("../../utils/business.util.js");
 Page({
   /**
    * 页面的初始数据
@@ -86,6 +87,14 @@ Page({
   buttonClick(e) {
     console.log(e.currentTarget.dataset.code);
     console.log(e.currentTarget.dataset.order);
+    switch(e.currentTarget.dataset.code) {
+      case 0:  // 取消
+        businessUtil.cancel(e.currentTarget.dataset.order);
+        break;
+      case 2:  // 送达
+        businessUtil.sended(e.currentTarget.dataset.order);
+        break;
+    }
   },
 
   navToDetail(e) {

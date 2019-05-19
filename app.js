@@ -72,6 +72,12 @@ App({
     })
   },
 
+  redTo(url) {
+    wx.redirectTo({
+      url: '../'+url+'/'+url,
+    });
+  },
+
   getPageData: function () {
     api('get', 'https://easy-mock.com/mock/5bffe30cab841f18c58ca0ec/data/pageData').then(res => {
       this.globalData.linearColors = res.pageData.linearGradient

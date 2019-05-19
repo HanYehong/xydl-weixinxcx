@@ -213,7 +213,7 @@ Page({
         icon: 'success',
         duration: 2000,
         complete: () => {
-          app.navTo("lostFound")
+          app.redTo("lostFound")
         }
       });
     })

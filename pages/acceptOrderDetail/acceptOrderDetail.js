@@ -2,6 +2,7 @@
 let enums = require("../../config/enums");
 let service = require("../../config/service.js");
 let ajax = require("../../config/ajax.js");
+let businessUtil = require("../../utils/business.util.js");
 Page({
 
   /**
@@ -91,5 +92,13 @@ Page({
         showInfo : detail.value
     })
   },
+
+  sended(e) {
+    businessUtil.sended(e.currentTarget.dataset.order);
+  },
+
+  cancel(e) {
+    businessUtil.cancel(e.currentTarget.dataset.order);
+  }
 
 })
