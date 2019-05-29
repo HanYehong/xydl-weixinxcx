@@ -48,48 +48,13 @@ function REQUEST (method, url, data, loadingText){
         })
        },
        fail: ()=>{
-        showError('未登录，请登录后再试');
+        showError('未登录，请登录后重试');
+        wx.hideLoading();
        },
        complete: ()=>{}
      });
   });
 }
-
-// function GET (url, data) {
-//   return new Promise((resolve, reject) => {
-//     var that = this;
-//     var postData = data;
-//     wx.showLoading({
-//       title: '加载中',
-//     })
-//     wx.request({
-//       url: url,
-//       data: postData,
-//       method: 'GET',
-//       header: { 'content-type': 'application/json;charset=UTF-8', 'token': 'yehong.han' },
-//       success: function (res) {
-//         console.log(res);
-//         if (res.statusCode == 200) {
-//           console.log("post 请求成功 ---")
-//           if (res.data.code == 10000) {
-//             console.log("后台处理数据成功 ###");
-//             return resolve(res.data.data);
-//           } else {
-//             showError(res.data.msg);
-//           }
-//         } else {
-//           showError("服务繁忙，请稍后再试");
-//         }
-//       },
-//       error: function (e) {
-//         reject('网络出错');
-//       },
-//       complete: function (e) {
-//         wx.hideLoading();
-//       }
-//     })
-//   });
-// }
 
 /**
  * 弹窗提示网络错误

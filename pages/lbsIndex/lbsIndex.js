@@ -289,7 +289,8 @@ Page({
         that.polylineAPI(me_latitude, me_longitude, that.data.latitude, that.data.longitude)
 
       },//success
-      fail(){
+      fail(err){
+        console.log('定位失败', err);
         wx.showToast({
           title: '当前定位失败',
           image:'/resource/images/error.png',

@@ -61,6 +61,7 @@ Page({
     multiArray: [years, months, days, hours, minutes],
     multiIndex: [0, 0, 0, date.getHours(), date.getMinutes()],
     choose_year: '',
+    showModal: false
   },
 
   onLoad() {
@@ -307,6 +308,10 @@ Page({
   },
 
   publish(e) {
+    this.setData({
+      showModal: true
+    })
+    return;
     console.log("即将提交表单");
     let form = this.data.form;
     form.description = e.detail.value.description;

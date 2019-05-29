@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:7777';
+const API_URL = 'http://192.168.43.38:7777';
 const LIFE_SERVICE = '/xydl-life';
 const USER_SERVICE = '/xydl-user';
 const ATLAS_SERVICE = '/xydl-atlas';

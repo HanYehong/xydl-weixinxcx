@@ -132,3 +132,7 @@
     </view>
   </form>
 </view>
+
+<pay-modal show="{{showModal}}" height='60%' bindcancel="modalCancel" bindconfirm='modalConfirm'>
+  <view class='modal-content'>你自己的布局</view>
+</pay-modal>

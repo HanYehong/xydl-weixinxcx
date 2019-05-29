@@ -82,18 +82,29 @@ Page({
     wx.checkSession({
       success() {
         // session_key 未过期，并且在本生命周期一直有效
-        console.log('用户身份未过期')
-        wx.getUserInfo({
-          success: function (userRes) {
-            console.log('获取用户信息成功')
-            console.log(userRes)
-            app.globalData.userInfo_WX = userRes.userInfo;
-            that.updateData(true);
+        wx.getStorage({
+          key: 'location_token',
+          success: (result)=>{
+            console.log('用户身份未过期')
+            wx.getUserInfo({
+              success: function (userRes) {
+                console.log('获取用户信息成功')
+                console.log(userRes)
+                app.globalData.userInfo_WX = userRes.userInfo;
+                that.updateData(true);
+              },
+              fail() {
+                console.log('——用户信息获取失败——')
+              }
+            })
           },
-          fail() {
-            console.log('——用户信息获取失败——')
-          }
-        })
+          fail: ()=>{
+            console.log('用户身份过期，需要重新登录')
+            app.initUserInfo();
+            that.updateData(false);
+          },
+          complete: ()=>{}
+        });
       },
       fail() {
         // session_key 已经失效，需要重新执行登录流程
@@ -117,13 +128,35 @@ Page({
                 code: res.code,
                 wechatUser: userRes.userInfo
               }
-              ajax.POST(service.LOGIN_GET_TOKEN, codeInfo, '正在登录').then(data =>{
-                console.log('登录成功', data)
-                wx.setStorage({
-                  key: 'location_token',
-                  data: data
-                })
-                this.getUserInfo()
+              wx.request({
+                url: service.LOGIN_GET_TOKEN,
+                data: codeInfo,
+                method: 'post',
+                header: { 'content-type': 'application/json;charset=UTF-8' },
+                success: function (res) {
+                  console.log(res);
+                  if (res.statusCode == 200) {
+                    console.log("post 请求成功 ---")
+                    if (res.data.code == 10000) {
+                      console.log("后台处理数据成功 ###");
+                      wx.setStorage({
+                        key: 'location_token',
+                        data: res.data.data
+                      })
+                      that.getUserInfo()
+                    } else {
+                      showError(res.data.msg);
+                    }
+                  } else {
+                    showError("服务繁忙，请稍后再试");
+                  }
+                },
+                error: function (e) {
+                  showError('网络出错');
+                },
+                complete: function (e) {
+                  wx.hideLoading();
+                }
               })
             }
           })
