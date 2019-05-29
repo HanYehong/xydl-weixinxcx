@@ -3,6 +3,10 @@ const LIFE_SERVICE = '/xydl-life';
 const USER_SERVICE = '/xydl-user';
 const ATLAS_SERVICE = '/xydl-atlas';
 /**
+ * 登录相关接口
+ */
+const LOGIN_GET_TOKEN = API_URL + USER_SERVICE + '/login/getToken';
+/**
  * 机器人相关接口
  */
 const ROBOT_CHAT = API_URL + LIFE_SERVICE + '/robot/chat';
@@ -35,11 +39,15 @@ const EXPRESS_GET_ORDER = API_URL + LIFE_SERVICE + '/express/getExpressOrder';
  */
 const USER_IS_IDENTITY = API_URL + USER_SERVICE + '/user/isAuthorize';
 const USER_IDENTITY = API_URL + USER_SERVICE + '/user/authorize';
-
+/**
+ * 意见反馈相关接口
+ */
+const FEEDBACK = API_URL + LIFE_SERVICE + '/feedback/commit';
 /**
  * 定义接口
  */
 module.exports = {
+  LOGIN_GET_TOKEN,
   ROBOT_CHAT,
   ROBOT_RECOFNIZE,
   LOST_FOUND_SELECT,
@@ -60,5 +68,6 @@ module.exports = {
   EXPRESS_RE_PUBLISH,
   EXPRESS_GET_ORDER,
   USER_IS_IDENTITY,
-  USER_IDENTITY
+  USER_IDENTITY,
+  FEEDBACK
 }

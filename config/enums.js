@@ -112,7 +112,7 @@ module.exports = {
   EXPRESS_SIZE: {
     0: {
       code: 0,
-      name: '大物',
+      name: '小物',
     },
     1: {
       code: 1,

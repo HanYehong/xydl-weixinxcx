@@ -31,7 +31,7 @@ Page({
       data.statusText = enums.getStatusNameByCode(data.status);
       that.setData({
         orderInfo: data,
-        targetTime: new Date(obj.endDate).getTime()
+        targetTime: new Date(obj.orderDeadlineDate).getTime()
       })
     })
   },

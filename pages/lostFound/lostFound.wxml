@@ -11,8 +11,8 @@
 </view>
 <!--筛选项-->
 <view class="tabLayer" hidden="{{tab[0]}}">
-    <text class="{{lostLocation==-1?'active':''}}" data-id="-1" data-index="0" data-txt="失物地点" bindtap="filter">不限</text>
-    <text class="{{lostLocation==item.id?'active':''}}" wx:for="{{lostLocation}}" wx:key="item.id" wx:for-item="item" data-id="{{item.id}}" data-index="0" data-txt="{{item.name}}" bindtap="filter">{{item.name}}</text>
+    <text class="{{location==-1?'active':''}}" data-id="-1" data-index="0" data-txt="失物地点" bindtap="filter">不限</text>
+    <text class="{{location==item.id?'active':''}}" wx:for="{{lostLocation}}" wx:key="item.id" wx:for-item="item" data-id="{{item.id}}" data-index="0" data-txt="{{item.name}}" bindtap="filter">{{item.name}}</text>
 </view>
 <view class="tabLayer" hidden="{{tab[1]}}">
     <text class="{{type==-1?'active':''}}" data-id="-1" data-index="1" data-txt="物品类型" bindtap="filter">不限</text>

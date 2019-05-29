@@ -17,32 +17,41 @@ function REQUEST (method, url, data, loadingText){
      wx.showLoading({
       title: loadingText,
      })
-     wx.request({
-        url: url,
-        data: data,
-        method: method,
-        header: { 'content-type': 'application/json;charset=UTF-8', 'token': 'yehong.han' },
-        success: function (res) {
-          console.log(res);
-          if (res.statusCode == 200) {
-            console.log("post 请求成功 ---")
-            if (res.data.code == 10000) {
-              console.log("后台处理数据成功 ###");
-              return resolve(res.data.data);
+     wx.getStorage({
+       key: 'location_token',
+       success: (result)=>{
+        wx.request({
+          url: url,
+          data: data,
+          method: method,
+          header: { 'content-type': 'application/json;charset=UTF-8', 'token': result.data },
+          success: function (res) {
+            console.log(res);
+            if (res.statusCode == 200) {
+              console.log("post 请求成功 ---")
+              if (res.data.code == 10000) {
+                console.log("后台处理数据成功 ###");
+                return resolve(res.data.data);
+              } else {
+                showError(res.data.msg);
+              }
             } else {
-              showError(res.data.msg);
+              showError("服务繁忙，请稍后再试");
             }
-          } else {
-            showError("服务繁忙，请稍后再试");
+          },
+          error: function (e) {
+            showError('网络出错');
+          },
+          complete: function (e) {
+            wx.hideLoading();
           }
-        },
-        error: function (e) {
-          showError('网络出错');
-        },
-        complete: function (e) {
-          wx.hideLoading();
-        }
-     })
+        })
+       },
+       fail: ()=>{
+        showError('未登录，请登录后再试');
+       },
+       complete: ()=>{}
+     });
   });
 }
 

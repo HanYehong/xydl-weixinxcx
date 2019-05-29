@@ -19,14 +19,14 @@
       <image class='button-logo' src='../../resource/images/kuaidi.png'></image>
       <text class="interview">帮拿快递</text>
     </view>
-    <view class="button" bindtap="viewCollect">
+    <!-- <view class="button" bindtap="viewCollect">
       <image class='button-logo' src='../../resource/images/ziyuan.png'></image>
       <text class="collect">福利资源</text>
     </view>
     <view class="button" bindtap="viewFeedback">
       <image class='button-logo' src='../../resource/images/fankui.png'></image>
       <text class="collect">意见反馈</text>
-    </view>
+    </view> -->
   </view>
   <button  wx:if='{{isLogin}}' class="logout">已登录</button>
   <button open-type="getUserInfo" bindgetuserinfo="toLogin" wx:else class="login">登录</button>

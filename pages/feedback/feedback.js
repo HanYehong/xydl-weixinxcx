@@ -71,7 +71,7 @@ Page({
   commit(e) {
     console.log(e);
     let that = this;
-    ajax.POST(service.API_URL + service.LIFE_SERVICE + '/feedback/commit', {content: e.detail.value.content, contactWay: e.detail.value.contact}).then(data => {
+    ajax.POST(service.FEEDBACK, {content: e.detail.value.content, contactWay: e.detail.value.contact}).then(data => {
       wx.showToast({
         title: '我们已得到反馈',
         success: res => {

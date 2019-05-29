@@ -20,9 +20,9 @@ Page({
         img: '/resource/images/my_shiwu.png'
       },
       {
-        text:'联系客服',
-        url:'callservice',
-        img: '/resource/images/call_service.png'
+        text:'意见反馈',
+        url:'/pages/feedback/feedback',
+        img: '/resource/images/fankui.png'
       }
     ],
     navi: [
