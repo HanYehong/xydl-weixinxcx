@@ -44,6 +44,10 @@ const USER_IDENTITY = API_URL + USER_SERVICE + '/user/authorize';
  */
 const FEEDBACK = API_URL + LIFE_SERVICE + '/feedback/commit';
 /**
+ * 公交定位相关接口
+ */
+const LIST_POINTERS = API_URL + ATLAS_SERVICE + '/bus/listPointer';
+/**
  * 定义接口
  */
 module.exports = {
@@ -69,5 +73,6 @@ module.exports = {
   EXPRESS_GET_ORDER,
   USER_IS_IDENTITY,
   USER_IDENTITY,
-  FEEDBACK
+  FEEDBACK,
+  LIST_POINTERS
 }

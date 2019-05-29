@@ -1,4 +1,6 @@
 // pages/car/car.js
+let ajax = require('../../config/ajax');
+let service = require('../../config/service')
 Page({
 
   /**
@@ -9,6 +11,7 @@ Page({
     coreLatitude: '31.922330',//中心纬度
     scale: 17,//缩放级别
     markers: [],//标记点
+    timer: '',
     car: [0, 8,20,37, 66, 79, 88, 90, 92, 101],
     polyline: [{
       points: [
@@ -171,38 +174,84 @@ Page({
         height: 40
       });
     })
+    let timer = setInterval(this.changeCarPoints, 5000)
     this.setData({
-      markers
+      markers,
+      timer
     })
-    var timer = setInterval(this.changeCarPoints, 3000)
   },
 
   changeCarPoints: function () {
-    let markers = this.data.markers;
-    if (markers.length >= 25 ) {
-      for(let item = 0; item < 10; item++) {
-        markers.pop();
-      }
-    }
-    let car = this.data.car;
     let that = this;
-    car.forEach(x => {
-      markers.push({
-        id: 'car'+x,
-        latitude: that.data.polyline[0].points[x].latitude,
-        longitude: that.data.polyline[0].points[x].longitude,
-        iconPath: "../../resource/images/gongjiao.png",
-        width: 32,
-        height: 40
-      })
+    wx.request({
+      url: service.LIST_POINTERS,
+      data: {},
+      method: 'get',
+      header: { 'content-type': 'application/json;charset=UTF-8' },
+      success: function (res) {
+        if (res.statusCode == 200) {
+          if (res.data.code == 10000) {
+            console.log('获得小公交坐标', res.data.data);
+            let data = res.data.data;
+            let markers = that.data.markers;
+            if (markers.length >= 25 ) {
+              for(let item = 0; item < 10; item++) {
+                markers.pop();
+              }
+            }
+            data.forEach(x => {
+              markers.push({
+                id: 'car' + x.busCode,
+                latitude: x.latitude,
+                longitude: x.longitude,
+                iconPath: "../../resource/images/gongjiao.png",
+                width: 32,
+                height: 40
+              })
+            })
+            that.setData({
+              markers
+            })
+          } else {
+            // showError(res.data.msg);
+          }
+        } else {
+          // showError("服务繁忙，请稍后再试");
+        }
+      },
+      error: function (e) {
+        // showError('网络出错');
+      },
+      complete: function (e) {
+        // wx.hideLoading();
+      }
     })
-    for (let i = 0; i < car.length; i++) {
-      car[i] = (car[i] + 1) % 109;
-    }
-    this.setData({
-      markers,
-      car
-    })
+
+    // let markers = this.data.markers;
+    // if (markers.length >= 25 ) {
+    //   for(let item = 0; item < 10; item++) {
+    //     markers.pop();
+    //   }
+    // }
+    // let car = this.data.car;
+    // let that = this;
+    // car.forEach(x => {
+    //   markers.push({
+    //     id: 'car'+x,
+    //     latitude: that.data.polyline[0].points[x].latitude,
+    //     longitude: that.data.polyline[0].points[x].longitude,
+    //     iconPath: "../../resource/images/gongjiao.png",
+    //     width: 32,
+    //     height: 40
+    //   })
+    // })
+    // for (let i = 0; i < car.length; i++) {
+    //   car[i] = (car[i] + 1) % 109;
+    // }
+    // this.setData({
+    //   markers,
+    //   car
+    // })
     // wx.request({
     //   url: 'http://192.168.43.38:7777/xydl-atlas/carMarkers',
     //   method: 'GET',
@@ -237,7 +286,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    clearInterval(this.data.timer);
   },
 
   /**
