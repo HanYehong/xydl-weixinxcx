@@ -8,6 +8,7 @@ const months = [];
 const days = [];
 const hours = [];
 const minutes = [];
+const monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 //获取年
 for (let i = date.getFullYear(); i <= date.getFullYear(); i++) {
   years.push("" + i);
@@ -20,11 +21,19 @@ for (let i = date.getMonth() + 1; i <= date.getMonth() + 1; i++) {
   months.push("" + i);
 }
 //获取日期
-for (let i = date.getDate(); i <= date.getDate() + 3; i++) {
+let mark = 0;
+for (let i = date.getDate(); i <= date.getDate() + 2; i++) {
+  if (i > monthDays[months[0] - 1]) {
+    i = i % (monthDays[months[0] - 1]);
+    mark = 1;
+  }
   if (i < 10) {
     i = "0" + i;
   }
   days.push("" + i);
+}
+if (mark == 1) {
+  months.push((date.getMonth() + 2) % 12);
 }
 //获取小时
 for (let i = 0; i < 24; i++) {
@@ -127,8 +136,22 @@ Page({
     const hour = this.data.multiArray[3][index[3]];
     const minute = this.data.multiArray[4][index[4]];
     // console.log(`${year}-${month}-${day}-${hour}-${minute}`);
+    if (day > monthDays[month - 1]) {
+      wx.showToast({
+        title: '日期无效',
+        icon: 'error'
+      })
+      return;
+    }
     let form = this.data.form;
     form.date = year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
+    if (new Date(form.date).getTime() < new Date().getTime()) {
+      wx.showToast({
+        title: '日期不能小于当前',
+        icon: 'error'
+      })
+      return;
+    }
     this.setData({
       form
     })
@@ -308,10 +331,6 @@ Page({
   },
 
   publish(e) {
-    this.setData({
-      showModal: true
-    })
-    return;
     console.log("即将提交表单");
     let form = this.data.form;
     form.description = e.detail.value.description;

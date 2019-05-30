@@ -49,7 +49,7 @@ Page({
             break;
           case enums.STATUS.WAIT_SEND.code:
             orderListDoingAnother[i].button = enums.BUTTON.CANCEL.code;
-            orderListDoingAnother[i].buttonText = enums.BUTTON.CONFIRM.name;
+            orderListDoingAnother[i].buttonText = enums.BUTTON.CANCEL.name;
             break;
         }
       }

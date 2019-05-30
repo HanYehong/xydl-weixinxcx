@@ -58,7 +58,7 @@
               <view class="text">
                 取货码：{{item.pickupCode}}
               </view>
-              <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.orderPrice}}</view>
+              <view style="float:right; marin-right:15px;color:#d14748; font-size:14px;">￥{{item.price}}</view>
             </view>
             <view class="text">
               目的地：{{item.destination}}

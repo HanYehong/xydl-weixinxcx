@@ -6,6 +6,7 @@ const ATLAS_SERVICE = '/xydl-atlas';
  * 登录相关接口
  */
 const LOGIN_GET_TOKEN = API_URL + USER_SERVICE + '/login/getToken';
+const AUTHORIZE = API_URL + USER_SERVICE + '/user/authorize';
 /**
  * 机器人相关接口
  */
@@ -52,6 +53,7 @@ const LIST_POINTERS = API_URL + ATLAS_SERVICE + '/bus/listPointer';
  */
 module.exports = {
   LOGIN_GET_TOKEN,
+  AUTHORIZE,
   ROBOT_CHAT,
   ROBOT_RECOFNIZE,
   LOST_FOUND_SELECT,

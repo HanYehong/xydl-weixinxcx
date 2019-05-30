@@ -1,9 +1,11 @@
 <view wx:if="{{!isIdentity}}">
-  <i-panel title="用户认证">
-    <i-input value='{{username}}' title="学号" placeholder="请输入学号" ></i-input>
-    <i-input value='{{password}}' type="password" title="密码" placeholder="请输入密码" ></i-input>
-  </i-panel>
-  <i-button bind:click="identity" type="success" shape="circle" size="small">认证</i-button>
+  <form bindsubmit="identity">
+    <i-panel title="用户认证">
+      <i-input name="username" title="学号" placeholder="请输入学号" ></i-input>
+      <i-input name="password" type="password" title="密码" placeholder="请输入密码" ></i-input>
+    </i-panel>
+    <button form-type='submit'>认证</button>
+  </form>
 </view>
 <view wx:else>
   <image src="../../resource/images/renzheng.png" style="width: 50%; height: 200px; margin-left: 25%; margin-top: 50px;" />

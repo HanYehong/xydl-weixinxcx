@@ -84,10 +84,11 @@ Page({
 
   },
 
-  identity() {
-    console.log(this.data.username);
-    console.log(this.data.password);
-    ajax.POST(service.API_URL + service.USER_SERVICE + '/user/authorize', {username: 'zhangsan2', password: '123456'}).then(data => {
+  identity(e) {
+    console.log(e);
+    console.log(e.detail.value.username);
+    console.log(e.detail.value.password);
+    ajax.POST(service.AUTHORIZE, { username: e.detail.value.username, password: e.detail.value.password }).then(data => {
       console.log(data);
       wx.showToast({
         content: '认证成功',

@@ -41,7 +41,7 @@
               <view style="color: #c141f8; float:left;" bindtap='navToDetail' data-order='{{item.orderNumber}}' data-type='processing'>
                 状态：{{item.statusText}}
               </view>
-              <button wx:if="{{item.status != 2}}" bindtap="buttonClick" data-code="{{item.button}}" data-order="{{item.orderNumber}}" class="do-button" style="float:right;">{{item.buttonText}}</button>
+              <button wx:if="{{item.status != 1}}" bindtap="buttonClick" data-code="{{item.button}}" data-order="{{item.orderNumber}}" class="do-button" style="float:right;">{{item.buttonText}}</button>
             </view>
           </view>
         </view>
