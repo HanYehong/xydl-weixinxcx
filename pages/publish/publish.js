@@ -23,9 +23,12 @@ for (let i = date.getMonth() + 1; i <= date.getMonth() + 1; i++) {
 //获取日期
 let mark = 0;
 for (let i = date.getDate(); i <= date.getDate() + 2; i++) {
-  if (i > monthDays[months[0] - 1]) {
-    i = i % (monthDays[months[0] - 1]);
+  let temp = i;
+  if (temp > monthDays[months[0] - 1]) {
+    temp = temp % monthDays[months[0] - 1];
+    days.push( "0" + temp);
     mark = 1;
+    continue;
   }
   if (i < 10) {
     i = "0" + i;
@@ -33,7 +36,7 @@ for (let i = date.getDate(); i <= date.getDate() + 2; i++) {
   days.push("" + i);
 }
 if (mark == 1) {
-  months.push((date.getMonth() + 2) % 12);
+  months.push((date.getMonth() + 2) % 12 + "");
 }
 //获取小时
 for (let i = 0; i < 24; i++) {
@@ -138,7 +141,7 @@ Page({
     // console.log(`${year}-${month}-${day}-${hour}-${minute}`);
     if (day > monthDays[month - 1]) {
       wx.showToast({
-        title: '日期无效',
+        title: '无效日期',
         icon: 'error'
       })
       return;
@@ -147,7 +150,7 @@ Page({
     form.date = year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
     if (new Date(form.date).getTime() < new Date().getTime()) {
       wx.showToast({
-        title: '日期不能小于当前',
+        title: '无效日期',
         icon: 'error'
       })
       return;
@@ -159,71 +162,71 @@ Page({
   },
   //监听picker的滚动事件
   bindMultiPickerColumnChange: function(e) {
-    //获取年份
-    if (e.detail.column == 0) {
-      let choose_year = this.data.multiArray[e.detail.column][e.detail.value];
-      console.log(choose_year);
-      this.setData({
-        choose_year
-      })
-    }
-    //console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
-    if (e.detail.column == 1) {
-      let num = parseInt(this.data.multiArray[e.detail.column][e.detail.value]);
-      let temp = [];
-      if (num == 1 || num == 3 || num == 5 || num == 7 || num == 8 || num == 10 || num == 12) { //判断31天的月份
-        for (let i = 1; i <= 31; i++) {
-          if (i < 10) {
-            i = "0" + i;
-          }
-          temp.push("" + i);
-        }
-        this.setData({
-          ['multiArray[2]']: temp
-        });
-      } else if (num == 4 || num == 6 || num == 9 || num == 11) { //判断30天的月份
-        for (let i = 1; i <= 30; i++) {
-          if (i < 10) {
-            i = "0" + i;
-          }
-          temp.push("" + i);
-        }
-        this.setData({
-          ['multiArray[2]']: temp
-        });
-      } else if (num == 2) { //判断2月份天数
-        let year = parseInt(this.data.choose_year);
-        console.log(year);
-        if (((year % 400 == 0) || (year % 100 != 0)) && (year % 4 == 0)) {
-          for (let i = 1; i <= 29; i++) {
-            if (i < 10) {
-              i = "0" + i;
-            }
-            temp.push("" + i);
-          }
-          this.setData({
-            ['multiArray[2]']: temp
-          });
-        } else {
-          for (let i = 1; i <= 28; i++) {
-            if (i < 10) {
-              i = "0" + i;
-            }
-            temp.push("" + i);
-          }
-          this.setData({
-            ['multiArray[2]']: temp
-          });
-        }
-      }
-      console.log(this.data.multiArray[2]);
-    }
-    var data = {
-      multiArray: this.data.multiArray,
-      multiIndex: this.data.multiIndex
-    };
-    data.multiIndex[e.detail.column] = e.detail.value;
-    this.setData(data);
+    // //获取年份
+    // if (e.detail.column == 0) {
+    //   let choose_year = this.data.multiArray[e.detail.column][e.detail.value];
+    //   console.log(choose_year);
+    //   this.setData({
+    //     choose_year
+    //   })
+    // }
+    // //console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+    // if (e.detail.column == 1) {
+    //   let num = parseInt(this.data.multiArray[e.detail.column][e.detail.value]);
+    //   let temp = [];
+    //   if (num == 1 || num == 3 || num == 5 || num == 7 || num == 8 || num == 10 || num == 12) { //判断31天的月份
+    //     for (let i = 1; i <= 31; i++) {
+    //       if (i < 10) {
+    //         i = "0" + i;
+    //       }
+    //       temp.push("" + i);
+    //     }
+    //     this.setData({
+    //       ['multiArray[2]']: temp
+    //     });
+    //   } else if (num == 4 || num == 6 || num == 9 || num == 11) { //判断30天的月份
+    //     for (let i = 1; i <= 30; i++) {
+    //       if (i < 10) {
+    //         i = "0" + i;
+    //       }
+    //       temp.push("" + i);
+    //     }
+    //     this.setData({
+    //       ['multiArray[2]']: temp
+    //     });
+    //   } else if (num == 2) { //判断2月份天数
+    //     let year = parseInt(this.data.choose_year);
+    //     console.log(year);
+    //     if (((year % 400 == 0) || (year % 100 != 0)) && (year % 4 == 0)) {
+    //       for (let i = 1; i <= 29; i++) {
+    //         if (i < 10) {
+    //           i = "0" + i;
+    //         }
+    //         temp.push("" + i);
+    //       }
+    //       this.setData({
+    //         ['multiArray[2]']: temp
+    //       });
+    //     } else {
+    //       for (let i = 1; i <= 28; i++) {
+    //         if (i < 10) {
+    //           i = "0" + i;
+    //         }
+    //         temp.push("" + i);
+    //       }
+    //       this.setData({
+    //         ['multiArray[2]']: temp
+    //       });
+    //     }
+    //   }
+    //   console.log(this.data.multiArray[2]);
+    // }
+    // var data = {
+    //   multiArray: this.data.multiArray,
+    //   multiIndex: this.data.multiIndex
+    // };
+    // data.multiIndex[e.detail.column] = e.detail.value;
+    // this.setData(data);
   },
 
   bindDateChange: function (e) {
